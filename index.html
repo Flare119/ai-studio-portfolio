@@ -374,6 +374,21 @@
             width: 100%;
             height: 100%;
             border: none;
+            pointer-events: auto;
+        }
+
+        .case-video {
+            position: relative;
+        }
+
+        .case-video::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            z-index: 10;
         }
 
         .case-video-placeholder {
@@ -704,7 +719,6 @@
             <li><a href="#work">Sản phẩm</a></li>
             <li><a href="#capabilities">Năng lực</a></li>
             <li><a href="#workflow">Quy trình</a></li>
-            <li><a href="#disclaimer">Lưu ý</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#about">Team</a></li>
             <li><a href="#contact">Liên hệ</a></li>
@@ -1125,109 +1139,106 @@
         </div>
     </section>
 
-    <!-- Disclaimer -->
-    <section id="disclaimer">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Lưu ý quan trọng</div>
-                <h2 class="section-title">Điều kiện & Rủi ro cần biết</h2>
-                <p class="section-desc">Minh bạch về giới hạn công nghệ và trách nhiệm pháp lý — để cả hai bên cùng chuẩn bị tốt nhất.</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-                <!-- Quyền hình ảnh -->
-                <div class="service-card">
-                    <div class="service-icon">⚖️</div>
-                    <h3>Quyền hình ảnh</h3>
-                    <p>AI-generated character có thể mang đặc điểm gương mặt từ reference. Để đảm bảo an toàn pháp lý khi phát hành:</p>
-                    <p style="margin-top: 12px; color: var(--accent-light); font-size: 0.85rem;">✅ Khuyến khích: Photoshoot talent thật + ký talent release</p>
-                    <p style="color: var(--accent-light); font-size: 0.85rem;">✅ Hoặc: Sử dụng nhân vật 100% fictional</p>
-                    <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.82rem;">Nếu agency cung cấp reference photo → agency chịu trách nhiệm xác nhận quyền sử dụng hình ảnh.</p>
-                </div>
-                <!-- Gắn nhãn AI -->
-                <div class="service-card">
-                    <div class="service-icon">🏷️</div>
-                    <h3>Gắn nhãn AI</h3>
-                    <p>Theo Luật Trí tuệ nhân tạo VN (134/2025/QH15, hiệu lực 01/03/2026), nội dung AI-generated phải được gắn nhãn khi phát hành.</p>
-                    <p style="margin-top: 12px; color: var(--accent-light); font-size: 0.85rem;">AI Studio hỗ trợ tư vấn gắn nhãn đúng quy định.</p>
-                </div>
-                <!-- Chất lượng output -->
-                <div class="service-card">
-                    <div class="service-icon">📐</div>
-                    <h3>Giới hạn kỹ thuật</h3>
-                    <p>• AI video tối đa 1080p, 5-10s/clip — film hoàn chỉnh được ghép trong post-production.<br>
-                    • Kết quả AI có tính ngẫu nhiên — cần nhiều lần generate để đạt chất lượng.<br>
-                    • Khó kiểm soát: text chính xác, chi tiết tay/ngón, vật thể nhỏ chuyển động nhanh.</p>
-                </div>
-                <!-- Đổi direction -->
-                <div class="service-card">
-                    <div class="service-icon">🔄</div>
-                    <h3>Thay đổi creative direction</h3>
-                    <p>Khác production truyền thống (quay lại 1 góc), AI đổi concept = toàn bộ footage phải generate lại từ đầu. Chi phí và thời gian tương đương làm mới.</p>
-                    <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.82rem;">→ Nên khóa creative direction trước khi bắt đầu generate.</p>
-                </div>
-                <!-- Content policy -->
-                <div class="service-card">
-                    <div class="service-icon">🛡️</div>
-                    <h3>Content policy</h3>
-                    <p>Một số nội dung bị AI platform hạn chế: trẻ em, bạo lực, nội dung nhạy cảm. Có thể ảnh hưởng đến khả năng generate một số scene nhất định.</p>
-                    <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.82rem;">Team sẽ tư vấn approach thay thế nếu gặp hạn chế.</p>
-                </div>
-                <!-- Khuyến khích photoshoot -->
-                <div class="service-card" style="border-color: rgba(108, 92, 231, 0.3);">
-                    <div class="service-icon">📸</div>
-                    <h3>Khuyến khích Photoshoot</h3>
-                    <p>Photoshoot data (40-80 ảnh/character) mang lại:</p>
-                    <p style="margin-top: 8px; font-size: 0.85rem;">✅ Face consistency cao hơn đáng kể<br>
-                    ✅ Có talent release → phát hành an toàn<br>
-                    ✅ Ít revision → tiết kiệm thời gian<br>
-                    ✅ Có Director involve → output chuẩn hơn</p>
-                    <div class="service-price">Chi phí photoshoot: báo giá theo số lượng talent</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
+    <!-- FAQ (merged with Disclaimer) -->
     <section id="faq">
         <div class="container">
             <div class="section-header">
                 <div class="section-tag">FAQ</div>
                 <h2 class="section-title">Câu hỏi thường gặp</h2>
+                <p class="section-desc">Những điều agency và client thường hỏi trước khi bắt đầu dự án AI production.</p>
             </div>
             <div style="max-width: 800px;">
+
+                <!-- So sánh với traditional -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">AI video có khác video quay thật không?</summary>
+                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">AI production khác gì production truyền thống?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>Có — AI video được generate bằng AI model, không phải quay bằng camera. Chất lượng hiện tại đạt chuẩn digital/social, nhưng chưa thay thế được broadcast 4K. Ưu điểm: tốc độ nhanh hơn 3-5x, chi phí thấp hơn 40-60%, iterate concept gần như miễn phí.</p>
-                        <p style="margin-top: 8px;"><a href="https://www.lemonlight.com/blog/ai-video-vs-traditional-video-production-an-honest-comparison/" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Đọc thêm: AI Video vs Traditional — Lemonlight</a></p>
+                        <p><strong>Production truyền thống:</strong> Casting → Location → Crew → Shoot → Post → 3-6 tuần, budget từ 55-200 triệu VNĐ cho 1 TVC 30s (thị trường VN).</p>
+                        <p style="margin-top: 8px;"><strong>AI production:</strong> Brief → Character setup → AI generation → Post → 7-10 ngày. Chi phí thấp hơn 40-60% với output đạt chuẩn digital/social. Không cần crew, location, travel.</p>
+                        <p style="margin-top: 8px;"><strong>Khi nào dùng AI:</strong> Test concept (animatic), social content, key visual, storyboard. <strong>Khi nào vẫn cần quay:</strong> Broadcast TVC 4K, talent-driven campaign, complex product demo.</p>
+                        <p style="margin-top: 8px;"><a href="https://www.lemonlight.com/blog/ai-video-vs-traditional-video-production-an-honest-comparison/" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Lemonlight: AI Video vs Traditional — An Honest Comparison</a></p>
                     </div>
                 </details>
+
+                <!-- Giới hạn AI -->
+                <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
+                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Giới hạn kỹ thuật của AI video hiện tại là gì?</summary>
+                    <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
+                        <p>• <strong>Độ phân giải:</strong> Tối đa 1080p — đủ cho digital/social, chưa đạt broadcast 4K</p>
+                        <p>• <strong>Thời lượng clip:</strong> 5-10 giây/clip — film hoàn chỉnh được ghép từ nhiều clips trong post</p>
+                        <p>• <strong>Chi tiết khó kiểm soát:</strong> Text chính xác trong hình, chi tiết tay/ngón, vật thể nhỏ chuyển động nhanh</p>
+                        <p>• <strong>Tính ngẫu nhiên:</strong> Cùng prompt có thể cho kết quả khác nhau — cần iterate để đạt chất lượng mong muốn</p>
+                        <p>• <strong>Content policy:</strong> Một số AI platform hạn chế nội dung trẻ em, bạo lực — team sẽ tư vấn approach thay thế</p>
+                        <p style="margin-top: 8px;"><a href="https://cliptics.com/blog/video-quality-ai-generated-vs-filmed-content" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Cliptics: Video Quality — AI Generated vs Filmed Content</a></p>
+                    </div>
+                </details>
+
+                <!-- Face consistency -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
                     <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Có giữ được face nhân vật xuyên suốt không?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>Có, nhưng phụ thuộc vào data đầu vào. Nếu có photoshoot talent (40-80 ảnh) → face consistency rất cao. Nếu chỉ có reference photo từ agency → vẫn giữ được nhưng cần iterate nhiều hơn. Đây là lý do chúng tôi khuyến khích photoshoot.</p>
-                        <p style="margin-top: 8px;"><a href="https://cliptics.com/blog/video-quality-ai-generated-vs-filmed-content" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Đọc thêm: Video Quality AI vs Filmed — Cliptics</a></p>
+                        <p>Có — nhưng chất lượng phụ thuộc data đầu vào:</p>
+                        <p style="margin-top: 8px;">• <strong>Có photoshoot talent</strong> (40-80 ảnh/character) → face consistency rất cao, ít iterate</p>
+                        <p>• <strong>Chỉ có reference photo từ agency</strong> → vẫn giữ được nhưng cần iterate nhiều hơn</p>
+                        <p style="margin-top: 8px;">Đây là lý do chúng tôi <strong>khuyến khích photoshoot</strong> — vừa tăng chất lượng, vừa có talent release để phát hành an toàn.</p>
                     </div>
                 </details>
+
+                <!-- Quyền hình ảnh + Luật AI -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">AI animatic dùng để làm gì?</summary>
+                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Quyền hình ảnh và pháp lý AI tại Việt Nam?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>AI animatic giúp test concept trước khi commit budget quay thật. Client và agency nhìn thấy output gần-final (photorealistic) → feedback cụ thể hơn, quyết định nhanh hơn, giảm rủi ro sản xuất. Sau khi concept approved, có thể chuyển sang quay thật hoặc develop thêm bằng AI.</p>
+                        <p><strong>Quyền hình ảnh:</strong> AI character có thể mang đặc điểm gương mặt từ reference. Để phát hành an toàn:</p>
+                        <p>✅ Photoshoot talent thật + ký talent release</p>
+                        <p>✅ Hoặc sử dụng nhân vật 100% fictional</p>
+                        <p style="margin-top: 8px;">Nếu agency cung cấp reference photo → agency chịu trách nhiệm xác nhận quyền sử dụng.</p>
+                        <p style="margin-top: 12px;"><strong>Gắn nhãn AI:</strong> Theo Luật Trí tuệ nhân tạo VN (134/2025/QH15, hiệu lực 01/03/2026) — nội dung AI-generated phải được gắn nhãn khi phát hành. AI Studio hỗ trợ tư vấn gắn nhãn đúng quy định.</p>
+                        <p style="margin-top: 8px;"><a href="https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-Tri-tue-nhan-tao-2025-134-2025-QH15-637066.aspx" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Luật AI Việt Nam 134/2025 — Thư viện pháp luật</a></p>
                     </div>
                 </details>
+
+                <!-- Đổi direction -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Có cần gắn nhãn AI khi phát hành không?</summary>
+                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Nếu đổi creative direction giữa chừng thì sao?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>Theo Luật Trí tuệ nhân tạo Việt Nam (134/2025/QH15, hiệu lực 01/03/2026) — nội dung AI-generated phải được gắn nhãn khi phát hành. AI Studio hỗ trợ tư vấn gắn nhãn đúng quy định.</p>
-                        <p style="margin-top: 8px;"><a href="https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-Tri-tue-nhan-tao-2025-134-2025-QH15-637066.aspx" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Đọc thêm: Luật AI Việt Nam — Thư viện pháp luật</a></p>
+                        <p>Khác production truyền thống (có thể quay lại 1 góc), AI đổi concept = <strong>toàn bộ footage phải generate lại từ đầu</strong>. Chi phí và thời gian tương đương làm mới.</p>
+                        <p style="margin-top: 8px;">→ Khuyến khích <strong>khóa creative direction trước khi bắt đầu generate</strong>. Feedback chỉnh tinh (color, pace, timing) trong quá trình thì không ảnh hưởng.</p>
                     </div>
                 </details>
+
+                <!-- AI Animatic -->
+                <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
+                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">AI animatic dùng để làm gì? Có thay thế animatic truyền thống không?</summary>
+                    <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
+                        <p>AI animatic = <strong>photorealistic test concept</strong> trước khi commit budget quay thật. So với animatic truyền thống (illustration + motion graphic), AI animatic cho output gần-final hơn → client feedback cụ thể hơn, quyết định nhanh hơn.</p>
+                        <p style="margin-top: 8px;">Sau khi concept approved → có thể chuyển sang quay thật (có direction rõ ràng) hoặc develop thêm bằng AI thành social film.</p>
+                    </div>
+                </details>
+
+                <!-- Photoshoot -->
+                <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card); border-color: rgba(108, 92, 231, 0.3);">
+                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">📸 Tại sao nên photoshoot talent cho AI production?</summary>
+                    <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
+                        <p>Photoshoot data (40-80 ảnh/character) mang lại:</p>
+                        <p style="margin-top: 8px;">✅ Face consistency cao hơn đáng kể giữa các shots</p>
+                        <p>✅ Có talent release → phát hành an toàn, đúng pháp luật</p>
+                        <p>✅ Ít revision → tiết kiệm thời gian cho cả hai bên</p>
+                        <p>✅ Có Director involve → output chuẩn production hơn</p>
+                        <p style="margin-top: 8px;">Chi phí photoshoot: báo giá theo số lượng talent. Đây là add-on service — không bắt buộc nhưng <strong>khuyến khích mạnh</strong> cho dự án cần phát hành.</p>
+                    </div>
+                </details>
+
+                <!-- Timeline -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
                     <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Timeline từ brief đến delivery là bao lâu?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>Tiêu chuẩn: 7-10 ngày làm việc cho AI Animatic/Social Film. Key Visual: 3-5 ngày. Timeline phụ thuộc vào tốc độ feedback từ agency/client — feedback nhanh = delivery nhanh.</p>
+                        <p>• <strong>AI Animatic / Social Film:</strong> 7-10 ngày làm việc</p>
+                        <p>• <strong>Key Visual:</strong> 3-5 ngày</p>
+                        <p>• <strong>Storyboard:</strong> 3-5 ngày tùy số frame</p>
+                        <p style="margin-top: 8px;">Timeline phụ thuộc vào tốc độ feedback từ agency/client. Feedback trễ → delivery date dời tương ứng. Rush (dưới 5 ngày) → thương lượng riêng.</p>
                     </div>
                 </details>
+
             </div>
         </div>
     </section>
@@ -1294,5 +1305,11 @@
             <p>© 2026 AI Studio. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        // Prevent right-click on video areas
+        document.querySelectorAll('.case-video').forEach(el => {
+            el.addEventListener('contextmenu', e => e.preventDefault());
+        });
+    </script>
 </body>
 </html>
