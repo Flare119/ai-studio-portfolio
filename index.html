@@ -13,21 +13,38 @@
      gtag('config', 'G-BXZDPVFWGL');
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap');
 
+        /* ===== BLADE RUNNER 2049 PALETTE =====
+           Orange haze (dust storm)
+           Teal/cyan (sea wall, archives)
+           Neon pink (hologram Joi)
+           Deep black + filmic grain
+        */
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #1a1a2e;
-            --accent: #6c5ce7;
-            --accent-light: #a29bfe;
-            --accent-glow: rgba(108, 92, 231, 0.3);
+            --bg-primary: #07070a;
+            --bg-secondary: #0d0e12;
+            --bg-card: #111319;
+            --bg-card-elev: #161821;
+            --orange-haze: #e87a3e;
+            --orange-deep: #b8541f;
+            --orange-glow: rgba(232, 122, 62, 0.18);
+            --teal: #4dd0c2;
+            --teal-deep: #1a8b80;
+            --teal-glow: rgba(77, 208, 194, 0.15);
+            --joi-pink: #ff6ec7;
+            --joi-glow: rgba(255, 110, 199, 0.22);
+            --accent: var(--orange-haze);
+            --accent-light: #f2a877;
+            --accent-glow: var(--orange-glow);
             --text-primary: #ffffff;
-            --text-secondary: #b8b8d4;
-            --text-muted: #6c6c8a;
-            --border: rgba(255, 255, 255, 0.06);
-            --gradient-1: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
-            --gradient-2: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            --text-secondary: #d8d4cc;
+            --text-muted: #8a857c;
+            --border: rgba(232, 122, 62, 0.08);
+            --border-strong: rgba(232, 122, 62, 0.18);
+            --gradient-1: linear-gradient(135deg, var(--orange-haze), var(--joi-pink) 60%, var(--teal));
+            --gradient-2: linear-gradient(180deg, #07070a 0%, #0d0e12 100%);
+            --gradient-haze: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(232,122,62,0.22), transparent 70%);
         }
 
         * {
@@ -41,12 +58,66 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'IBM Plex Sans', 'Atkinson Hyperlegible', system-ui, sans-serif;
             background: var(--bg-primary);
-            color: var(--text-primary);
+            color: var(--text-secondary);
             line-height: 1.7;
             overflow-x: hidden;
-            font-size: 14px;
+            font-size: 15px;
+            letter-spacing: 0.01em;
+            font-weight: 400;
+        }
+        p { color: var(--text-secondary); }
+        strong, b { color: var(--text-primary); font-weight: 500; }
+
+        /* Filmic grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.06;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+            animation: grain 1.6s steps(6) infinite;
+        }
+        @keyframes grain {
+            0%,100% { transform: translate(0,0); }
+            10% { transform: translate(-3%,-2%); }
+            20% { transform: translate(2%,3%); }
+            30% { transform: translate(-2%,4%); }
+            40% { transform: translate(3%,-3%); }
+            50% { transform: translate(-3%,2%); }
+            60% { transform: translate(2%,-4%); }
+            70% { transform: translate(-2%,3%); }
+            80% { transform: translate(3%,-2%); }
+            90% { transform: translate(-3%,-3%); }
+        }
+
+        /* Filmic vignette */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9998;
+            background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 50%, rgba(0,0,0,0.55) 100%);
+        }
+
+        ::selection { background: var(--orange-haze); color: #07070a; }
+
+        h1, h2, h3, h4 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: #ffffff;
+        }
+        .mono, code, .tag, .section-tag, nav .menu a {
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 11px;
         }
 
         /* Animated Background */
@@ -74,26 +145,154 @@
         }
 
         .bg-orb-1 {
-            width: 600px;
-            height: 600px;
-            background: var(--accent);
-            top: -200px;
-            right: -200px;
-            animation: float 20s ease-in-out infinite;
+            width: 700px;
+            height: 700px;
+            background: var(--orange-haze);
+            opacity: 0.12;
+            top: -250px;
+            right: -250px;
+            animation: float 40s ease-in-out infinite;
         }
 
         .bg-orb-2 {
-            width: 400px;
-            height: 400px;
-            background: #74b9ff;
-            bottom: -100px;
-            left: -100px;
-            animation: float 25s ease-in-out infinite reverse;
+            width: 500px;
+            height: 500px;
+            background: var(--teal);
+            opacity: 0.08;
+            bottom: -150px;
+            left: -150px;
+            animation: float 55s ease-in-out infinite reverse;
+        }
+
+        .bg-orb-3 {
+            width: 450px;
+            height: 450px;
+            background: var(--joi-pink);
+            top: 35%;
+            left: 35%;
+            opacity: 0.05;
+            animation: float 60s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0); }
             50% { transform: translate(30px, -30px); }
+        }
+
+        /* ===== LIGHT STREAMS (vertical digital waterfall) ===== */
+        .light-streams {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            mask-image: linear-gradient(180deg, transparent 0%, #000 15%, #000 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 15%, #000 85%, transparent 100%);
+        }
+        .stream {
+            position: absolute;
+            top: -40%;
+            width: 1px;
+            height: 70%;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(232,122,62,0.0) 10%,
+                rgba(232,122,62,0.5) 50%,
+                rgba(255,180,120,0.55) 85%,
+                transparent 100%);
+            box-shadow: 0 0 8px rgba(232,122,62,0.3);
+            animation: streamFall linear infinite;
+            opacity: 0.45;
+        }
+        .stream.teal {
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(77,208,194,0.0) 10%,
+                rgba(77,208,194,0.4) 50%,
+                rgba(120,220,210,0.5) 85%,
+                transparent 100%);
+            box-shadow: 0 0 10px rgba(77,208,194,0.25);
+        }
+        .stream.pink {
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(255,110,199,0.0) 10%,
+                rgba(255,110,199,0.35) 50%,
+                rgba(255,160,210,0.45) 85%,
+                transparent 100%);
+            box-shadow: 0 0 14px rgba(255,110,199,0.3);
+        }
+        .stream.thick { width: 2px; opacity: 0.35; }
+        @keyframes streamFall {
+            0%   { transform: translateY(-10%); opacity: 0; }
+            10%  { opacity: 0.7; }
+            90%  { opacity: 0.7; }
+            100% { transform: translateY(220vh); opacity: 0; }
+        }
+
+        /* Atmospheric fog — dust storm (orange haze) + sea wall (teal) */
+        .fog-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 90% 50% at 50% 100%, rgba(232,122,62,0.18), transparent 65%),
+                radial-gradient(ellipse 70% 50% at 15% 25%, rgba(77,208,194,0.10), transparent 65%),
+                radial-gradient(ellipse 50% 40% at 85% 30%, rgba(255,110,199,0.08), transparent 65%);
+            animation: fogDrift 45s ease-in-out infinite alternate;
+        }
+        @keyframes fogDrift {
+            0%   { transform: translateX(-3%) translateY(-1%); opacity: 0.6; }
+            100% { transform: translateX(3%) translateY(1%); opacity: 1; }
+        }
+
+        /* Scanlines — subtle, archival hologram feel */
+        .scanlines {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9997;
+            background: repeating-linear-gradient(
+                180deg,
+                rgba(255,255,255,0) 0px,
+                rgba(255,255,255,0) 2px,
+                rgba(0,0,0,0.04) 3px,
+                rgba(0,0,0,0.04) 3px
+            );
+            opacity: 0.5;
+            mix-blend-mode: overlay;
+        }
+
+        /* Hologram flicker keyframes for accents */
+        @keyframes holoFlicker {
+            0%, 100% { opacity: 1; filter: none; }
+            48% { opacity: 1; }
+            49% { opacity: 0.6; filter: hue-rotate(-15deg); }
+            50% { opacity: 1; filter: none; }
+            72% { opacity: 1; }
+            73% { opacity: 0.85; }
+            74% { opacity: 1; }
+        }
+        .holo {
+            animation: holoFlicker 8s ease-in-out infinite;
+            text-shadow:
+                0 0 12px rgba(255,110,199,0.35),
+                0 0 28px rgba(255,110,199,0.18);
+        }
+
+        /* Bokeh particle canvas */
+        #bokeh-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .stream, .fog-layer, .bg-orb-1, .bg-orb-2, .bg-orb-3 { animation: none !important; }
+            #bokeh-canvas { display: none; }
         }
 
         /* Container */
@@ -142,7 +341,7 @@
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.5s ease;
             letter-spacing: 0.3px;
         }
 
@@ -165,43 +364,73 @@
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(108, 92, 231, 0.1);
-            border: 1px solid rgba(108, 92, 231, 0.3);
-            border-radius: 100px;
-            font-size: 0.8rem;
-            color: var(--accent-light);
-            margin-bottom: 32px;
+            gap: 10px;
+            padding: 8px 14px;
+            background: rgba(232, 122, 62, 0.06);
+            border: 1px solid var(--border-strong);
+            border-radius: 2px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--orange-haze);
+            margin-bottom: 40px;
         }
 
         .hero-badge::before {
             content: '';
             width: 6px;
             height: 6px;
-            background: var(--accent-light);
+            background: var(--orange-haze);
             border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
+            animation: pulse 3s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--orange-haze);
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+            50% { opacity: 0.25; }
         }
 
         .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            font-weight: 800;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: clamp(2.4rem, 5.5vw, 4rem);
+            font-weight: 300;
             line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1.5px;
+            margin-bottom: 28px;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
         }
 
         .hero h1 .gradient-text {
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* Chapter marker — used for storytelling */
+        .chapter-marker {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--text-muted);
+        }
+        .chapter-marker .chapter-num {
+            color: var(--orange-haze);
+            font-weight: 500;
+        }
+        .chapter-marker .chapter-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-strong), transparent);
+            max-width: 200px;
         }
 
         .hero p {
@@ -247,26 +476,55 @@
         }
 
         .section-tag {
-            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-light);
-            margin-bottom: 16px;
-            font-weight: 600;
+            letter-spacing: 0.22em;
+            color: var(--orange-haze);
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+        .section-tag::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--orange-haze);
+            display: inline-block;
         }
 
         .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 12px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .section-title em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--orange-haze);
         }
 
         .section-desc {
             font-size: 1.05rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 620px;
+            font-weight: 400;
+        }
+        .section-quote {
+            font-family: 'IBM Plex Sans', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #b8b3a8;
+            margin-top: 14px;
+            padding-left: 16px;
+            border-left: 2px solid var(--orange-haze);
+            max-width: 540px;
+            font-weight: 400;
         }
 
         /* Services */
@@ -281,7 +539,7 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 36px;
-            transition: all 0.4s ease;
+            transition: all 0.7s cubic-bezier(0.16,1,0.3,1);
             position: relative;
             overflow: hidden;
         }
@@ -361,7 +619,7 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.7s cubic-bezier(0.16,1,0.3,1);
         }
 
         .case-card:hover {
@@ -626,10 +884,12 @@
         }
 
         .contact-section h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 16px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            line-height: 1.15;
         }
 
         .contact-section p {
@@ -641,21 +901,26 @@
         .contact-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 16px 32px;
-            background: var(--gradient-1);
-            color: white;
+            gap: 10px;
+            padding: 16px 28px;
+            background: transparent;
+            color: var(--orange-haze);
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            box-shadow: 0 8px 32px rgba(108, 92, 231, 0.3);
+            border: 1px solid var(--border-strong);
+            border-radius: 2px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 400;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
         }
 
         .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(108, 92, 231, 0.4);
+            background: var(--orange-haze);
+            color: #07070a;
+            border-color: var(--orange-haze);
+            box-shadow: 0 0 30px rgba(232,122,62,0.35);
         }
 
         /* Footer */
@@ -728,6 +993,88 @@
     <div class="bg-grid"></div>
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="fog-layer"></div>
+    <div class="scanlines"></div>
+    <div class="light-streams" id="lightStreams"></div>
+    <canvas id="bokeh-canvas"></canvas>
+    <script>
+    (function(){
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      // --- Light streams (CSS animated vertical strips)
+      const streamsEl = document.getElementById('lightStreams');
+      const STREAM_COUNT = 28;
+      for (let i = 0; i < STREAM_COUNT; i++) {
+        const s = document.createElement('div');
+        const r = Math.random();
+        // BR2049 palette mix: 55% orange, 30% teal, 15% pink
+        const variant = r < 0.55 ? '' : (r < 0.85 ? ' teal' : ' pink');
+        const thick = Math.random() < 0.15;
+        s.className = 'stream' + variant + (thick ? ' thick' : '');
+        s.style.left = (Math.random() * 100) + 'vw';
+        const dur = 14 + Math.random() * 18; // slow & deliberate 14-32s
+        s.style.animationDuration = dur + 's';
+        s.style.animationDelay = (-Math.random() * dur) + 's';
+        s.style.height = (50 + Math.random() * 50) + '%';
+        s.style.opacity = (0.25 + Math.random() * 0.3).toFixed(2);
+        streamsEl.appendChild(s);
+      }
+
+      // --- Bokeh particle canvas
+      const cvs = document.getElementById('bokeh-canvas');
+      const ctx = cvs.getContext('2d');
+      let W, H, particles;
+      const PARTICLE_COUNT = Math.min(60, Math.max(24, Math.floor(window.innerWidth / 30)));
+      function resize() {
+        W = cvs.width = window.innerWidth;
+        H = cvs.height = window.innerHeight;
+      }
+      function makeParticle() {
+        const r = Math.random();
+        // BR2049: 60% orange dust, 25% teal, 15% pink hologram
+        const color = r < 0.6 ? '232,122,62' : (r < 0.85 ? '77,208,194' : '255,110,199');
+        return {
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: 0.8 + Math.random() * 3,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: -0.04 - Math.random() * 0.14,
+          o: 0.1 + Math.random() * 0.4,
+          tw: Math.random() * Math.PI * 2,
+          twSpeed: 0.003 + Math.random() * 0.01,
+          color: color
+        };
+      }
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(makeParticle());
+      }
+      function step() {
+        ctx.clearRect(0, 0, W, H);
+        for (const p of particles) {
+          p.x += p.vx; p.y += p.vy; p.tw += p.twSpeed;
+          const tw = (Math.sin(p.tw) + 1) / 2; // 0..1
+          const alpha = p.o * (0.4 + tw * 0.6);
+          // soft glow
+          const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+          g.addColorStop(0, `rgba(${p.color},${alpha})`);
+          g.addColorStop(1, `rgba(${p.color},0)`);
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+          ctx.fill();
+          if (p.y < -10 || p.x < -10 || p.x > W + 10) {
+            p.x = Math.random() * W;
+            p.y = H + 10;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      window.addEventListener('resize', () => { resize(); initParticles(); });
+      resize(); initParticles(); step();
+    })();
+    </script>
 
     <!-- Navigation -->
     <nav>
@@ -744,13 +1091,18 @@
         </ul>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero — OPENING -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">AI-Powered Creative Production</div>
-                <h1>Sáng tạo nội dung<br><span class="gradient-text">bằng AI thế hệ mới</span></h1>
-                <p>Từ concept đến delivery — AI Animatic, Social Film, Key Visual. Chất lượng quốc tế, tốc độ vượt trội, chi phí tối ưu.</p>
+                <div class="chapter-marker">
+                    <span class="chapter-num">CH. 00 / OPENING</span>
+                    <span class="chapter-line"></span>
+                    <span>Sài Gòn — 2026</span>
+                </div>
+                <div class="hero-badge"><span>SEE — AI Studio Division</span></div>
+                <h1>Một thế giới sản xuất<br>đang <span class="gradient-text holo">được viết lại</span><br>bằng ngôn ngữ mới.</h1>
+                <p style="max-width:640px;">Production truyền thống không biến mất — nó tiến hóa. AI Studio là nơi chúng tôi học cách giữ lại tinh thần điện ảnh, đồng thời mở ra những khả năng chưa từng có. Đây là hành trình của chúng tôi.</p>
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-number">3-5x</div>
@@ -788,9 +1140,10 @@
     <section id="services">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Dịch vụ</div>
-                <h2 class="section-title">Giải pháp sáng tạo AI toàn diện</h2>
-                <p class="section-desc">Mỗi dự án được tối ưu từ model selection đến post-production, đảm bảo output đạt chuẩn phát hành.</p>
+                <div class="section-tag">Ch. 01 — Discovery</div>
+                <h2 class="section-title">Những khả năng <em>chưa được kể.</em></h2>
+                <p class="section-desc">Mỗi dự án bắt đầu từ một câu hỏi: điều gì sẽ trở nên có thể, nếu chúng ta bỏ qua những giới hạn cũ? Đây là các dịch vụ chúng tôi đã làm được — không phải tất cả những gì có thể.</p>
+                <p class="section-quote">"Tôi không xây dựng máy móc. Tôi tạo ra những khoảnh khắc."<br>— Niander Wallace, Blade Runner 2049</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -837,9 +1190,9 @@
     <section id="work">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Sản phẩm</div>
-                <h2 class="section-title">Dự án đã thực hiện</h2>
-                <p class="section-desc">Từ FMCG đến Tech — mỗi dự án là một bài toán creative khác nhau, giải bằng AI workflow phù hợp.</p>
+                <div class="section-tag">Ch. 02 — Evidence</div>
+                <h2 class="section-title">Bằng chứng <em>được lưu lại.</em></h2>
+                <p class="section-desc">Mỗi dự án ở đây là một artifact — chứng cứ cụ thể về những gì AI production có thể làm cho thương hiệu. FMCG, Tech, Beverage — cùng một câu hỏi: giải bằng workflow nào.</p>
             </div>
             <div class="cases-grid">
                 <!-- Samsung -->
@@ -1066,9 +1419,9 @@
     <section id="capabilities">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Năng lực AI</div>
-                <h2 class="section-title">Capability Showcase</h2>
-                <p class="section-desc">Ngoài AI Animatic & Film — chúng tôi nghiên cứu và test liên tục các kỹ thuật AI mới cho production.</p>
+                <div class="section-tag">Ch. 03 — Capability</div>
+                <h2 class="section-title">Phía sau những gì <em>bạn nhìn thấy.</em></h2>
+                <p class="section-desc">Capability không nằm ở model — nằm ở việc biết model nào, lúc nào, cho mục đích nào. Đây là những kỹ thuật chúng tôi nghiên cứu, thử nghiệm, và đã làm chủ.</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
                 <style>
@@ -1146,9 +1499,9 @@
     <section id="workflow">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Quy trình</div>
-                <h2 class="section-title">Từ brief đến delivery</h2>
-                <p class="section-desc">Quy trình chuẩn hóa cho mọi dự án — đảm bảo chất lượng, timeline, và creative control.</p>
+                <div class="section-tag">Ch. 04 — Method</div>
+                <h2 class="section-title">Phương pháp <em>của một thợ thủ công.</em></h2>
+                <p class="section-desc">AI không thay thế process — nó cần process kỷ luật hơn. Đây là cách chúng tôi đi từ brief mơ hồ đến delivery có thể phát sóng, không gì để lại may rủi.</p>
             </div>
 
             <!-- Unified Workflow -->
@@ -1198,9 +1551,9 @@
 
             <!-- Tools -->
             <div class="tools-section">
-                <div class="section-tag">Công nghệ</div>
-                <h2 class="section-title" style="margin-top: 12px;">Proprietary Tools & Research</h2>
-                <p class="section-desc">Tự nghiên cứu và phát triển toolset riêng — tối ưu chất lượng, tiết kiệm chi phí, vượt trội về tốc độ.</p>
+                <div class="section-tag">Ch. 05 — Revelation</div>
+                <h2 class="section-title" style="margin-top: 12px;">Những công cụ <em>chúng tôi tự dựng.</em></h2>
+                <p class="section-desc">Để làm AI production nghiêm túc, không thể dùng tool generic. Chúng tôi xây toolset riêng — prompt generator, character consistency, scene routing — vì không ai khác hiểu rõ pipeline của mình hơn mình.</p>
                 <div class="tools-grid">
                     <div class="tool-item">
                         <div class="tool-icon">⚡</div>
@@ -1239,9 +1592,9 @@
     <section id="faq">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">FAQ</div>
-                <h2 class="section-title">Câu hỏi thường gặp</h2>
-                <p class="section-desc">Những điều agency và client thường hỏi trước khi bắt đầu dự án AI production.</p>
+                <div class="section-tag">Ch. 06 — Doubts</div>
+                <h2 class="section-title">Những câu hỏi <em>cần được hỏi.</em></h2>
+                <p class="section-desc">Mọi cuộc cách mạng đều bắt đầu bằng hoài nghi. Đây là những điều agency và client luôn hỏi — và những gì chúng tôi đã học cách trả lời.</p>
             </div>
             <div style="max-width: 800px;">
 
@@ -1343,13 +1696,13 @@
     <section id="pricing">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Bảng giá</div>
-                <h2 class="section-title">Rate Card 2026</h2>
-                <p class="section-desc">Giá trọn gói — bao gồm creative direction, AI generation, post-production, và quy trình feedback hoàn chỉnh.</p>
+                <div class="section-tag">Ch. 07 — The Exchange</div>
+                <h2 class="section-title">Giá trị <em>của một sản phẩm.</em></h2>
+                <p class="section-desc">Mỗi gói là một cam kết — creative direction, AI generation, post-production, feedback. Không phụ phí ẩn. Không "to be discussed". Đây là rate card 2026.</p>
             </div>
             <div id="ratecard-gate" style="text-align: center; padding: 48px 0;">
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">Bảng giá được chia sẻ cho đối tác quan tâm đến dịch vụ AI Studio.</p>
-                <button onclick="document.getElementById('ratecard-gate').style.display='none'; document.getElementById('ratecard-content').style.display='block';" style="padding: 14px 32px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; box-shadow: 0 8px 32px rgba(108,92,231,0.3); transition: all 0.3s;">
+                <button onclick="document.getElementById('ratecard-gate').style.display='none'; document.getElementById('ratecard-content').style.display='block';" style="padding: 14px 32px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; box-shadow: 0 8px 32px rgba(108,92,231,0.3); transition: all 0.6s cubic-bezier(0.16,1,0.3,1);">
                     Xem bảng giá →
                 </button>
             </div>
@@ -1420,9 +1773,10 @@
     <section id="about">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Về chúng tôi</div>
-                <h2 class="section-title">Founded by Production Veterans</h2>
-                <p class="section-desc">AI Studio được thành lập bởi hai founder với hơn 10 năm kinh nghiệm trong commercial production và post-production tại Việt Nam.</p>
+                <div class="section-tag">Ch. 08 — The Makers</div>
+                <h2 class="section-title">Những người <em>đứng phía sau.</em></h2>
+                <p class="section-desc">AI Studio không sinh ra trong vacuum — nó được dựng bởi hai người dành 10+ năm trong commercial production. Chúng tôi đến với AI không phải vì xu hướng, mà vì những gì AI có thể giúp chúng tôi làm tốt hơn.</p>
+                <p class="section-quote">"Tất cả những khoảnh khắc tốt nhất của tôi sẽ mất đi cùng thời gian, như nước mắt trong mưa."<br>— Roy Batty, Blade Runner</p>
             </div>
 
             <!-- Vision -->
@@ -1455,11 +1809,16 @@
         </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact — ENDING -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2>Gửi brief — nhận AI prototype trong 48h</h2>
-            <p>Trao đổi ý tưởng hoặc gửi brief → chúng tôi tư vấn approach + báo giá phù hợp.</p>
+            <div class="chapter-marker" style="justify-content:center;margin-bottom:32px;">
+                <span class="chapter-line"></span>
+                <span class="chapter-num">CH. 09 / ENDING</span>
+                <span class="chapter-line"></span>
+            </div>
+            <h2>Câu chuyện tiếp theo<br><span style="font-style:italic;color:var(--orange-haze);">là của bạn.</span></h2>
+            <p>Gửi brief — chúng tôi sẽ trả lại bằng một AI prototype trong 48 giờ. Không hợp đồng ràng buộc. Chỉ một cuộc đối thoại về điều có thể xảy ra.</p>
             <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
                 <a href="tel:0985734566" class="contact-btn" style="background: var(--bg-card); border: 1px solid var(--border); box-shadow: none;">
                     📞 0985 734 566
