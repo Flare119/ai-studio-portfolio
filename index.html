@@ -77,10 +77,10 @@
             inset: 0;
             pointer-events: none;
             z-index: 9999;
-            opacity: 0.06;
+            opacity: 0.05;
             mix-blend-mode: overlay;
             background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-            animation: grain 1.6s steps(6) infinite;
+            /* grain animation disabled for perf — static texture still */
         }
         @keyframes grain {
             0%,100% { transform: translate(0,0); }
@@ -1004,7 +1004,7 @@
 
       // --- Light streams (CSS animated vertical strips)
       const streamsEl = document.getElementById('lightStreams');
-      const STREAM_COUNT = 28;
+      const STREAM_COUNT = window.innerWidth < 900 ? 10 : 16;
       for (let i = 0; i < STREAM_COUNT; i++) {
         const s = document.createElement('div');
         const r = Math.random();
@@ -1025,7 +1025,7 @@
       const cvs = document.getElementById('bokeh-canvas');
       const ctx = cvs.getContext('2d');
       let W, H, particles;
-      const PARTICLE_COUNT = Math.min(60, Math.max(24, Math.floor(window.innerWidth / 30)));
+      const PARTICLE_COUNT = Math.min(30, Math.max(12, Math.floor(window.innerWidth / 60)));
       function resize() {
         W = cvs.width = window.innerWidth;
         H = cvs.height = window.innerHeight;
@@ -1198,7 +1198,7 @@
                 <!-- Samsung -->
                 <div class="case-card">
                     <div class="case-video vertical">
-                        <iframe src="https://www.youtube.com/embed/yfMmmTsVfcM" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/yfMmmTsVfcM" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1218,7 +1218,7 @@
                 <!-- Samsung Film 2 -->
                 <div class="case-card">
                     <div class="case-video vertical">
-                        <iframe src="https://www.youtube.com/embed/B46gNlwnFVo" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/B46gNlwnFVo" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1238,7 +1238,7 @@
                 <!-- Samsung Film 3 -->
                 <div class="case-card">
                     <div class="case-video vertical">
-                        <iframe src="https://www.youtube.com/embed/3Hz7rllcYfE" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/3Hz7rllcYfE" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1258,7 +1258,7 @@
                 <!-- Samsung Film 4 -->
                 <div class="case-card">
                     <div class="case-video vertical">
-                        <iframe src="https://www.youtube.com/embed/FB-QexRUOxo" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/FB-QexRUOxo" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1278,7 +1278,7 @@
                 <!-- Nescafe Art Teacher -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/14Ud_g3tco8z_QJgs9KmD1kUT7QG8rxsR/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/14Ud_g3tco8z_QJgs9KmD1kUT7QG8rxsR/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1298,7 +1298,7 @@
                 <!-- OMO Kaity -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1k18NM0fP5ts-dJRc8a9fbIJASEwLY2_5/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1k18NM0fP5ts-dJRc8a9fbIJASEwLY2_5/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1318,7 +1318,7 @@
                 <!-- OMO Dinh Bac -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1Dq1SzPOEQ2H7svViLl5oOxC7YcDCJSX1/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1Dq1SzPOEQ2H7svViLl5oOxC7YcDCJSX1/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1338,7 +1338,7 @@
                 <!-- OMO Flower -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1urYLFAedWfbibnWmr561VqQ0m86MtNI2/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1urYLFAedWfbibnWmr561VqQ0m86MtNI2/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1357,7 +1357,7 @@
                 <!-- PediaSure B1 -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1l85aR1new-LsSzneSk84QN3ZNG4edeU7/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1l85aR1new-LsSzneSk84QN3ZNG4edeU7/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1377,7 +1377,7 @@
                 <!-- PediaSure B2 -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1QguCC2NcdSk3n5CtccZfC2FqzuOLYoDc/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1QguCC2NcdSk3n5CtccZfC2FqzuOLYoDc/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1396,7 +1396,7 @@
                 <!-- PediaSure B3 -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/19Ita9p94eNdrBeOrgprx8G3jDPMBqnBI/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/19Ita9p94eNdrBeOrgprx8G3jDPMBqnBI/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info">
                         <div class="case-meta">
@@ -1439,7 +1439,7 @@
                 <!-- AI VFX Composite -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1Lby1-Y7W_XOowRLuXQOk21v9iWPOzd4a/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1Lby1-Y7W_XOowRLuXQOk21v9iWPOzd4a/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI VFX</span></div>
@@ -1450,7 +1450,7 @@
                 <!-- AI Character Composite -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1s5jGCe7DfGySzCfMCGJPzWCN12jUhgb8/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1s5jGCe7DfGySzCfMCGJPzWCN12jUhgb8/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Character</span></div>
@@ -1461,7 +1461,7 @@
                 <!-- AI Background Replace -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/19xlrxQs7rUkd4LwFa5o2T6Vc3LpA7-6t/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/19xlrxQs7rUkd4LwFa5o2T6Vc3LpA7-6t/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Environment</span></div>
@@ -1472,7 +1472,7 @@
                 <!-- AI Character Replace -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/182B1C2lLzn2oEYryuvGMgWZhj5aK1O-y/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/182B1C2lLzn2oEYryuvGMgWZhj5aK1O-y/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Swap</span></div>
@@ -1483,7 +1483,7 @@
                 <!-- AI Age Transform -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1t6kkOhfUpb0mDUZ7TW0y8YSRKJyK8v6B/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1t6kkOhfUpb0mDUZ7TW0y8YSRKJyK8v6B/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Transform</span></div>
@@ -1494,7 +1494,7 @@
                 <!-- AI Liquid Simulation — Strawberry -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1qBfRhUjlkirFi6nbx8Z6MN76qHqPR9Lv/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1qBfRhUjlkirFi6nbx8Z6MN76qHqPR9Lv/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Liquid</span></div>
@@ -1505,7 +1505,7 @@
                 <!-- AI Liquid Simulation — Grape Milk -->
                 <div class="case-card">
                     <div class="case-video">
-                        <iframe src="https://drive.google.com/file/d/1i0HdCSPBeDV8AkJGEqFv7D8mFM1S9kRy/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe loading="lazy" src="https://drive.google.com/file/d/1i0HdCSPBeDV8AkJGEqFv7D8mFM1S9kRy/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Liquid</span></div>
