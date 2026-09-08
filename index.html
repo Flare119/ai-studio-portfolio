@@ -1182,7 +1182,9 @@
         .video-modal[aria-hidden="false"] { display:grid; }
         .video-modal-inner { position:relative; width:min(94vw, calc(84vh * var(--vm-ratio,1.7778))); max-height:84vh; aspect-ratio:var(--vm-ratio,16/9); background:#000; border-radius:12px; overflow:hidden; box-shadow:0 40px 140px rgba(0,0,0,.75); }
         .video-modal-inner iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
-        /* Cover the Google Drive pop-out (open-in-Drive) button so viewers can't jump to the Drive file */
+        /* Cover the Google Drive pop-out (open-in-Drive) button so viewers can't jump to the Drive file.
+           NOTE: 64×52 is tied to Drive's current player chrome (pop-out anchored top-right). UI masking only,
+           not access protection — re-check with a visual regression pass if Drive changes its player layout. */
         .video-modal.is-drive .video-modal-inner::after { content:''; position:absolute; top:0; right:0; width:64px; height:52px; background:#000; border-radius:0 12px 0 12px; z-index:2; pointer-events:auto; }
         .video-modal-close { position:absolute; top:clamp(14px,3vw,26px); right:clamp(14px,3vw,26px); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.45); color:#fff; font-size:26px; line-height:1; cursor:pointer; display:grid; place-items:center; transition:.2s ease; z-index:1; }
         .video-modal-close:hover { background:var(--accent); border-color:var(--accent); transform:scale(1.06); }
@@ -1489,7 +1491,9 @@
                     <article class="prototype-tile growth-tile">
                         <div class="case-kicker">Decision Prototype · 2 Storylines</div><h4>PediaSure Growth</h4>
                         <div class="dual-landscape"><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1wGFSNfDOEPfT5c9nCQ6-5tRKzm4kGeag/preview" aria-label="Play: PediaSure Growth"><span class="vf-poster" style="background-image:url('posters/1wGFSNfDOEPfT5c9nCQ6-5tRKzm4kGeag.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/17A8N5v-722hE5l_TW8dfjLDC_sZzu2C6/preview" aria-label="Play: PediaSure Growth"><span class="vf-poster" style="background-image:url('posters/17A8N5v-722hE5l_TW8dfjLDC_sZzu2C6.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div></div>
-                        <p>Two independent briefs/storylines, one problem: turning a growth narrative into visual proof that's easy to approve.</p>
+                        <div class="case-kicker" style="margin-top:12px;">Regional Adaptation · SEA Localization</div>
+                        <div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/19wRaY-z8SPhqSZ5RANp-2X462XdbADrR/preview" aria-label="Play: PediaSure Quality Growth Regional"><span class="vf-poster" style="background-image:url('posters/19wRaY-z8SPhqSZ5RANp-2X462XdbADrR.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
+                        <p>Two independent briefs/storylines, one problem: turning a growth narrative into visual proof that's easy to approve — plus a regional cut adapted for a Southeast-Asian market.</p>
                     </article>
                     <article class="prototype-tile teacher-tile">
                         <div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/14Ud_g3tco8z_QJgs9KmD1kUT7QG8rxsR/preview" aria-label="Play: PediaSure Growth"><span class="vf-poster" style="background-image:url('posters/14Ud_g3tco8z_QJgs9KmD1kUT7QG8rxsR.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
