@@ -1113,6 +1113,28 @@
         .evidence-item h5 { font-family:'IBM Plex Sans',sans-serif; font-size:1rem; color:var(--text-primary); margin-bottom:5px; }
         .evidence-item p { font-size:.74rem; line-height:1.55; color:var(--text-muted); }
         .evidence-item a { display:inline-flex; margin-top:9px; color:var(--accent-light); font-size:.7rem; font-weight:600; text-decoration:none; }
+        .published-landscape { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr); gap:clamp(32px,6vw,82px); align-items:center; margin:0 0 110px; padding:34px 0 70px; border-bottom:1px solid var(--border-strong); }
+        .published-landscape-media { min-width:0; }
+        .published-landscape-copy > p { color:var(--text-muted); margin:16px 0 22px; }
+        .credit-stack { display:grid; gap:8px; border-top:1px solid var(--border); padding-top:15px; }
+        .credit-stack div { display:flex; justify-content:space-between; gap:24px; font:0.66rem 'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.07em; }
+        .credit-stack dt { color:var(--text-muted); }
+        .credit-stack dd { color:var(--text-primary); text-align:right; }
+        .media-status-note { margin-top:10px; color:var(--text-muted); font:0.62rem 'IBM Plex Mono',monospace; letter-spacing:.04em; }
+        .iki-hero { display:block; padding:10px 0 100px; margin-bottom:110px; }
+        .iki-hero .published-landscape-media { width:100%; }
+        .iki-hero .media-frame { border-radius:16px; box-shadow:0 30px 90px rgba(0,0,0,.28); }
+        .iki-hero .published-landscape-copy { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(280px,.65fr); gap:clamp(36px,7vw,100px); align-items:start; margin-top:30px; }
+        .iki-hero .published-landscape-copy h4 { font-size:clamp(2.4rem,6vw,5.5rem); letter-spacing:-.055em; margin:.2em 0 .05em; }
+        .iki-hero .published-landscape-copy > p { font-size:1.02rem; max-width:700px; }
+        .iki-hero .credit-stack { margin-top:4px; }
+        .compact-campaign { grid-template-columns:220px minmax(0,1fr); gap:24px; margin-bottom:72px; padding:26px 0 58px; border-bottom:1px solid var(--border-strong); }
+        .compact-campaign .campaign-copy { position:static; }
+        .compact-campaign .campaign-copy h4 { font-size:clamp(1.7rem,3vw,2.5rem); }
+        .compact-campaign .campaign-copy p { font-size:.78rem; margin:12px 0 17px; }
+        .compact-campaign .portrait-rail { grid-template-columns:repeat(4,minmax(130px,1fr)); gap:10px; }
+        .compact-campaign .portrait-rail figure { min-width:130px; }
+        .compact-campaign .case-facts { gap:5px; padding-top:11px; }
         .social-stage { display:grid; grid-template-columns:minmax(260px,360px) minmax(320px,620px); justify-content:center; gap:clamp(42px,8vw,110px); align-items:center; padding:72px 0; border-top:1px solid var(--border-strong); border-bottom:1px solid var(--border-strong); }
         .social-reel { width:100%; max-width:340px; justify-self:center; }
         .social-copy .lead-copy { color:var(--text-primary); font-size:1.02rem; margin:20px 0 12px; }
@@ -1159,6 +1181,12 @@
             .spec-line { gap:10px 16px; }
             .deployment-evidence summary { align-items:flex-start; }
             .deployment-evidence-grid { grid-template-columns:1fr; }
+            .published-landscape { grid-template-columns:1fr; gap:26px; padding:24px 0 54px; margin-bottom:76px; }
+            .iki-hero { padding-top:0; }
+            .iki-hero .published-landscape-copy { grid-template-columns:1fr; gap:22px; margin-top:20px; }
+            .compact-campaign { padding:16px 0 42px; margin-bottom:60px; }
+            .compact-campaign .portrait-rail { grid-template-columns:repeat(4,150px); }
+            .compact-campaign .portrait-rail figure { min-width:150px; }
             .social-stage { grid-template-columns:1fr; padding:52px 0; }
             .social-reel { max-width:300px; }
             .prototype-copy { grid-template-columns:1fr; gap:14px; }
@@ -1378,6 +1406,31 @@
                     <div><h3>Published / On-Air</h3><p>Final outputs already live on their intended channels — social feed, mobile screen and LED OOH.</p></div>
                 </header>
 
+                <!-- Published landscape film — IKI Village -->
+                <article class="published-landscape iki-hero" id="iki-village-case">
+                    <div class="published-landscape-media">
+                        <div class="media-frame media-landscape">
+                            <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1DRW09xlU1N0bj3RXfGOlI5DBTqMRuabw/preview" aria-label="Play: IKI Village">
+                                <span class="vf-poster" style="background-image:url('projects/ai-studio-portfolio/posters/1DRW09xlU1N0bj3RXfGOlI5DBTqMRuabw.jpg')"></span>
+                                <span class="vf-play" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="media-status-note">16:9 final master · public Drive playback verified</div>
+                    </div>
+                    <div class="published-landscape-copy">
+                        <div class="case-kicker">Published / On-Air · Final Film · 16:9</div>
+                        <h4>IKI Village</h4>
+                        <p>A published film delivered for IKI Village, bringing the project from production through final post and release-ready master.</p>
+                        <dl class="credit-stack">
+                            <div><dt>Client / Project</dt><dd>IKI Village</dd></div>
+                            <div><dt>Production</dt><dd>See Group</dd></div>
+                            <div><dt>Post Production</dt><dd>AI Studio</dd></div>
+                            <div><dt>Status</dt><dd>Published / On-Air</dd></div>
+                        </dl>
+                        <a class="ooh-viewer-action" style="margin-top:20px;display:inline-flex;" href="https://drive.google.com/file/d/1DRW09xlU1N0bj3RXfGOlI5DBTqMRuabw/view" target="_blank" rel="noopener">Open final master ↗</a>
+                    </div>
+                </article>
+
                 <!-- OOH gets a horizon, not a phone frame -->
                 <article class="ooh-horizon">
                     <div class="case-heading-row">
@@ -1415,7 +1468,7 @@
                 </article>
 
                 <!-- Social campaign rail -->
-                <article class="campaign-rail">
+                <article class="campaign-rail compact-campaign">
                     <div class="campaign-copy">
                         <div class="case-kicker">Published · AI Social Film · 9:16</div>
                         <h4>Samsung Mother's Day</h4>
