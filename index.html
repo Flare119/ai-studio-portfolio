@@ -1228,6 +1228,36 @@
         }
         /* End Work v3 */
 
+    
+        /* --- minimal pass 2026-09-22 --- */
+        .hero h1 em { font-style:italic; font-weight:inherit; color:var(--accent-light); }
+        .hero-stats.proof-stats { margin-top:40px; gap:40px; }
+        .hero-stats .stat-number { font-size:1.05rem; letter-spacing:-.01em; }
+        .hero-stats .stat-label { font-size:.72rem; }
+    
+        .service-icon { font-family:'IBM Plex Mono',monospace !important; font-size:.62rem !important;
+                        letter-spacing:.12em; color:var(--accent); opacity:.85; }
+    
+        .capab-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; }
+        @media(max-width:1100px){ .capab-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px; } }
+        @media(max-width:720px){ .capab-grid { grid-template-columns:1fr; } }
+        #capabilities .case-card { background:none; border:0; border-top:1px solid var(--border); padding-top:18px; }
+        #capabilities .case-info { padding:16px 0 0 !important; }
+        #capabilities .case-card h3 { font-size:1rem !important; margin-bottom:7px; letter-spacing:-.01em; }
+        #capabilities .case-card p { font-size:.85rem; line-height:1.6; color:var(--text-muted); }
+        #capabilities .case-video { max-height:360px !important; border-radius:10px; overflow:hidden; }
+    
+        /* --- typography & rhythm pass (minimal, 2026-09-22) --- */
+        .section-title { letter-spacing:-.022em; }
+        .section-desc  { max-width:62ch; color:var(--text-muted); }
+        .section-header { margin-bottom:48px; }
+        .section-tag { opacity:.8; }
+        .chapter-ledger { margin-bottom:44px; }
+        .chapter-ledger h3 { letter-spacing:-.015em; }
+        .chapter-ledger p { max-width:58ch; color:var(--text-muted); }
+        .case-tag { opacity:.82; }
+        h1,h2,h3,h4 { text-wrap:balance; }
+        p { text-wrap:pretty; }
     </style>
 </head>
 <body>
@@ -1341,8 +1371,8 @@
                     <span>Saigon — 2026</span>
                 </div>
                 <div class="hero-badge"><span>SEE — AI Studio Division</span></div>
-                <h1>AI doesn't just make images.<br>AI helps <span class="gradient-text holo">bring work to life.</span></h1>
-                <p style="max-width:700px;">From published social films and deployed OOH content to animatics that lead into real production and prototypes that help teams lock direction — we build AI around the commercial goal, not around the model.</p>
+                <h1>AI doesn’t just make images.<br>It makes work that <em>ships</em>.</h1>
+                <p style="max-width:620px;">Published films, deployed OOH, animatics that turn into real shoots. We build AI around the commercial goal — not around the model.</p>
                 <div class="hero-stats proof-stats">
                     <div class="stat"><div class="stat-number">Social</div><div class="stat-label">Published films</div></div>
                     <div class="stat"><div class="stat-number">OOH</div><div class="stat-label">Screen deployment</div></div>
@@ -1374,13 +1404,13 @@
             <div class="section-header">
                 <div class="section-tag">Ch. 01 — Solutions</div>
                 <h2 class="section-title">Four ways to <em>move an idea forward.</em></h2>
-                <p class="section-desc">Not every brief needs full AI. We choose the right level of intervention: produce final content, de-risk before the shoot, combine AI with live action, or build systems for your team.</p>
+                <p class="section-desc">Not every brief needs full AI. We pick the level of intervention that fits — and say so early.</p>
             </div>
             <div class="services-grid solution-grid">
-                <div class="service-card"><div class="service-icon">🎬</div><h3>AI Content Production</h3><p>Complete social films, OOH screen content and campaign assets — from visual development through post, QC and delivery.</p><div class="service-price">Final deliverables</div></div>
-                <div class="service-card"><div class="service-icon">🧭</div><h3>AI Animatic & Previs</h3><p>Test story, camera, performance and product memory before locking the production budget. Aligns agency and client on a single direction.</p><div class="service-price">Pitch · Approval · De-risk</div></div>
-                <div class="service-card"><div class="service-icon">🎥</div><h3>Hybrid Production</h3><p>AI development combined with live action, post and VFX. Keep what should be shot for real; extend what AI does more efficiently.</p><div class="service-price">AI → Shoot → Post</div></div>
-                <div class="service-card"><div class="service-icon">⚙️</div><h3>Studio Systems</h3><p>Prompt, routing, QC, knowledge and training systems built around each team's real production workflow.</p><div class="service-price">Custom workflow systems</div></div>
+                <div class="service-card"><div class="service-icon">01</div><h3>AI Content Production</h3><p>Social films, OOH content and campaign assets — visual development through delivery.</p><div class="service-price">Final deliverables</div></div>
+                <div class="service-card"><div class="service-icon">02</div><h3>AI Animatic & Previs</h3><p>Test story, camera and performance before the budget is locked. One direction, agreed early.</p><div class="service-price">Pitch · Approval · De-risk</div></div>
+                <div class="service-card"><div class="service-icon">03</div><h3>Hybrid Production</h3><p>Shoot what should be shot. Extend the rest with AI, post and VFX.</p><div class="service-price">AI → Shoot → Post</div></div>
+                <div class="service-card"><div class="service-icon">04</div><h3>Studio Systems</h3><p>Prompt, routing, QC and training systems built around how your team actually works.</p><div class="service-price">Custom workflow systems</div></div>
             </div>
         </div>
     </section>
@@ -1391,7 +1421,7 @@
             <div class="work-opening">
                 <div class="section-tag">Ch. 02 — Commercial Evidence</div>
                 <h2 class="section-title">Every screen demands its <em>own production logic.</em></h2>
-                <p class="section-desc">A portfolio isn't a file count. It shows where AI was used, through which workflow, and the environment the final output lives in.</p>
+                <p class="section-desc">A portfolio isn’t a file count. It shows where AI was used, through which workflow, and where the output ended up.</p>
             </div>
 
             <nav class="work-index" aria-label="Portfolio proof index">
@@ -1404,7 +1434,7 @@
             <div class="work-chapter" id="published-work">
                 <header class="chapter-ledger">
                     <span class="chapter-no">01</span>
-                    <div><h3>Published / On-Air</h3><p>Final outputs already live on their intended channels — social feed, mobile screen and LED OOH.</p></div>
+                    <div><h3>Published / On-Air</h3><p>Live on their intended channels — social feed, mobile screen, LED OOH.</p></div>
                 </header>
 
                 <!-- Published landscape film — IKI Village -->
@@ -1500,7 +1530,7 @@
             <div class="work-chapter" id="production-work">
                 <header class="chapter-ledger">
                     <span class="chapter-no">02</span>
-                    <div><h3>AI → Real Production</h3><p>AI doesn’t stop at a beautiful frame. It locks direction clearly enough for the project to move into production.</p></div>
+                    <div><h3>AI → Real Production</h3><p>The animatic locked direction clearly enough for the campaign to be shot for real.</p></div>
                 </header>
                 <div class="comparison-grid">
                     <article class="comparison-theatre">
@@ -1527,7 +1557,7 @@
             <div class="work-chapter" id="prototype-work">
                 <header class="chapter-ledger">
                     <span class="chapter-no">03</span>
-                    <div><h3>Decision Prototypes</h3><p>We keep only the animatics that prove a strong idea or a distinctive level of AI control.</p></div>
+                    <div><h3>Decision Prototypes</h3><p>Only the animatics that prove a strong idea, or a level of AI control worth showing.</p></div>
                 </header>
 
                 <article class="prototype-feature">
@@ -1585,9 +1615,9 @@
             <div class="section-header">
                 <div class="section-tag">Ch. 04 — Capability Library</div>
                 <h2 class="section-title">Behind what <em>you see.</em></h2>
-                <p class="section-desc">Capability isn't in the model — it's in knowing which model, when, and for what purpose. These are the techniques we've researched, tested and mastered.</p>
+                <p class="section-desc">Capability isn’t the model. It’s knowing which one, when, and what for.</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
+            <div class="capab-grid">
                 <style>
                     #capabilities .case-video {
                         aspect-ratio: 9/16;
@@ -1608,7 +1638,7 @@
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI VFX</span></div>
                         <h3 style="font-size: 1.1rem;">AI VFX Composite</h3>
-                        <p>Adds CG creatures and elements to real footage. AI-assisted compositing on live action — reducing reliance on a traditional CGI/render pipeline on the right shots.</p>
+                        <p>CG creatures and elements composited onto live action, without a full CGI pipeline.</p>
                     </div>
                 </div>
                 <!-- AI Character Composite -->
@@ -1619,7 +1649,7 @@
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Character</span></div>
                         <h3 style="font-size: 1.1rem;">AI Character Composite</h3>
-                        <p>Generates an AI character and composites it into live footage. Matched lighting, perspective and motion for seamless integration.</p>
+                        <p>An AI character dropped into live footage — lighting, perspective and motion matched.</p>
                     </div>
                 </div>
                 <!-- AI Background Replace -->
@@ -1630,7 +1660,7 @@
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Environment</span></div>
                         <h3 style="font-size: 1.1rem;">AI Background Replace</h3>
-                        <p>Green screen → AI-generated environment. Builds photorealistic settings that can cut location scouting and travel when the scope allows.</p>
+                        <p>Green screen to photoreal environment. Cuts scouting and travel when scope allows.</p>
                     </div>
                 </div>
                 <!-- AI Character Replace -->
@@ -1641,7 +1671,7 @@
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Swap</span></div>
                         <h3 style="font-size: 1.1rem;">AI Character Replace</h3>
-                        <p>Swaps a character in the source video while preserving motion, scene and lighting. Can reduce the need for reshoots when the source footage and shot complexity allow.</p>
+                        <p>Swap a character but keep the motion, scene and light. Often cheaper than a reshoot.</p>
                     </div>
                 </div>
                 <!-- AI Age Transform -->
@@ -1652,7 +1682,7 @@
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Transform</span></div>
                         <h3 style="font-size: 1.1rem;">AI Age Transformation</h3>
-                        <p>Changes a character's age on video — younger or older. Built for storytelling that spans time.</p>
+                        <p>Age a character up or down on video. For stories that span time.</p>
                     </div>
                 </div>
                 <!-- AI Liquid Simulation — Strawberry -->
@@ -1663,7 +1693,7 @@
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Liquid</span></div>
                         <h3 style="font-size: 1.1rem;">AI Liquid Simulation — Strawberry</h3>
-                        <p>Simulates the flow of strawberry yogurt — splash dynamics, viscosity, surface tension. AI-generated in place of an expensive practical liquid effect.</p>
+                        <p>Splash, viscosity and surface tension — generated instead of shot practically.</p>
                     </div>
                 </div>
                 <!-- AI Virtual Set — Green Screen -->
@@ -1674,7 +1704,7 @@
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Virtual Set</span></div>
                         <h3 style="font-size: 1.1rem;">AI Virtual Set — Green Screen Replacement</h3>
-                        <p>Shot on green screen, AI replaces the background with a photoreal virtual set (forests, cafés…) — prioritizing continuity of light, depth and perspective. With the right scope, a virtual set can reduce physical set builds.</p>
+                        <p>Green screen to a photoreal set, holding light, depth and perspective. Fewer builds.</p>
                     </div>
                 </div>
                 <!-- Map-Guided Journey -->
@@ -1685,7 +1715,7 @@
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Journey</span></div>
                         <h3 style="font-size: 1.1rem;">Map → Journey Video</h3>
-                        <p>An illustrated route map → AI generates a cinematic aerial flythrough along the journey, turning each point (fishing village → rice fields → waterfall) into a vivid, real scene.</p>
+                        <p>An illustrated route becomes a cinematic aerial flythrough, point by point.</p>
                     </div>
                 </div>
                 <!-- Storyboard → Keyframe -->
@@ -1696,7 +1726,7 @@
                     <div class="case-info" style="padding: 24px;">
                         <div class="case-meta"><span class="case-tag">AI Previs</span></div>
                         <h3 style="font-size: 1.1rem;">Storyboard → Cinematic Keyframe</h3>
-                        <p>A hand-drawn storyboard with camera notes (crane, close-up) → AI builds photoreal cinematic keyframes true to composition and light. A pre-production preview before the shoot.</p>
+                        <p>Hand-drawn boards with camera notes become photoreal keyframes, true to composition.</p>
                     </div>
                 </div>
             </div>
@@ -1776,9 +1806,9 @@
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
                     <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">What are the current technical limits of AI video?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>• <strong>Resolution:</strong> 4K is available (native on newer video models such as Kling 3.0 Native 4K, or via AI upscale) — 1080p is still the cost/quality sweet spot for digital/social; 4K for hero/broadcast carries a surcharge</p>
-                        <p>• <strong>Clip length:</strong> 5–10 seconds per clip (some models up to ~15–20s) — the full film is assembled from multiple clips in post</p>
-                        <p>• <strong>Hard-to-control details:</strong> accurate on-screen text, hand/finger detail, small fast-moving objects</p>
+                        <p>• <strong>Resolution:</strong> native 4K is available on current video models, or via upscale — 1080p remains the cost/quality sweet spot for digital and social; 4K for hero or broadcast carries a surcharge</p>
+                        <p>• <strong>Clip length:</strong> 10–15 seconds is routine, up to ~30s on some models — longer films are still cut from multiple clips, for shot-level control rather than because of the limit</p>
+                        <p>• <strong>Still hard to control:</strong> exact on-screen text, hands and fingers, small fast-moving objects, and the body of thick liquids</p>
                         <p>• <strong>Randomness:</strong> the same prompt can yield different results — iteration is needed to reach the target quality</p>
                         <p>• <strong>Content policy:</strong> Some AI platforms restrict content involving children or violence — the team will advise an alternative approach</p>
                         <p style="margin-top: 8px;"><a href="https://cliptics.com/blog/video-quality-ai-generated-vs-filmed-content" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Cliptics: Video Quality — AI Generated vs Filmed Content</a></p>
@@ -1804,7 +1834,7 @@
                         <p>✅ Photoshoot real talent + sign a talent release</p>
                         <p>✅ Or use a 100% fictional character</p>
                         <p style="margin-top: 8px;">If the agency supplies the reference photos → the agency is responsible for confirming usage rights.</p>
-                        <p style="margin-top: 12px;"><strong>AI labeling:</strong> under Vietnam’s Artificial Intelligence Law (134/2025/QH15, effective 01/03/2026), AI-generated content must be labeled on release. AI Studio advises on compliant labeling.</p>
+                        <p style="margin-top: 12px;"><strong>AI labeling:</strong> under Vietnam’s Artificial Intelligence Law (134/2025/QH15, in force since 01/03/2026), AI-generated content must be labeled on release. AI Studio advises on compliant labeling.</p>
                         <p style="margin-top: 8px;"><a href="https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-Tri-tue-nhan-tao-2025-134-2025-QH15-637066.aspx" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Vietnam AI Law 134/2025 — Vietnam Legal Library</a></p>
                     </div>
                 </details>
