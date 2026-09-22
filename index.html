@@ -1258,20 +1258,68 @@
         .case-tag { opacity:.82; }
         h1,h2,h3,h4 { text-wrap:balance; }
         p { text-wrap:pretty; }
+    
+        /* ===== QUIET PASS — calm background + one consistent grid (2026-09-22) =====
+           Mục tiêu: nền phẳng, không nhiễu; mọi khối dùng CÙNG radius, CÙNG hairline,
+           CÙNG thang khoảng cách 8px. Không glow, không blur trang trí. */
+        .bg-grid, .bg-orb, .light-streams, .stream, .scanlines,
+        body::before, body::after { display:none !important; content:none !important; }
+
+        body { background:#08080b; }
+
+        :root {
+            --border:        rgba(255,255,255,.085);
+            --border-strong: rgba(255,255,255,.14);
+            --radius:        12px;
+        }
+
+        /* một bán kính duy nhất */
+        .media-frame, .case-video, .case-card, .product-card, .service-card,
+        .hero-badge, details, .video-facade, img, video, iframe { border-radius:var(--radius); }
+        .vf-play { border-radius:50%; }
+
+        /* bỏ mọi hào quang trang trí */
+        .media-frame { box-shadow:none; }
+        .service-card, .product-card, .case-card { box-shadow:none; }
+        .video-facade:hover .vf-poster { transform:scale(1.02); }
+
+        /* thang khoảng cách thống nhất: mọi lưới 32px ở desktop */
+        .services-grid, .tools-grid, .product-grid, .prototype-grid,
+        .capab-grid, .comparison-grid, .deployment-evidence-grid { gap:32px; }
+
+        /* nhịp dọc đều nhau giữa các chương */
+        .work-chapter { padding-top:80px; }
+        .work-chapter:first-of-type { padding-top:0; }
+    
+        /* một màu nhấn duy nhất, không gradient chữ */
+        .logo { background:none !important; -webkit-text-fill-color:currentColor !important;
+                color:#f2f2f4 !important; letter-spacing:-.01em; }
+        .gradient-text, .holo { background:none !important; -webkit-text-fill-color:currentColor !important;
+                color:var(--accent-light) !important; animation:none !important; }
+        .cta-primary { background:var(--accent) !important; color:#0d0906 !important; }
+        .cta-primary:hover { background:var(--accent-light) !important; }
+        #bokeh-canvas, .fog-layer { display:none !important; }
+    
+        /* căn lề: hero phải thẳng hàng với mọi section còn lại.
+           .hero là flex container nên .container co lại theo nội dung → lệch 170px. */
+        .hero .container { width:100%; }
+        .hero { padding-top:132px; padding-bottom:96px; min-height:auto; }
+        .chapter-marker { margin-bottom:28px; }
     </style>
 </head>
 <body>
-    <div class="bg-grid"></div>
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3"></div>
-    <div class="fog-layer"></div>
-    <div class="scanlines"></div>
+    
+    
+    
+    
+    
+    
     <div class="light-streams" id="lightStreams"></div>
-    <canvas id="bokeh-canvas"></canvas>
+    
     <script>
     (function(){
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        return; // quiet pass 2026-09-22: nền tĩnh, không hạt, không vệt sáng
 
       // --- Light streams (CSS animated vertical strips)
       const streamsEl = document.getElementById('lightStreams');
