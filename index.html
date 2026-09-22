@@ -1515,6 +1515,45 @@
     
         /* TẠM ẨN nút đổi ngôn ngữ cho tới khi vi.json/zh.json sẵn sàng */
         .lang-switch { display:none !important; }
+    
+        /* ===== NHỊP ĐỌC — thang chữ & độ dài dòng =====
+           Đo được trước khi sửa: 57 đoạn dài quá 78 ký tự/dòng (có đoạn 107ch),
+           và cỡ chữ đoạn rải từ 11px đến 18px (8 cỡ khác nhau) → không có thang. */
+        p, li, dd { max-width:68ch !important; }      /* ngưỡng dễ đọc 45–75 ký tự */
+        .section-desc, .chapter-ledger p { max-width:60ch; }
+
+        /* sàn cỡ chữ: dưới 14px là khó đọc trên nền sáng */
+        p, li, dd, dt, figcaption, summary { font-size:max(1em, 15px) !important; }
+        .case-kicker, .section-tag, .compare-flow, .media-status-note, .ct-no,
+        .chapter-num, .work-index span, .case-tag, .stat-label, .service-price,
+        .product-status, .chapter-no { font-size:12.5px !important; }
+        .case-kicker, .section-tag, .compare-flow, .media-status-note,
+        .ct-no, .chapter-num, .work-index span, .case-tag, .stat-label {
+            font-size:12.5px; letter-spacing:.06em; line-height:1.45;
+        }
+
+        /* heading: dòng sát hơn, chữ to mới cần */
+        h1 { line-height:1.06; }
+        h2, .section-title { line-height:1.14; }
+        h3 { line-height:1.18; }
+        h4 { line-height:1.25; }
+
+        /* khoảng cách giữa tiêu đề và đoạn — một nhịp duy nhất */
+        h2 + p, h3 + p, h4 + p, .ct-head + p { margin-top:12px; }
+    </style>
+<style id="final-typography">
+        /* thang chữ + độ dài dòng — đặt cuối <head> để không bị block khác đè */
+        p, li, dd { max-width:68ch !important; }
+        .section-desc, .chapter-ledger p { max-width:60ch !important; }
+        p, li, dd, dt, figcaption, summary { font-size:max(1em,15px) !important; }
+        .case-kicker, .section-tag, .compare-flow, .media-status-note, .ct-no,
+        .chapter-num, .chapter-no, .work-index span, .case-tag, .stat-label,
+        .service-price, .product-status { font-size:12.5px !important; letter-spacing:.06em; line-height:1.45; }
+        h1 { line-height:1.06 !important; }
+        h2, .section-title { line-height:1.14 !important; }
+        h3 { line-height:1.18 !important; }
+        h4 { line-height:1.25 !important; }
+        h2 + p, h3 + p, h4 + p, .ct-head + p { margin-top:12px; }
     </style>
 </head>
 <body>
