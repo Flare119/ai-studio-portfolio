@@ -1305,6 +1305,42 @@
         .hero .container { width:100%; }
         .hero { padding-top:132px; padding-bottom:96px; min-height:auto; }
         .chapter-marker { margin-bottom:28px; }
+    
+        /* ===== SURFACE PASS — minimal nhưng có tầng, không phải đen phẳng ===== */
+        :root {
+            --bg-primary:#0a0a0d;
+            --bg-card:#101116;
+            --bg-card-elev:#14151c;
+            --border:rgba(255,255,255,.075);
+            --border-strong:rgba(255,255,255,.13);
+        }
+        body { background:#0a0a0d; }
+
+        /* nhịp sáng/tối xen kẽ giữa các chương — thay cho hoạ tiết nền */
+        #services, #products, #faq, #about { background:#0c0c10; }
+        #work, #capabilities, #workflow, #pricing, #contact { background:#0a0a0d; }
+        section + section { border-top:1px solid rgba(255,255,255,.055); }
+
+        /* thẻ có bề mặt thật, viền tóc, gờ sáng 1px trên cùng */
+        .service-card, .product-card, .case-card, .comparison-theatre,
+        details, .stat, .tool-card, .team-card {
+            background:var(--bg-card);
+            border:1px solid var(--border);
+        }
+        .service-card, .product-card, .case-card, details, .team-card { position:relative; }
+        .service-card::before, .product-card::before, .team-card::before {
+            content:''; position:absolute; inset:0 0 auto; height:1px;
+            background:linear-gradient(90deg,transparent,rgba(255,255,255,.09),transparent);
+        }
+
+        /* hai khu đang cố tình ở dạng danh sách — giữ phẳng, chỉ kẻ tóc */
+        #capabilities .case-card, .comparison-theatre {
+            background:transparent; border:0; border-top:1px solid var(--border-strong);
+        }
+
+        /* bịt khoảng đen chết giữa About và Contact */
+        #about  { padding-bottom:72px; }
+        #contact{ padding-top:88px; }
     </style>
 </head>
 <body>
