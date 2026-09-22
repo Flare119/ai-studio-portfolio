@@ -1139,12 +1139,14 @@
         .social-reel { width:100%; max-width:340px; justify-self:center; }
         .social-copy .lead-copy { color:var(--text-primary); font-size:1.02rem; margin:20px 0 12px; }
         .social-copy > p:not(.lead-copy) { color:var(--text-muted); margin-bottom:24px; }
-        .comparison-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; }
-        .comparison-theatre { padding-top:22px; border-top:1px solid var(--border-strong); }
-        .comparison-theatre h4 { margin-bottom:20px; }
+        .comparison-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px; }
+        .comparison-theatre { padding-top:26px; border-top:1px solid var(--border); }
+        .ct-head { display:flex; align-items:baseline; gap:13px; margin-bottom:24px; }
+        .ct-no { font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.12em; color:var(--accent); flex:none; }
+        .comparison-theatre h4 { margin-bottom:0; font-size:1.18rem; letter-spacing:-.01em; }
         .comparison-theatre .media-portrait { width:min(100%,360px); margin-inline:auto; }
-        .comparison-theatre > p { margin-top:15px; color:var(--text-muted); max-width:58ch; }
-        .compare-flow { display:flex; align-items:center; gap:12px; padding:14px 0 0; font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.1em; color:var(--text-muted); }
+        .comparison-theatre > p { margin-top:9px; font-size:.88rem; line-height:1.62; color:var(--text-muted); max-width:58ch; }
+        .compare-flow { display:flex; align-items:center; gap:10px; padding:18px 0 0; font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.1em; color:var(--text-muted); }
         .compare-flow i { font-style:normal; color:var(--accent-light); }
         .prototype-feature { padding:28px 0 48px; border-top:1px solid var(--border-strong); border-bottom:1px solid var(--border-strong); }
         .prototype-copy { display:grid; grid-template-columns:minmax(240px,.55fr) minmax(300px,1fr); gap:48px; align-items:end; margin-bottom:24px; }
@@ -1502,25 +1504,22 @@
                 </header>
                 <div class="comparison-grid">
                     <article class="comparison-theatre">
-                        <div class="case-kicker">Led to Production · AI Animatic</div>
-                        <h4>Nescafé MOSAIC 3in1</h4>
+                        <div class="ct-head"><span class="ct-no">01</span><h4>Nescafé MOSAIC 3in1</h4></div>
                         <div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1JWVQMrqkOwrs0UgvwltrfAMJm2jqkU8t/preview" aria-label="Play: Nescafé MOSAIC 3in1"><span class="vf-poster" style="background-image:url('posters/1JWVQMrqkOwrs0UgvwltrfAMJm2jqkU8t.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
                         <div class="compare-flow"><span>AI ANIMATIC</span><i>→</i><span>PRODUCTION</span></div>
-                        <p>The animatic locks narrative, character, product moment and camera language before the shoot.</p>
+                        <p>Narrative, character and camera language locked before the shoot.</p>
                     </article>
                     <article class="comparison-theatre">
-                        <div class="case-kicker">Led to Production · AI Animatic</div>
-                        <h4>OMO Elektra</h4>
+                        <div class="ct-head"><span class="ct-no">02</span><h4>OMO Elektra</h4></div>
                         <div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1Ll7_7uPcnCP78-Yvw_U1V3Al2ALZSqYD/preview" aria-label="Play: OMO Elektra"><span class="vf-poster" style="background-image:url('posters/1Ll7_7uPcnCP78-Yvw_U1V3Al2ALZSqYD.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
                         <div class="compare-flow"><span>AI DEVELOPMENT</span><i>→</i><span>PRODUCTION</span></div>
-                        <p>AI tests performance, action, identity consistency and visual direction before production.</p>
+                        <p>Performance, action and identity consistency tested before production.</p>
                     </article>
                     <article class="comparison-theatre">
-                        <div class="case-kicker">Led to Production · AI Animatic</div>
-                        <h4>Larue Biab Launch</h4>
+                        <div class="ct-head"><span class="ct-no">03</span><h4>Larue Biab Launch</h4></div>
                         <div class="media-frame media-portrait"><button type="button" class="video-facade" data-video="media/larue-animatic-to-film.mp4" aria-label="Play: Larue Biab Launch"><span class="vf-poster" style="background-image:url('posters/larue-animatic-to-film.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
                         <div class="compare-flow"><span>AI ANIMATIC</span><i>→</i><span>PRODUCTION</span></div>
-                        <p>The animatic locks the extreme slow-motion feel, set pieces and the golden cheers payoff before the shoot.</p>
+                        <p>Slow-motion feel, set pieces and the golden cheers payoff — locked on board.</p>
                     </article>
                 </div>
             </div>
