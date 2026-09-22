@@ -1463,6 +1463,58 @@
         }
         .contact-btn { color:#8f3f13 !important; }
         #contact h2 span, .gradient-text, .holo { color:#8f3f13 !important; }
+    
+        /* ===== i18n ===== */
+        .lang-switch { display:inline-flex; align-items:center; gap:0; margin-left:22px;
+            background:rgba(0,0,0,.05); border-radius:980px; padding:2px; }
+        .lang-switch button { appearance:none; border:0; background:transparent; cursor:pointer;
+            font:500 12px/1 var(--font-ui); color:var(--text-muted); padding:6px 12px; border-radius:980px;
+            letter-spacing:.01em; transition:background .18s, color .18s; }
+        .lang-switch button[aria-pressed="true"] { background:#fff; color:var(--text-primary);
+            box-shadow:0 1px 2px rgba(0,0,0,.10); }
+        html[lang="zh"] body { font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+            letter-spacing:0; line-height:1.72; }
+        html[lang="zh"] h1,html[lang="zh"] h2,html[lang="zh"] h3,html[lang="zh"] h4 { letter-spacing:0; }
+        html[lang="vi"] body { line-height:1.6; }
+        @media(max-width:760px){ .lang-switch { margin-left:10px; } .lang-switch button { padding:5px 9px; font-size:11px; } }
+    
+        /* =========================================================
+           TILE GRID — sửa gốc rễ layout lởm chởm
+           Nguyên nhân: cùng một hàng trộn clip dọc 9:16 và ngang 16:9
+           ⇒ card này cao 550px, card kia 190px, dưới nó là mảng trống to.
+           Cách sửa: MỌI ô media trong lưới dùng CHUNG một tỉ lệ vuông,
+           video giữ nguyên tỉ lệ thật, thừa ra thì viền đen (letterbox).
+           ========================================================= */
+        .comparison-grid, .capab-grid, .prototype-grid, .prototype-mosaic,
+        .product-grid, .services-grid, .tools-grid { align-items:start; }
+
+        .comparison-theatre .media-frame,
+        #capabilities .case-card .case-video {
+            aspect-ratio:1/1 !important;
+            max-height:none !important;
+            width:100% !important;
+            margin-inline:0 !important;
+            background:#000;
+            display:block;
+        }
+        /* poster: hiện trọn khung hình, không cắt cúp */
+        .comparison-theatre .vf-poster,
+        #capabilities .case-card .vf-poster {
+            background-size:contain; background-repeat:no-repeat; background-position:center;
+        }
+        /* phần chữ dưới ô media bắt đầu cùng một độ cao */
+        .comparison-theatre { display:flex; flex-direction:column; gap:0; }
+        .comparison-theatre .media-frame { order:2; margin-top:4px; }
+        .comparison-theatre .compare-flow { order:3; }
+        .comparison-theatre > p { order:4; margin-top:10px; }
+        .ct-head { order:1; }
+    
+        /* lưới tự co: chương 2 case thì 2 cột (không chừa ô trống), 3 case thì 3 cột */
+        .comparison-grid { grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr)) !important; }
+        @media(max-width:760px){ .comparison-grid { grid-template-columns:1fr !important; } }
+    
+        /* TẠM ẨN nút đổi ngôn ngữ cho tới khi vi.json/zh.json sẵn sàng */
+        .lang-switch { display:none !important; }
     </style>
 </head>
 <body>
@@ -1555,37 +1607,37 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="logo">AI Studio</div>
+        <div data-t="t001" class="logo">AI Studio</div>
         <ul class="nav-links">
-            <li><a href="#work">Work</a></li>
-            <li><a href="#services">Solutions</a></li>
-            <li><a href="#products">Studio Products</a></li>
-            <li><a href="#capabilities">Capabilities</a></li>
-            <li><a href="#workflow">Process</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li data-t="t002"><a href="#work">Work</a></li>
+            <li data-t="t003"><a href="#services">Solutions</a></li>
+            <li data-t="t004"><a href="#products">Studio Products</a></li>
+            <li data-t="t005"><a href="#capabilities">Capabilities</a></li>
+            <li data-t="t006"><a href="#workflow">Process</a></li>
+            <li data-t="t007"><a href="#about">About</a></li>
+            <li data-t="t008"><a href="#contact">Contact</a></li>
         </ul>
-    </nav>
+    <div class="lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="vi" aria-pressed="false">VI</button><button type="button" data-lang="zh" aria-pressed="false">中文</button></div></nav>
 
     <!-- Hero — OPENING -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="chapter-marker">
+                <div data-t="t009" class="chapter-marker">
                     <span class="chapter-num">CH. 00 / OPENING</span>
                     <span class="chapter-line"></span>
                     <span>Saigon — 2026</span>
                 </div>
-                <div class="hero-badge"><span>SEE — AI Studio Division</span></div>
-                <h1>AI doesn’t just make images.<br>It makes work that <em>ships</em>.</h1>
-                <p style="max-width:620px;">Published films, deployed OOH, animatics that turn into real shoots. We build AI around the commercial goal — not around the model.</p>
+                <div data-t="t010" class="hero-badge"><span>SEE — AI Studio Division</span></div>
+                <h1 data-t="t011">AI doesn’t just make images.<br>It makes work that <em>ships</em>.</h1>
+                <p data-t="t012" style="max-width:620px;">Published films, deployed OOH, animatics that turn into real shoots. We build AI around the commercial goal — not around the model.</p>
                 <div class="hero-stats proof-stats">
-                    <div class="stat"><div class="stat-number">Social</div><div class="stat-label">Published films</div></div>
-                    <div class="stat"><div class="stat-number">OOH</div><div class="stat-label">Screen deployment</div></div>
-                    <div class="stat"><div class="stat-number">AI → Shoot</div><div class="stat-label">Animatic to production</div></div>
-                    <div class="stat"><div class="stat-number">Prototype</div><div class="stat-label">Pitch, approval, de-risk</div></div>
+                    <div class="stat"><div data-t="t013" class="stat-number">Social</div><div data-t="t014" class="stat-label">Published films</div></div>
+                    <div class="stat"><div data-t="t015" class="stat-number">OOH</div><div data-t="t016" class="stat-label">Screen deployment</div></div>
+                    <div class="stat"><div data-t="t017" class="stat-number">AI → Shoot</div><div data-t="t018" class="stat-label">Animatic to production</div></div>
+                    <div class="stat"><div data-t="t019" class="stat-number">Prototype</div><div data-t="t020" class="stat-label">Pitch, approval, de-risk</div></div>
                 </div>
-                <div class="hero-actions">
+                <div data-t="t021" class="hero-actions">
                     <a class="cta-primary" href="#work">See the proof</a>
                     <a class="cta-secondary" href="#contact">Start a Project</a>
                 </div>
@@ -1593,12 +1645,12 @@
             </div>
             <!-- Client Logos -->
             <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border);">
-                <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 20px;">Trusted by</p>
-                <div style="display: flex; align-items: center; gap: 32px; flex-wrap: wrap;">
+                <p data-t="t022" style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 20px;">Trusted by</p>
+                <div data-t="t023" style="display: flex; align-items: center; gap: 32px; flex-wrap: wrap;">
                     <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">SAMSUNG</span>
                     <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">UNILEVER</span>
                     <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">ABBOTT</span>
-                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">PUBLICIS</span>
+                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">PUBLICIS</span><span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">LARUE</span><span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">FRIESLANDCAMPINA</span><span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">NESTLÉ</span>
                 </div>
             </div>
         </div>
@@ -1608,15 +1660,15 @@
     <section id="services">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Ch. 01 — Solutions</div>
-                <h2 class="section-title">Four ways to <em>move an idea forward.</em></h2>
-                <p class="section-desc">Not every brief needs full AI. We pick the level of intervention that fits — and say so early.</p>
+                <div data-t="t024" class="section-tag">Ch. 01 — Solutions</div>
+                <h2 data-t="t025" class="section-title">Four ways to <em>move an idea forward.</em></h2>
+                <p data-t="t026" class="section-desc">Not every brief needs full AI. We pick the level of intervention that fits — and say so early.</p>
             </div>
             <div class="services-grid solution-grid">
-                <div class="service-card"><div class="service-icon">01</div><h3>AI Content Production</h3><p>Social films, OOH content and campaign assets — visual development through delivery.</p><div class="service-price">Final deliverables</div></div>
-                <div class="service-card"><div class="service-icon">02</div><h3>AI Animatic & Previs</h3><p>Test story, camera and performance before the budget is locked. One direction, agreed early.</p><div class="service-price">Pitch · Approval · De-risk</div></div>
-                <div class="service-card"><div class="service-icon">03</div><h3>Hybrid Production</h3><p>Shoot what should be shot. Extend the rest with AI, post and VFX.</p><div class="service-price">AI → Shoot → Post</div></div>
-                <div class="service-card"><div class="service-icon">04</div><h3>Studio Systems</h3><p>Prompt, routing, QC and training systems built around how your team actually works.</p><div class="service-price">Custom workflow systems</div></div>
+                <div class="service-card"><div class="service-icon">01</div><h3 data-t="t027">AI Content Production</h3><p data-t="t028">Social films, OOH content and campaign assets — visual development through delivery.</p><div data-t="t029" class="service-price">Final deliverables</div></div>
+                <div class="service-card"><div class="service-icon">02</div><h3 data-t="t030">AI Animatic & Previs</h3><p data-t="t031">Test story, camera and performance before the budget is locked. One direction, agreed early.</p><div data-t="t032" class="service-price">Pitch · Approval · De-risk</div></div>
+                <div class="service-card"><div class="service-icon">03</div><h3 data-t="t033">Hybrid Production</h3><p data-t="t034">Shoot what should be shot. Extend the rest with AI, post and VFX.</p><div data-t="t035" class="service-price">AI → Shoot → Post</div></div>
+                <div class="service-card"><div class="service-icon">04</div><h3 data-t="t036">Studio Systems</h3><p data-t="t037">Prompt, routing, QC and training systems built around how your team actually works.</p><div data-t="t038" class="service-price">Custom workflow systems</div></div>
             </div>
         </div>
     </section>
@@ -1625,13 +1677,13 @@
     <section id="work" class="work-v3">
         <div class="container">
             <div class="work-opening">
-                <div class="section-tag">Ch. 02 — Commercial Evidence</div>
-                <h2 class="section-title">Every screen demands its <em>own production logic.</em></h2>
-                <p class="section-desc">A portfolio isn’t a file count. It shows where AI was used, through which workflow, and where the output ended up.</p>
+                <div data-t="t039" class="section-tag">Ch. 02 — Commercial Evidence</div>
+                <h2 data-t="t040" class="section-title">Every screen demands its <em>own production logic.</em></h2>
+                <p data-t="t041" class="section-desc">A portfolio isn’t a file count. It shows where AI was used, through which workflow, and where the output ended up.</p>
             </div>
 
             <nav class="work-index" aria-label="Portfolio proof index">
-                <a href="#published-work"><span>01</span>Published / On-Air</a>
+                <a data-t="t042" href="#published-work"><span>01</span>Published / On-Air</a>
                 <a href="#production-work"><span>02</span>AI → Production</a>
                 <a href="#prototype-work"><span>03</span>Decision Prototypes</a>
                 <a href="#corporate-work"><span>04</span>Corporate Video</a>
@@ -1641,7 +1693,7 @@
             <div class="work-chapter" id="published-work">
                 <header class="chapter-ledger">
                     <span class="chapter-no">01</span>
-                    <div><h3>Published / On-Air</h3><p>Live on their intended channels — social feed, mobile screen, LED OOH.</p></div>
+                    <div><h3 data-t="t043">Published / On-Air</h3><p data-t="t044">Live on their intended channels — social feed, mobile screen, LED OOH.</p></div>
                 </header>
 
                 <!-- Published landscape film — IKI Village -->
@@ -1653,33 +1705,33 @@
                                 <span class="vf-play" aria-hidden="true"></span>
                             </button>
                         </div>
-                        <div class="media-status-note">16:9 final master · Published / On-Air</div>
+                        <div data-t="t045" class="media-status-note">16:9 final master · Published / On-Air</div>
                     </div>
                     <div class="published-landscape-copy">
-                        <div class="case-kicker">Published / On-Air · Final Film · 16:9</div>
-                        <h4>IKI Village</h4>
-                        <p>A published film delivered for IKI Village, bringing the project from production through final post and release-ready master.</p>
+                        <div data-t="t046" class="case-kicker">Published / On-Air · Final Film · 16:9</div>
+                        <h4 data-t="t047">IKI Village</h4>
+                        <p data-t="t048">A published film delivered for IKI Village, bringing the project from production through final post and release-ready master.</p>
                         <dl class="credit-stack">
-                            <div><dt>Client / Project</dt><dd>IKI Village</dd></div>
-                            <div><dt>Production</dt><dd>See Group</dd></div>
-                            <div><dt>Post Production</dt><dd>AI Studio</dd></div>
-                            <div><dt>Status</dt><dd>Published / On-Air</dd></div>
+                            <div><dt data-t="t049">Client / Project</dt><dd data-t="t050">IKI Village</dd></div>
+                            <div><dt data-t="t051">Production</dt><dd data-t="t052">See Group</dd></div>
+                            <div><dt data-t="t053">Post Production</dt><dd data-t="t054">AI Studio</dd></div>
+                            <div><dt data-t="t055">Status</dt><dd data-t="t056">Published / On-Air</dd></div>
                         </dl>
-                        <a class="ooh-viewer-action" style="margin-top:20px;display:inline-flex;" href="https://drive.google.com/file/d/1DRW09xlU1N0bj3RXfGOlI5DBTqMRuabw/view" target="_blank" rel="noopener">Open final master ↗</a>
+                        <a data-t="t057" class="ooh-viewer-action" style="margin-top:20px;display:inline-flex;" href="https://drive.google.com/file/d/1DRW09xlU1N0bj3RXfGOlI5DBTqMRuabw/view" target="_blank" rel="noopener">Open final master ↗</a>
                     </div>
                 </article>
 
                 <!-- OOH gets a horizon, not a phone frame -->
                 <article class="ooh-horizon">
                     <div class="case-heading-row">
-                        <div><div class="case-kicker">On OOH Screens · Final Screen Content</div><h4>Nescafe 3in1 Teaser — OOH</h4></div>
-                        <p>Developed for an ultra-wide LED canvas: the visual has to read instantly, the product stays clear at distance, and the composition works at the screen’s true ratio.</p>
+                        <div><div data-t="t058" class="case-kicker">On OOH Screens · Final Screen Content</div><h4 data-t="t059">Nescafe 3in1 Teaser — OOH</h4></div>
+                        <p data-t="t060">Developed for an ultra-wide LED canvas: the visual has to read instantly, the product stays clear at distance, and the composition works at the screen’s true ratio.</p>
                     </div>
                     <div class="ooh-viewer-bar">
-                        <span>Native LED canvas · no crop</span>
+                        <span data-t="t061">Native LED canvas · no crop</span>
                         <div>
-                            <button type="button" class="ooh-viewer-action" data-ooh-fullscreen>View full canvas</button>
-                            <a class="ooh-viewer-action" href="https://drive.google.com/file/d/1qcyJZSQsReQaCiplC_iipiePA7cBXqLq/view" target="_blank" rel="noopener">Open master ↗</a>
+                            <button data-t="t062" type="button" class="ooh-viewer-action" data-ooh-fullscreen>View full canvas</button>
+                            <a data-t="t063" class="ooh-viewer-action" href="https://drive.google.com/file/d/1qcyJZSQsReQaCiplC_iipiePA7cBXqLq/view" target="_blank" rel="noopener">Open master ↗</a>
                         </div>
                     </div>
                     <div class="ooh-scroll" aria-label="Ultra-wide OOH master viewport">
@@ -1687,19 +1739,19 @@
                             <div class="media-frame media-ultrawide"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1qcyJZSQsReQaCiplC_iipiePA7cBXqLq/preview" aria-label="Play: AI Studio video"><span class="vf-poster" style="background-image:url('posters/1qcyJZSQsReQaCiplC_iipiePA7cBXqLq.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
                         </div>
                     </div>
-                    <div class="ooh-pan-cue" aria-hidden="true"><span>←</span> Swipe to inspect the full 3888 × 1536 canvas <span>→</span></div>
-                    <div class="spec-line"><span>3888 × 1536</span><span>2.53:1 LED master</span><span>OOH-specific framing</span></div>
+                    <div data-t="t064" class="ooh-pan-cue" aria-hidden="true"><span>←</span> Swipe to inspect the full 3888 × 1536 canvas <span>→</span></div>
+                    <div data-t="t065" class="spec-line"><span>3888 × 1536</span><span>2.53:1 LED master</span><span>OOH-specific framing</span></div>
 
                     <details class="deployment-evidence" data-deployment-evidence>
-                        <summary><span><b>On-Screen Evidence</b> · Real-world LED deployment</span><i>View 2 reports</i></summary>
+                        <summary data-t="t066"><span><b>On-Screen Evidence</b> · Real-world LED deployment</span><i>View 2 reports</i></summary>
                         <div class="deployment-evidence-grid">
                             <article class="evidence-item">
                                 <div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1nJZK6l7ImhVXRGU-UDfRaj7_ZSR-0R_P/preview" aria-label="Play: AI Studio video"><span class="vf-poster" style="background-image:url('posters/1nJZK6l7ImhVXRGU-UDfRaj7_ZSR-0R_P.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
-                                <div><h5>LED Lê Lợi</h5><p>Field footage confirming the ultra-wide master running on the curved city LED screen.</p><a href="https://drive.google.com/file/d/1nJZK6l7ImhVXRGU-UDfRaj7_ZSR-0R_P/view" target="_blank" rel="noopener">Open report ↗</a></div>
+                                <div><h5 data-t="t067">LED Lê Lợi</h5><p data-t="t068">Field footage confirming the ultra-wide master running on the curved city LED screen.</p><a data-t="t069" href="https://drive.google.com/file/d/1nJZK6l7ImhVXRGU-UDfRaj7_ZSR-0R_P/view" target="_blank" rel="noopener">Open report ↗</a></div>
                             </article>
                             <article class="evidence-item">
                                 <div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1nZmKB4y0gIAxBA6AHY_3llW4yxTGJ-SD/preview" aria-label="Play: LED Lê Lợi"><span class="vf-poster" style="background-image:url('posters/1nZmKB4y0gIAxBA6AHY_3llW4yxTGJ-SD.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
-                                <div><h5>LED Phong Vũ</h5><p>Field footage confirming the same campaign master deployed in a second real-world LED environment.</p><a href="https://drive.google.com/file/d/1nZmKB4y0gIAxBA6AHY_3llW4yxTGJ-SD/view" target="_blank" rel="noopener">Open report ↗</a></div>
+                                <div><h5 data-t="t070">LED Phong Vũ</h5><p data-t="t071">Field footage confirming the same campaign master deployed in a second real-world LED environment.</p><a data-t="t072" href="https://drive.google.com/file/d/1nZmKB4y0gIAxBA6AHY_3llW4yxTGJ-SD/view" target="_blank" rel="noopener">Open report ↗</a></div>
                             </article>
                         </div>
                     </details>
@@ -1708,16 +1760,16 @@
                 <!-- Social campaign rail -->
                 <article class="campaign-rail compact-campaign">
                     <div class="campaign-copy">
-                        <div class="case-kicker">Published · AI Social Film · 9:16</div>
-                        <h4>Samsung Mother's Day</h4>
-                        <p>Four independent storylines within one campaign family. Each film carries its own product feature while sharing a single emotional world.</p>
-                        <dl class="case-facts"><div><dt>Campaign</dt><dd>1 family</dd></div><div><dt>Stories</dt><dd>4 films</dd></div><div><dt>Channel</dt><dd>Social</dd></div></dl>
+                        <div data-t="t073" class="case-kicker">Published · AI Social Film · 9:16</div>
+                        <h4 data-t="t074">Samsung Mother's Day</h4>
+                        <p data-t="t075">Four independent storylines within one campaign family. Each film carries its own product feature while sharing a single emotional world.</p>
+                        <dl class="case-facts"><div><dt data-t="t076">Campaign</dt><dd data-t="t077">1 family</dd></div><div><dt data-t="t078">Stories</dt><dd data-t="t079">4 films</dd></div><div><dt data-t="t080">Channel</dt><dd data-t="t081">Social</dd></div></dl>
                     </div>
                     <div class="portrait-rail" aria-label="Samsung Mother's Day film series">
-                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/yfMmmTsVfcM?autoplay=1&rel=0" aria-label="Play: Samsung Mother's Day — Youth"><span class="vf-poster" style="background-image:url('posters/yt-yfMmmTsVfcM.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption>01 · Youth</figcaption></figure>
-                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/B46gNlwnFVo?autoplay=1&rel=0" aria-label="Play: Samsung Mother's Day — Back to School"><span class="vf-poster" style="background-image:url('posters/yt-B46gNlwnFVo.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption>02 · Back to School</figcaption></figure>
-                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/3Hz7rllcYfE?autoplay=1&rel=0" aria-label="Play: Samsung Mother's Day — Wedding Anniversary"><span class="vf-poster" style="background-image:url('posters/yt-3Hz7rllcYfE.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption>03 · Wedding Anniversary</figcaption></figure>
-                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/FB-QexRUOxo?autoplay=1&rel=0" aria-label="Play: Samsung Mother's Day — High Heels"><span class="vf-poster" style="background-image:url('posters/yt-FB-QexRUOxo.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption>04 · High Heels</figcaption></figure>
+                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/yfMmmTsVfcM?autoplay=1&rel=0" aria-label="Play: Samsung Mother's Day — Youth"><span class="vf-poster" style="background-image:url('posters/yt-yfMmmTsVfcM.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t082">01 · Youth</figcaption></figure>
+                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/B46gNlwnFVo?autoplay=1&rel=0" aria-label="Play: Samsung Mother's Day — Back to School"><span class="vf-poster" style="background-image:url('posters/yt-B46gNlwnFVo.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t083">02 · Back to School</figcaption></figure>
+                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/3Hz7rllcYfE?autoplay=1&rel=0" aria-label="Play: Samsung Mother's Day — Wedding Anniversary"><span class="vf-poster" style="background-image:url('posters/yt-3Hz7rllcYfE.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t084">03 · Wedding Anniversary</figcaption></figure>
+                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/FB-QexRUOxo?autoplay=1&rel=0" aria-label="Play: Samsung Mother's Day — High Heels"><span class="vf-poster" style="background-image:url('posters/yt-FB-QexRUOxo.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t085">04 · High Heels</figcaption></figure>
                     </div>
                 </article>
 
@@ -1725,11 +1777,11 @@
                 <article class="social-stage">
                     <div class="social-reel"><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1WzkaPn_7fI6SCSVav30-ur_n7EciWGDm/preview" aria-label="Play: LED Phong Vũ"><span class="vf-poster" style="background-image:url('posters/1WzkaPn_7fI6SCSVav30-ur_n7EciWGDm.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div></div>
                     <div class="social-copy">
-                        <div class="case-kicker">Published · AI Social Content · 9:16</div>
-                        <h4>Nescafe 3in1 Teaser — Social</h4>
-                        <p class="lead-copy">A different production flow: mobile-first framing, an attention hook, vertical storytelling and an edit rhythm built for the social feed.</p>
-                        <p>The social cut isn't a shrunk-down OOH. Both outputs share the campaign but are designed for two different viewing behaviors.</p>
-                        <dl class="case-facts"><div><dt>Canvas</dt><dd>9:16</dd></div><div><dt>Viewing</dt><dd>Mobile</dd></div><div><dt>Delivery</dt><dd>Social</dd></div></dl>
+                        <div data-t="t086" class="case-kicker">Published · AI Social Content · 9:16</div>
+                        <h4 data-t="t087">Nescafe 3in1 Teaser — Social</h4>
+                        <p data-t="t088" class="lead-copy">A different production flow: mobile-first framing, an attention hook, vertical storytelling and an edit rhythm built for the social feed.</p>
+                        <p data-t="t089">The social cut isn't a shrunk-down OOH. Both outputs share the campaign but are designed for two different viewing behaviors.</p>
+                        <dl class="case-facts"><div><dt data-t="t090">Canvas</dt><dd>9:16</dd></div><div><dt data-t="t091">Viewing</dt><dd data-t="t092">Mobile</dd></div><div><dt data-t="t093">Delivery</dt><dd data-t="t094">Social</dd></div></dl>
                     </div>
                 </article>
             </div>
@@ -1737,26 +1789,26 @@
             <div class="work-chapter" id="production-work">
                 <header class="chapter-ledger">
                     <span class="chapter-no">02</span>
-                    <div><h3>AI → Real Production</h3><p>The animatic locked direction clearly enough for the campaign to be shot for real.</p></div>
+                    <div><h3 data-t="t095">AI → Real Production</h3><p data-t="t096">The animatic locked direction clearly enough for the campaign to be shot for real.</p></div>
                 </header>
                 <div class="comparison-grid">
                     <article class="comparison-theatre">
-                        <div class="ct-head"><span class="ct-no">01</span><h4>Nescafé MOSAIC 3in1</h4></div>
+                        <div class="ct-head"><span class="ct-no">01</span><h4 data-t="t097">Nescafé MOSAIC 3in1</h4></div>
                         <div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1JWVQMrqkOwrs0UgvwltrfAMJm2jqkU8t/preview" aria-label="Play: Nescafé MOSAIC 3in1"><span class="vf-poster" style="background-image:url('posters/1JWVQMrqkOwrs0UgvwltrfAMJm2jqkU8t.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
-                        <div class="compare-flow"><span>AI ANIMATIC</span><i>→</i><span>PRODUCTION</span></div>
-                        <p>Narrative, character and camera language locked before the shoot.</p>
+                        <div data-t="t098" class="compare-flow"><span>AI ANIMATIC</span><i>→</i><span>PRODUCTION</span></div>
+                        <p data-t="t099">Narrative, character and camera language locked before the shoot.</p>
                     </article>
                     <article class="comparison-theatre">
-                        <div class="ct-head"><span class="ct-no">02</span><h4>OMO Elektra</h4></div>
+                        <div class="ct-head"><span class="ct-no">02</span><h4 data-t="t100">OMO Elektra</h4></div>
                         <div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1Ll7_7uPcnCP78-Yvw_U1V3Al2ALZSqYD/preview" aria-label="Play: OMO Elektra"><span class="vf-poster" style="background-image:url('posters/1Ll7_7uPcnCP78-Yvw_U1V3Al2ALZSqYD.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
-                        <div class="compare-flow"><span>AI DEVELOPMENT</span><i>→</i><span>PRODUCTION</span></div>
-                        <p>Performance, action and identity consistency tested before production.</p>
+                        <div data-t="t101" class="compare-flow"><span>AI DEVELOPMENT</span><i>→</i><span>PRODUCTION</span></div>
+                        <p data-t="t102">Performance, action and identity consistency tested before production.</p>
                     </article>
                     <article class="comparison-theatre">
-                        <div class="ct-head"><span class="ct-no">03</span><h4>Larue Biab Launch</h4></div>
+                        <div class="ct-head"><span class="ct-no">03</span><h4 data-t="t103">Larue Biab Launch</h4></div>
                         <div class="media-frame media-portrait"><button type="button" class="video-facade" data-video="media/larue-animatic-to-film.mp4" aria-label="Play: Larue Biab Launch"><span class="vf-poster" style="background-image:url('posters/larue-animatic-to-film.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
-                        <div class="compare-flow"><span>AI ANIMATIC</span><i>→</i><span>PRODUCTION</span></div>
-                        <p>Slow-motion feel, set pieces and the golden cheers payoff — locked on board.</p>
+                        <div data-t="t104" class="compare-flow"><span>AI ANIMATIC</span><i>→</i><span>PRODUCTION</span></div>
+                        <p data-t="t105">Slow-motion feel, set pieces and the golden cheers payoff — locked on board.</p>
                     </article>
                 </div>
             </div>
@@ -1764,35 +1816,35 @@
             <div class="work-chapter" id="prototype-work">
                 <header class="chapter-ledger">
                     <span class="chapter-no">03</span>
-                    <div><h3>Decision Prototypes</h3><p>Only the animatics that prove a strong idea, or a level of AI control worth showing.</p></div>
+                    <div><h3 data-t="t106">Decision Prototypes</h3><p data-t="t107">Only the animatics that prove a strong idea, or a level of AI control worth showing.</p></div>
                 </header>
 
                 <article class="prototype-feature">
                     <div class="prototype-copy">
                         <div>
-                            <div class="case-kicker">Decision Prototype · 3 Storylines</div>
-                            <h4>PediaSure Night Pro</h4>
+                            <div data-t="t108" class="case-kicker">Decision Prototype · 3 Storylines</div>
+                            <h4 data-t="t109">PediaSure Night Pro</h4>
                         </div>
-                        <p>Series consistency across three emotional storylines: one brand world, different dramatic beats, character and product memory held throughout.</p>
+                        <p data-t="t110">Series consistency across three emotional storylines: one brand world, different dramatic beats, character and product memory held throughout.</p>
                     </div>
                     <div class="landscape-strip">
-                        <figure><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1l85aR1new-LsSzneSk84QN3ZNG4edeU7/preview" aria-label="Play PediaSure Night Pro Film 01"><span class="vf-poster" style="background-image:url('posters/1l85aR1new-LsSzneSk84QN3ZNG4edeU7.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption>Film 01</figcaption></figure>
-                        <figure><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1QguCC2NcdSk3n5CtccZfC2FqzuOLYoDc/preview" aria-label="Play: Film 01"><span class="vf-poster" style="background-image:url('posters/1QguCC2NcdSk3n5CtccZfC2FqzuOLYoDc.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption>Film 02</figcaption></figure>
-                        <figure><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/19Ita9p94eNdrBeOrgprx8G3jDPMBqnBI/preview" aria-label="Play: Film 02"><span class="vf-poster" style="background-image:url('posters/19Ita9p94eNdrBeOrgprx8G3jDPMBqnBI.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption>Film 03</figcaption></figure>
+                        <figure><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1l85aR1new-LsSzneSk84QN3ZNG4edeU7/preview" aria-label="Play PediaSure Night Pro Film 01"><span class="vf-poster" style="background-image:url('posters/1l85aR1new-LsSzneSk84QN3ZNG4edeU7.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t111">Film 01</figcaption></figure>
+                        <figure><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1QguCC2NcdSk3n5CtccZfC2FqzuOLYoDc/preview" aria-label="Play: Film 01"><span class="vf-poster" style="background-image:url('posters/1QguCC2NcdSk3n5CtccZfC2FqzuOLYoDc.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t112">Film 02</figcaption></figure>
+                        <figure><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/19Ita9p94eNdrBeOrgprx8G3jDPMBqnBI/preview" aria-label="Play: Film 02"><span class="vf-poster" style="background-image:url('posters/19Ita9p94eNdrBeOrgprx8G3jDPMBqnBI.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t113">Film 03</figcaption></figure>
                     </div>
                 </article>
 
                 <div class="prototype-mosaic">
                     <article class="prototype-tile growth-tile">
-                        <div class="case-kicker">Decision Prototype · 2 Storylines</div><h4>PediaSure Growth</h4>
+                        <div data-t="t114" class="case-kicker">Decision Prototype · 2 Storylines</div><h4 data-t="t115">PediaSure Growth</h4>
                         <div class="dual-landscape"><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1wGFSNfDOEPfT5c9nCQ6-5tRKzm4kGeag/preview" aria-label="Play: PediaSure Growth"><span class="vf-poster" style="background-image:url('posters/1wGFSNfDOEPfT5c9nCQ6-5tRKzm4kGeag.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/17A8N5v-722hE5l_TW8dfjLDC_sZzu2C6/preview" aria-label="Play: PediaSure Growth"><span class="vf-poster" style="background-image:url('posters/17A8N5v-722hE5l_TW8dfjLDC_sZzu2C6.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div></div>
-                        <div class="case-kicker" style="margin-top:12px;">Regional Adaptation · SEA Localization</div>
+                        <div data-t="t116" class="case-kicker" style="margin-top:12px;">Regional Adaptation · SEA Localization</div>
                         <div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/19wRaY-z8SPhqSZ5RANp-2X462XdbADrR/preview" aria-label="Play: PediaSure Quality Growth Regional"><span class="vf-poster" style="background-image:url('posters/19wRaY-z8SPhqSZ5RANp-2X462XdbADrR.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
-                        <p>Two independent briefs/storylines, one problem: turning a growth narrative into visual proof that's easy to approve — plus a regional cut adapted for a Southeast-Asian market.</p>
+                        <p data-t="t117">Two independent briefs/storylines, one problem: turning a growth narrative into visual proof that's easy to approve — plus a regional cut adapted for a Southeast-Asian market.</p>
                     </article>
                     <article class="prototype-tile teacher-tile">
                         <div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/14Ud_g3tco8z_QJgs9KmD1kUT7QG8rxsR/preview" aria-label="Play: PediaSure Growth"><span class="vf-poster" style="background-image:url('posters/14Ud_g3tco8z_QJgs9KmD1kUT7QG8rxsR.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
-                        <div><div class="case-kicker">Decision Prototype · Character / Camera Control</div><h4>Nescafé Art Teacher</h4><p>Documentary-handheld language, character continuity and product sequence locked before production planning.</p></div>
+                        <div><div data-t="t118" class="case-kicker">Decision Prototype · Character / Camera Control</div><h4 data-t="t119">Nescafé Art Teacher</h4><p data-t="t120">Documentary-handheld language, character continuity and product sequence locked before production planning.</p></div>
                     </article>
                 </div>
             </div>
@@ -1800,20 +1852,20 @@
             <div class="work-chapter" id="corporate-work">
                 <header class="chapter-ledger">
                     <span class="chapter-no">04</span>
-                    <div><h3>Corporate Video</h3><p>Brand and company films where AI carries the craft — product detail, process and story, without a build or a location unit.</p></div>
+                    <div><h3 data-t="t121">Corporate Video</h3><p data-t="t122">Brand and company films where AI carries the craft — product detail, process and story, without a build or a location unit.</p></div>
                 </header>
                 <div class="comparison-grid">
                     <article class="comparison-theatre">
-                        <div class="ct-head"><span class="ct-no">01</span><h4>Desino — Craft Film</h4></div>
+                        <div class="ct-head"><span class="ct-no">01</span><h4 data-t="t123">Desino — Craft Film</h4></div>
                         <div class="media-frame media-portrait"><button type="button" class="video-facade" data-video="media/desino-ai-video.mp4" aria-label="Play: Desino Craft Film"><span class="vf-poster" style="background-image:url('posters/desino-ai-video.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
-                        <div class="compare-flow"><span>AI FILM</span><i>→</i><span>DELIVERED</span></div>
-                        <p>Leather craft in macro — stitch, grain and hardware held at close range throughout.</p>
+                        <div data-t="t124" class="compare-flow"><span>AI FILM</span><i>→</i><span>DELIVERED</span></div>
+                        <p data-t="t125">Leather craft in macro — stitch, grain and hardware held at close range throughout.</p>
                     </article>
                     <article class="comparison-theatre">
-                        <div class="ct-head"><span class="ct-no">02</span><h4>Maggi — MMA Case Study</h4></div>
+                        <div class="ct-head"><span class="ct-no">02</span><h4 data-t="t126">Maggi — MMA Case Study</h4></div>
                         <div class="media-frame media-landscape"><button type="button" class="video-facade" data-video="media/maggi-mma-case.mp4" aria-label="Play: Maggi MMA Case Study"><span class="vf-poster" style="background-image:url('posters/maggi-mma-case.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
-                        <div class="compare-flow"><span>CASE FILM</span><i>→</i><span>SUBMITTED</span></div>
-                        <p>Campaign case film cut for award submission — narrative, evidence and results in one read.</p>
+                        <div data-t="t127" class="compare-flow"><span>CASE FILM</span><i>→</i><span>SUBMITTED</span></div>
+                        <p data-t="t128">Campaign case film cut for award submission — narrative, evidence and results in one read.</p>
                     </article>
                 </div>
             </div>
@@ -1824,15 +1876,15 @@
     <section id="products">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Ch. 03 — Studio Products</div>
-                <h2 class="section-title">The systems behind <em>every delivery.</em></h2>
-                <p class="section-desc">We don't just use tools. We build our own operating layer to standardize assets, route scenes, hold production knowledge and help the team decide faster.</p>
+                <div data-t="t129" class="section-tag">Ch. 03 — Studio Products</div>
+                <h2 data-t="t130" class="section-title">The systems behind <em>every delivery.</em></h2>
+                <p data-t="t131" class="section-desc">We don't just use tools. We build our own operating layer to standardize assets, route scenes, hold production knowledge and help the team decide faster.</p>
             </div>
             <div class="product-grid">
-                <article class="product-card"><div class="product-status live">Operating</div><div class="tool-icon">⚡</div><h3>AI Asset Prompt Studio</h3><p>Prepares Character, Props, Location, Keyframe, FLF and V2V to match each model's grammar and the production intent.</p><ul><li>For producers & AI artists</li><li>119-model knowledge layer</li><li>Reduces prompt trial-and-error</li></ul><a href="#contact">Request Demo / Access →</a></article>
-                <article class="product-card"><div class="product-status build">In Development</div><div class="tool-icon">📸</div><h3>AI Photo Director</h3><p>A visual previs system connecting camera, lens, lighting, blocking and 3D scene planning before keyframes are generated.</p><ul><li>For directors & DPs</li><li>Camera-aware visual planning</li><li>Built around photography fundamentals</li></ul><a href="#contact">Request Preview →</a></article>
-                <article class="product-card"><div class="product-status live">Operating Workflow</div><div class="tool-icon">🎯</div><h3>Scene Router & Production Copilot</h3><p>Analyzes each scene and selects the right production route, model, keyframe strategy and QC gate.</p><ul><li>For producers & supervisors</li><li>Per-shot routing</li><li>Evidence-backed model selection</li></ul><a href="#contact">Request Demo / Access →</a></article>
-                <article class="product-card"><div class="product-status public">Live Platform</div><div class="tool-icon">🧠</div><h3>AI Literacy for Producers</h3><p>A learning platform that helps producers understand AI fundamentals, operations, agentic workflows and model updates.</p><ul><li>For production teams</li><li>Structured learning paths</li><li>Live web product</li></ul><a href="https://flare119.github.io/ai-literacy/" target="_blank" rel="noopener">Open Platform ↗</a></article>
+                <article class="product-card"><div data-t="t132" class="product-status live">Operating</div><div class="tool-icon">⚡</div><h3 data-t="t133">AI Asset Prompt Studio</h3><p data-t="t134">Prepares Character, Props, Location, Keyframe, FLF and V2V to match each model's grammar and the production intent.</p><ul><li data-t="t135">For producers & AI artists</li><li data-t="t136">119-model knowledge layer</li><li data-t="t137">Reduces prompt trial-and-error</li></ul><a data-t="t138" href="#contact">Request Demo / Access →</a></article>
+                <article class="product-card"><div data-t="t139" class="product-status build">In Development</div><div class="tool-icon">📸</div><h3 data-t="t140">AI Photo Director</h3><p data-t="t141">A visual previs system connecting camera, lens, lighting, blocking and 3D scene planning before keyframes are generated.</p><ul><li data-t="t142">For directors & DPs</li><li data-t="t143">Camera-aware visual planning</li><li data-t="t144">Built around photography fundamentals</li></ul><a data-t="t145" href="#contact">Request Preview →</a></article>
+                <article class="product-card"><div data-t="t146" class="product-status live">Operating Workflow</div><div class="tool-icon">🎯</div><h3 data-t="t147">Scene Router & Production Copilot</h3><p data-t="t148">Analyzes each scene and selects the right production route, model, keyframe strategy and QC gate.</p><ul><li data-t="t149">For producers & supervisors</li><li data-t="t150">Per-shot routing</li><li data-t="t151">Evidence-backed model selection</li></ul><a data-t="t152" href="#contact">Request Demo / Access →</a></article>
+                <article class="product-card"><div data-t="t153" class="product-status public">Live Platform</div><div class="tool-icon">🧠</div><h3 data-t="t154">AI Literacy for Producers</h3><p data-t="t155">A learning platform that helps producers understand AI fundamentals, operations, agentic workflows and model updates.</p><ul><li data-t="t156">For production teams</li><li data-t="t157">Structured learning paths</li><li data-t="t158">Live web product</li></ul><a data-t="t159" href="https://flare119.github.io/ai-literacy/" target="_blank" rel="noopener">Open Platform ↗</a></article>
             </div>
         </div>
     </section>
@@ -1841,9 +1893,9 @@
     <section id="capabilities">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Ch. 04 — Capability Library</div>
-                <h2 class="section-title">Behind what <em>you see.</em></h2>
-                <p class="section-desc">Capability isn’t the model. It’s knowing which one, when, and what for.</p>
+                <div data-t="t160" class="section-tag">Ch. 04 — Capability Library</div>
+                <h2 data-t="t161" class="section-title">Behind what <em>you see.</em></h2>
+                <p data-t="t162" class="section-desc">Capability isn’t the model. It’s knowing which one, when, and what for.</p>
             </div>
             <div class="capab-grid">
                 <style>
@@ -1864,9 +1916,9 @@
                         <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1Lby1-Y7W_XOowRLuXQOk21v9iWPOzd4a/preview" aria-label="Play: AI Studio video"><span class="vf-poster" style="background-image:url('posters/1Lby1-Y7W_XOowRLuXQOk21v9iWPOzd4a.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button>
                     </div>
                     <div class="case-info" style="padding: 24px;">
-                        <div class="case-meta"><span class="case-tag">AI VFX</span></div>
-                        <h3 style="font-size: 1.1rem;">AI VFX Composite</h3>
-                        <p>CG creatures and elements composited onto live action, without a full CGI pipeline.</p>
+                        <div data-t="t163" class="case-meta"><span class="case-tag">AI VFX</span></div>
+                        <h3 data-t="t164" style="font-size: 1.1rem;">AI VFX Composite</h3>
+                        <p data-t="t165">CG creatures and elements composited onto live action, without a full CGI pipeline.</p>
                     </div>
                 </div>
                 <!-- AI Character Composite -->
@@ -1875,9 +1927,9 @@
                         <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1s5jGCe7DfGySzCfMCGJPzWCN12jUhgb8/preview" aria-label="Play: AI VFX Composite"><span class="vf-poster" style="background-image:url('posters/1s5jGCe7DfGySzCfMCGJPzWCN12jUhgb8.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button>
                     </div>
                     <div class="case-info" style="padding: 24px;">
-                        <div class="case-meta"><span class="case-tag">AI Character</span></div>
-                        <h3 style="font-size: 1.1rem;">AI Character Composite</h3>
-                        <p>An AI character dropped into live footage — lighting, perspective and motion matched.</p>
+                        <div data-t="t166" class="case-meta"><span class="case-tag">AI Character</span></div>
+                        <h3 data-t="t167" style="font-size: 1.1rem;">AI Character Composite</h3>
+                        <p data-t="t168">An AI character dropped into live footage — lighting, perspective and motion matched.</p>
                     </div>
                 </div>
                 <!-- AI Background Replace -->
@@ -1886,9 +1938,9 @@
                         <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/19xlrxQs7rUkd4LwFa5o2T6Vc3LpA7-6t/preview" aria-label="Play: AI Character Composite"><span class="vf-poster" style="background-image:url('posters/19xlrxQs7rUkd4LwFa5o2T6Vc3LpA7-6t.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button>
                     </div>
                     <div class="case-info" style="padding: 24px;">
-                        <div class="case-meta"><span class="case-tag">AI Environment</span></div>
-                        <h3 style="font-size: 1.1rem;">AI Background Replace</h3>
-                        <p>Green screen to photoreal environment. Cuts scouting and travel when scope allows.</p>
+                        <div data-t="t169" class="case-meta"><span class="case-tag">AI Environment</span></div>
+                        <h3 data-t="t170" style="font-size: 1.1rem;">AI Background Replace</h3>
+                        <p data-t="t171">Green screen to photoreal environment. Cuts scouting and travel when scope allows.</p>
                     </div>
                 </div>
                 <!-- AI Character Replace -->
@@ -1897,9 +1949,9 @@
                         <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/182B1C2lLzn2oEYryuvGMgWZhj5aK1O-y/preview" aria-label="Play: AI Background Replace"><span class="vf-poster" style="background-image:url('posters/182B1C2lLzn2oEYryuvGMgWZhj5aK1O-y.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button>
                     </div>
                     <div class="case-info" style="padding: 24px;">
-                        <div class="case-meta"><span class="case-tag">AI Swap</span></div>
-                        <h3 style="font-size: 1.1rem;">AI Character Replace</h3>
-                        <p>Swap a character but keep the motion, scene and light. Often cheaper than a reshoot.</p>
+                        <div data-t="t172" class="case-meta"><span class="case-tag">AI Swap</span></div>
+                        <h3 data-t="t173" style="font-size: 1.1rem;">AI Character Replace</h3>
+                        <p data-t="t174">Swap a character but keep the motion, scene and light. Often cheaper than a reshoot.</p>
                     </div>
                 </div>
                 <!-- AI Age Transform -->
@@ -1908,9 +1960,9 @@
                         <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1t6kkOhfUpb0mDUZ7TW0y8YSRKJyK8v6B/preview" aria-label="Play: AI Character Replace"><span class="vf-poster" style="background-image:url('posters/1t6kkOhfUpb0mDUZ7TW0y8YSRKJyK8v6B.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button>
                     </div>
                     <div class="case-info" style="padding: 24px;">
-                        <div class="case-meta"><span class="case-tag">AI Transform</span></div>
-                        <h3 style="font-size: 1.1rem;">AI Age Transformation</h3>
-                        <p>Age a character up or down on video. For stories that span time.</p>
+                        <div data-t="t175" class="case-meta"><span class="case-tag">AI Transform</span></div>
+                        <h3 data-t="t176" style="font-size: 1.1rem;">AI Age Transformation</h3>
+                        <p data-t="t177">Age a character up or down on video. For stories that span time.</p>
                     </div>
                 </div>
                 <!-- AI Liquid Simulation — Strawberry -->
@@ -1919,9 +1971,9 @@
                         <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1qBfRhUjlkirFi6nbx8Z6MN76qHqPR9Lv/preview" aria-label="Play: AI Age Transformation"><span class="vf-poster" style="background-image:url('posters/1qBfRhUjlkirFi6nbx8Z6MN76qHqPR9Lv.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button>
                     </div>
                     <div class="case-info" style="padding: 24px;">
-                        <div class="case-meta"><span class="case-tag">AI Liquid</span></div>
-                        <h3 style="font-size: 1.1rem;">AI Liquid Simulation — Strawberry</h3>
-                        <p>Splash, viscosity and surface tension — generated instead of shot practically.</p>
+                        <div data-t="t178" class="case-meta"><span class="case-tag">AI Liquid</span></div>
+                        <h3 data-t="t179" style="font-size: 1.1rem;">AI Liquid Simulation — Strawberry</h3>
+                        <p data-t="t180">Splash, viscosity and surface tension — generated instead of shot practically.</p>
                     </div>
                 </div>
                 <!-- AI Virtual Set — Green Screen -->
@@ -1930,9 +1982,9 @@
                         <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1H-GriObe2EeDAhMHwqGlzq96N5YWLQLD/preview" aria-label="Play: AI Liquid Simulation — Strawberry"><span class="vf-poster" style="background-image:url('posters/1H-GriObe2EeDAhMHwqGlzq96N5YWLQLD.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button>
                     </div>
                     <div class="case-info" style="padding: 24px;">
-                        <div class="case-meta"><span class="case-tag">AI Virtual Set</span></div>
-                        <h3 style="font-size: 1.1rem;">AI Virtual Set — Green Screen Replacement</h3>
-                        <p>Green screen to a photoreal set, holding light, depth and perspective. Fewer builds.</p>
+                        <div data-t="t181" class="case-meta"><span class="case-tag">AI Virtual Set</span></div>
+                        <h3 data-t="t182" style="font-size: 1.1rem;">AI Virtual Set — Green Screen Replacement</h3>
+                        <p data-t="t183">Green screen to a photoreal set, holding light, depth and perspective. Fewer builds.</p>
                     </div>
                 </div>
                 <!-- Map-Guided Journey -->
@@ -1941,9 +1993,9 @@
                         <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1ne091zjwLsHrzYJoahrGUDH_NwAYbUrt/preview" aria-label="Play: AI Virtual Set — Green Screen Replacement"><span class="vf-poster" style="background-image:url('posters/1ne091zjwLsHrzYJoahrGUDH_NwAYbUrt.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button>
                     </div>
                     <div class="case-info" style="padding: 24px;">
-                        <div class="case-meta"><span class="case-tag">AI Journey</span></div>
-                        <h3 style="font-size: 1.1rem;">Map → Journey Video</h3>
-                        <p>An illustrated route becomes a cinematic aerial flythrough, point by point.</p>
+                        <div data-t="t184" class="case-meta"><span class="case-tag">AI Journey</span></div>
+                        <h3 data-t="t185" style="font-size: 1.1rem;">Map → Journey Video</h3>
+                        <p data-t="t186">An illustrated route becomes a cinematic aerial flythrough, point by point.</p>
                     </div>
                 </div>
                 <!-- Storyboard → Keyframe -->
@@ -1952,9 +2004,9 @@
                         <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1uS8SZyYMdm7NYC0T_Rzt1BW6vNV7XtGU/preview" aria-label="Play: Map → Journey Video"><span class="vf-poster" style="background-image:url('posters/1uS8SZyYMdm7NYC0T_Rzt1BW6vNV7XtGU.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button>
                     </div>
                     <div class="case-info" style="padding: 24px;">
-                        <div class="case-meta"><span class="case-tag">AI Previs</span></div>
-                        <h3 style="font-size: 1.1rem;">Storyboard → Cinematic Keyframe</h3>
-                        <p>Hand-drawn boards with camera notes become photoreal keyframes, true to composition.</p>
+                        <div data-t="t187" class="case-meta"><span class="case-tag">AI Previs</span></div>
+                        <h3 data-t="t188" style="font-size: 1.1rem;">Storyboard → Cinematic Keyframe</h3>
+                        <p data-t="t189">Hand-drawn boards with camera notes become photoreal keyframes, true to composition.</p>
                     </div>
                 </div>
             </div>
@@ -1965,33 +2017,33 @@
     <section id="workflow">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Ch. 05 — Process</div>
-                <h2 class="section-title">Production discipline, <em>built for control.</em></h2>
-                <p class="section-desc">AI doesn’t replace process — it demands a more disciplined one. This is how we go from a loose brief to delivery on locked specs, through each gate: direction, generation, post, review and QC.</p>
+                <div data-t="t190" class="section-tag">Ch. 05 — Process</div>
+                <h2 data-t="t191" class="section-title">Production discipline, <em>built for control.</em></h2>
+                <p data-t="t192" class="section-desc">AI doesn’t replace process — it demands a more disciplined one. This is how we go from a loose brief to delivery on locked specs, through each gate: direction, generation, post, review and QC.</p>
             </div>
 
             <!-- Unified Workflow -->
             <div class="workflow-steps five-gates">
-                <div class="workflow-step"><div class="step-number">01</div><h4>Brief & Proof Target</h4><p>Define the outcome to prove: final content, production alignment, pitch approval or capability test.</p></div>
-                <div class="workflow-step"><div class="step-number">02</div><h4>Visual Development</h4><p>Lock character, product memory, world, camera and visual grammar before scaling.</p></div>
-                <div class="workflow-step"><div class="step-number">03</div><h4>Prototype / Animatic</h4><p>Review story, continuity and direction shot by shot; keep only what passes the gate.</p></div>
-                <div class="workflow-step"><div class="step-number">04</div><h4>Production Route</h4><p>Choose Full AI, Hybrid or Live Production based on quality, risk, legal, timeline and budget.</p></div>
-                <div class="workflow-step"><div class="step-number">05</div><h4>Post, QC & Delivery</h4><p>Edit, composite, color, audio, claims/legal check and export to channel specs.</p></div>
+                <div class="workflow-step"><div class="step-number">01</div><h4 data-t="t193">Brief & Proof Target</h4><p data-t="t194">Define the outcome to prove: final content, production alignment, pitch approval or capability test.</p></div>
+                <div class="workflow-step"><div class="step-number">02</div><h4 data-t="t195">Visual Development</h4><p data-t="t196">Lock character, product memory, world, camera and visual grammar before scaling.</p></div>
+                <div class="workflow-step"><div class="step-number">03</div><h4 data-t="t197">Prototype / Animatic</h4><p data-t="t198">Review story, continuity and direction shot by shot; keep only what passes the gate.</p></div>
+                <div class="workflow-step"><div class="step-number">04</div><h4 data-t="t199">Production Route</h4><p data-t="t200">Choose Full AI, Hybrid or Live Production based on quality, risk, legal, timeline and budget.</p></div>
+                <div class="workflow-step"><div class="step-number">05</div><h4 data-t="t201">Post, QC & Delivery</h4><p data-t="t202">Edit, composite, color, audio, claims/legal check and export to channel specs.</p></div>
             </div>
 
             <!-- 3 Workflow Types Summary -->
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px;">
                 <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
-                    <h4 style="font-size: 0.9rem; color: var(--accent-light); margin-bottom: 8px;">① Key Visual / Storyboard</h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted);">Photorealistic still → retouch → delivery. Timeline: 3–5 days.</p>
+                    <h4 data-t="t203" style="font-size: 0.9rem; color: var(--accent-light); margin-bottom: 8px;">① Key Visual / Storyboard</h4>
+                    <p data-t="t204" style="font-size: 0.78rem; color: var(--text-muted);">Photorealistic still → retouch → delivery. Timeline: 3–5 days.</p>
                 </div>
                 <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
-                    <h4 style="font-size: 0.9rem; color: var(--accent-light); margin-bottom: 8px;">② Full AI Film</h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted);">Character setup → AI video generation → full post. Timeline: 7–10 days.</p>
+                    <h4 data-t="t205" style="font-size: 0.9rem; color: var(--accent-light); margin-bottom: 8px;">② Full AI Film</h4>
+                    <p data-t="t206" style="font-size: 0.78rem; color: var(--text-muted);">Character setup → AI video generation → full post. Timeline: 7–10 days.</p>
                 </div>
                 <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
-                    <h4 style="font-size: 0.9rem; color: var(--accent-light); margin-bottom: 8px;">③ Hybrid Production</h4>
-                    <p style="font-size: 0.78rem; color: var(--text-muted);">Live action + AI composite. Includes a talent reference shoot + AI environments. Quoted by scope.</p>
+                    <h4 data-t="t207" style="font-size: 0.9rem; color: var(--accent-light); margin-bottom: 8px;">③ Hybrid Production</h4>
+                    <p data-t="t208" style="font-size: 0.78rem; color: var(--text-muted);">Live action + AI composite. Includes a talent reference shoot + AI environments. Quoted by scope.</p>
                 </div>
             </div>
 
@@ -2002,110 +2054,110 @@
     <section id="faq">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Ch. 06 — Questions</div>
-                <h2 class="section-title">The questions <em>worth asking.</em></h2>
-                <p class="section-desc">Every shift starts with skepticism. These are the questions agencies and clients always ask — and what we've learned to answer.</p>
+                <div data-t="t209" class="section-tag">Ch. 06 — Questions</div>
+                <h2 data-t="t210" class="section-title">The questions <em>worth asking.</em></h2>
+                <p data-t="t211" class="section-desc">Every shift starts with skepticism. These are the questions agencies and clients always ask — and what we've learned to answer.</p>
             </div>
             <div style="max-width: 800px;">
 
                 <!-- Comparison with traditional -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">How is AI production different from traditional production?</summary>
+                    <summary data-t="t212" style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">How is AI production different from traditional production?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p><strong>Traditional production:</strong> Casting → Location → Crew → Shoot → Post → 3–6 weeks, with budgets of VND 55–200 million for a 30s TVC (Vietnam market).</p>
-                        <p style="margin-top: 8px;"><strong>AI production:</strong> Brief → Character setup → per-shot generation → Post. With the right scope and assets ready, the timeline is typically 7–10 days and can significantly cut logistics costs versus a traditional shoot. Hybrid/live action is still used when the brief needs real talent, a product demo or physical proof.</p>
-                        <p style="margin-top: 8px;"><strong>When to use AI:</strong> concept testing (animatic), social content, key visuals, storyboards. <strong>When you still need to shoot:</strong> broadcast 4K TVC, talent-driven campaign, complex product demo.</p>
-                        <p style="margin-top: 8px;"><a href="https://www.lemonlight.com/blog/ai-video-vs-traditional-video-production-an-honest-comparison/" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Lemonlight: AI Video vs Traditional — An Honest Comparison</a></p>
+                        <p data-t="t213"><strong>Traditional production:</strong> Casting → Location → Crew → Shoot → Post → 3–6 weeks, with budgets of VND 55–200 million for a 30s TVC (Vietnam market).</p>
+                        <p data-t="t214" style="margin-top: 8px;"><strong>AI production:</strong> Brief → Character setup → per-shot generation → Post. With the right scope and assets ready, the timeline is typically 7–10 days and can significantly cut logistics costs versus a traditional shoot. Hybrid/live action is still used when the brief needs real talent, a product demo or physical proof.</p>
+                        <p data-t="t215" style="margin-top: 8px;"><strong>When to use AI:</strong> concept testing (animatic), social content, key visuals, storyboards. <strong>When you still need to shoot:</strong> broadcast 4K TVC, talent-driven campaign, complex product demo.</p>
+                        <p data-t="t216" style="margin-top: 8px;"><a href="https://www.lemonlight.com/blog/ai-video-vs-traditional-video-production-an-honest-comparison/" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Lemonlight: AI Video vs Traditional — An Honest Comparison</a></p>
                     </div>
                 </details>
 
                 <!-- Agency-grade AI commercial architecture -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card); border-color: rgba(108, 92, 231, 0.3);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Why does an AI commercial need per-shot production instead of generating a whole sequence?</summary>
+                    <summary data-t="t217" style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Why does an AI commercial need per-shot production instead of generating a whole sequence?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>Because agencies and clients don’t approve “is the AI impressive” — they approve <strong>casting, product, claim, packshot, legal, lighting and continuity</strong>. Each element can change independently after a round of feedback.</p>
-                        <p style="margin-top: 8px;"><strong>Per-shot production</strong> isolates exactly what needs fixing: shot 3 relights, shot 5 swaps talent, the end-frame adjusts the packshot — approved shots stay intact. That keeps scope, timeline and revision cost easier to control, while protecting what the brand needs the audience to remember: <strong>product, claim, packshot and CTA</strong>.</p>
-                        <p style="margin-top: 8px;"><strong>One-take / multishot generation</strong> is still very useful for concept exploration, social experiments or a locked sequence. But when a project carries many approval rounds and brand accountability, the per-shot workflow is the safer architecture.</p>
-                        <p style="margin-top: 8px;">→ The difference isn’t who is “better at AI,” but whether the workflow is optimized for <strong>creative speed</strong> or for <strong>control and commercial accountability</strong>.</p>
+                        <p data-t="t218">Because agencies and clients don’t approve “is the AI impressive” — they approve <strong>casting, product, claim, packshot, legal, lighting and continuity</strong>. Each element can change independently after a round of feedback.</p>
+                        <p data-t="t219" style="margin-top: 8px;"><strong>Per-shot production</strong> isolates exactly what needs fixing: shot 3 relights, shot 5 swaps talent, the end-frame adjusts the packshot — approved shots stay intact. That keeps scope, timeline and revision cost easier to control, while protecting what the brand needs the audience to remember: <strong>product, claim, packshot and CTA</strong>.</p>
+                        <p data-t="t220" style="margin-top: 8px;"><strong>One-take / multishot generation</strong> is still very useful for concept exploration, social experiments or a locked sequence. But when a project carries many approval rounds and brand accountability, the per-shot workflow is the safer architecture.</p>
+                        <p data-t="t221" style="margin-top: 8px;">→ The difference isn’t who is “better at AI,” but whether the workflow is optimized for <strong>creative speed</strong> or for <strong>control and commercial accountability</strong>.</p>
                     </div>
                 </details>
 
                 <!-- AI limitations -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">What are the current technical limits of AI video?</summary>
+                    <summary data-t="t222" style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">What are the current technical limits of AI video?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>• <strong>Resolution:</strong> native 4K is available on current video models, or via upscale — 1080p remains the cost/quality sweet spot for digital and social; 4K for hero or broadcast carries a surcharge</p>
-                        <p>• <strong>Clip length:</strong> 10–15 seconds is routine, up to ~30s on some models — longer films are still cut from multiple clips, for shot-level control rather than because of the limit</p>
-                        <p>• <strong>Still hard to control:</strong> exact on-screen text, hands and fingers, small fast-moving objects, and the body of thick liquids</p>
-                        <p>• <strong>Randomness:</strong> the same prompt can yield different results — iteration is needed to reach the target quality</p>
-                        <p>• <strong>Content policy:</strong> Some AI platforms restrict content involving children or violence — the team will advise an alternative approach</p>
-                        <p style="margin-top: 8px;"><a href="https://cliptics.com/blog/video-quality-ai-generated-vs-filmed-content" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Cliptics: Video Quality — AI Generated vs Filmed Content</a></p>
+                        <p data-t="t223">• <strong>Resolution:</strong> native 4K is available on current video models, or via upscale — 1080p remains the cost/quality sweet spot for digital and social; 4K for hero or broadcast carries a surcharge</p>
+                        <p data-t="t224">• <strong>Clip length:</strong> 10–15 seconds is routine, up to ~30s on some models — longer films are still cut from multiple clips, for shot-level control rather than because of the limit</p>
+                        <p data-t="t225">• <strong>Still hard to control:</strong> exact on-screen text, hands and fingers, small fast-moving objects, and the body of thick liquids</p>
+                        <p data-t="t226">• <strong>Randomness:</strong> the same prompt can yield different results — iteration is needed to reach the target quality</p>
+                        <p data-t="t227">• <strong>Content policy:</strong> Some AI platforms restrict content involving children or violence — the team will advise an alternative approach</p>
+                        <p data-t="t228" style="margin-top: 8px;"><a href="https://cliptics.com/blog/video-quality-ai-generated-vs-filmed-content" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Cliptics: Video Quality — AI Generated vs Filmed Content</a></p>
                     </div>
                 </details>
 
                 <!-- Face consistency -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Can a character’s face stay consistent throughout?</summary>
+                    <summary data-t="t229" style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Can a character’s face stay consistent throughout?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>Yes — but the quality depends on the input data:</p>
-                        <p style="margin-top: 8px;">• <strong>With a talent reference shoot</strong> (40–80 photos per character) → very high face consistency, little iteration</p>
-                        <p>• <strong>With only reference photos from the agency</strong> → still achievable but needs more iteration</p>
-                        <p style="margin-top: 8px;">This is why we <strong>recommend a talent reference shoot</strong> — it raises quality and provides a talent release for safe publishing.</p>
+                        <p data-t="t230">Yes — but the quality depends on the input data:</p>
+                        <p data-t="t231" style="margin-top: 8px;">• <strong>With a talent reference shoot</strong> (40–80 photos per character) → very high face consistency, little iteration</p>
+                        <p data-t="t232">• <strong>With only reference photos from the agency</strong> → still achievable but needs more iteration</p>
+                        <p data-t="t233" style="margin-top: 8px;">This is why we <strong>recommend a talent reference shoot</strong> — it raises quality and provides a talent release for safe publishing.</p>
                     </div>
                 </details>
 
                 <!-- Image rights + AI law -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Image rights and AI law in Vietnam?</summary>
+                    <summary data-t="t234" style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">Image rights and AI law in Vietnam?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p><strong>Image rights:</strong> an AI character may carry facial features from a reference. To publish safely:</p>
-                        <p>✅ Photoshoot real talent + sign a talent release</p>
-                        <p>✅ Or use a 100% fictional character</p>
-                        <p style="margin-top: 8px;">If the agency supplies the reference photos → the agency is responsible for confirming usage rights.</p>
-                        <p style="margin-top: 12px;"><strong>AI labeling:</strong> under Vietnam’s Artificial Intelligence Law (134/2025/QH15, in force since 01/03/2026), AI-generated content must be labeled on release. AI Studio advises on compliant labeling.</p>
-                        <p style="margin-top: 8px;"><a href="https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-Tri-tue-nhan-tao-2025-134-2025-QH15-637066.aspx" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Vietnam AI Law 134/2025 — Vietnam Legal Library</a></p>
+                        <p data-t="t235"><strong>Image rights:</strong> an AI character may carry facial features from a reference. To publish safely:</p>
+                        <p data-t="t236">✅ Photoshoot real talent + sign a talent release</p>
+                        <p data-t="t237">✅ Or use a 100% fictional character</p>
+                        <p data-t="t238" style="margin-top: 8px;">If the agency supplies the reference photos → the agency is responsible for confirming usage rights.</p>
+                        <p data-t="t239" style="margin-top: 12px;"><strong>AI labeling:</strong> under Vietnam’s Artificial Intelligence Law (134/2025/QH15, in force since 01/03/2026), AI-generated content must be labeled on release. AI Studio advises on compliant labeling.</p>
+                        <p data-t="t240" style="margin-top: 8px;"><a href="https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-Tri-tue-nhan-tao-2025-134-2025-QH15-637066.aspx" target="_blank" style="color: var(--accent-light); font-size: 0.8rem;">📖 Vietnam AI Law 134/2025 — Vietnam Legal Library</a></p>
                     </div>
                 </details>
 
                 <!-- Direction change -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">What if the creative direction changes midway?</summary>
+                    <summary data-t="t241" style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">What if the creative direction changes midway?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>Unlike traditional production (where you can reshoot a single angle), changing the concept in AI means <strong>all footage has to be regenerated from scratch</strong>. Cost and time are equivalent to starting over.</p>
-                        <p style="margin-top: 8px;">→ We recommend <strong>locking the creative direction before generation begins</strong>. Fine-tuning feedback (color, pace, timing) along the way is expected — it doesn’t require regenerating footage.</p>
+                        <p data-t="t242">Unlike traditional production (where you can reshoot a single angle), changing the concept in AI means <strong>all footage has to be regenerated from scratch</strong>. Cost and time are equivalent to starting over.</p>
+                        <p data-t="t243" style="margin-top: 8px;">→ We recommend <strong>locking the creative direction before generation begins</strong>. Fine-tuning feedback (color, pace, timing) along the way is expected — it doesn’t require regenerating footage.</p>
                     </div>
                 </details>
 
                 <!-- AI Animatic -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">What is an AI animatic for? Does it replace the traditional animatic?</summary>
+                    <summary data-t="t244" style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">What is an AI animatic for? Does it replace the traditional animatic?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>It can replace a traditional illustrated animatic when the goal is photoreal concept validation — but it does not replace every form of previs. An AI animatic lets teams test story, performance, camera and production design before committing budget to a shoot; because it looks closer to the intended film, client feedback becomes more specific and decisions become faster.</p>
-                        <p style="margin-top: 8px;">Once the concept is approved → it can move to a real shoot (with clear direction) or be developed further in AI into a social film.</p>
+                        <p data-t="t245">It can replace a traditional illustrated animatic when the goal is photoreal concept validation — but it does not replace every form of previs. An AI animatic lets teams test story, performance, camera and production design before committing budget to a shoot; because it looks closer to the intended film, client feedback becomes more specific and decisions become faster.</p>
+                        <p data-t="t246" style="margin-top: 8px;">Once the concept is approved → it can move to a real shoot (with clear direction) or be developed further in AI into a social film.</p>
                     </div>
                 </details>
 
                 <!-- Photoshoot -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card); border-color: rgba(108, 92, 231, 0.3);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">📸 Why shoot talent references for AI production?</summary>
+                    <summary data-t="t247" style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">📸 Why shoot talent references for AI production?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>A talent reference shoot (40–80 photos per character) delivers:</p>
-                        <p style="margin-top: 8px;">✅ Significantly higher face consistency across shots</p>
-                        <p>✅ A talent release → safe, legally compliant publishing</p>
-                        <p>✅ Fewer revisions → saves time for both sides</p>
-                        <p>✅ Director involvement → more production-grade output</p>
-                        <p style="margin-top: 8px;">Reference-shoot cost: quoted by number of talent. It's an add-on service — not mandatory but <strong>strongly recommended</strong> for projects intended for release.</p>
+                        <p data-t="t248">A talent reference shoot (40–80 photos per character) delivers:</p>
+                        <p data-t="t249" style="margin-top: 8px;">✅ Significantly higher face consistency across shots</p>
+                        <p data-t="t250">✅ A talent release → safe, legally compliant publishing</p>
+                        <p data-t="t251">✅ Fewer revisions → saves time for both sides</p>
+                        <p data-t="t252">✅ Director involvement → more production-grade output</p>
+                        <p data-t="t253" style="margin-top: 8px;">Reference-shoot cost: quoted by number of talent. It's an add-on service — not mandatory but <strong>strongly recommended</strong> for projects intended for release.</p>
                     </div>
                 </details>
 
                 <!-- Timeline -->
                 <details style="border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; background: var(--bg-card);">
-                    <summary style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">How long is the timeline from brief to delivery?</summary>
+                    <summary data-t="t254" style="padding: 20px 24px; cursor: pointer; font-weight: 600; font-size: 0.9rem; list-style: none;">How long is the timeline from brief to delivery?</summary>
                     <div style="padding: 0 24px 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p>• <strong>AI Animatic / Social Film:</strong> typically 7–10 working days with a locked scope</p>
-                        <p>• <strong>Key Visual:</strong> 3–5 days</p>
-                        <p>• <strong>Storyboard:</strong> 3–5 days depending on frame count</p>
-                        <p style="margin-top: 8px;">The timeline depends on how fast feedback comes from the agency/client. Late feedback → the delivery date shifts accordingly. Rush (under 5 days) → negotiated separately.</p>
+                        <p data-t="t255">• <strong>AI Animatic / Social Film:</strong> typically 7–10 working days with a locked scope</p>
+                        <p data-t="t256">• <strong>Key Visual:</strong> 3–5 days</p>
+                        <p data-t="t257">• <strong>Storyboard:</strong> 3–5 days depending on frame count</p>
+                        <p data-t="t258" style="margin-top: 8px;">The timeline depends on how fast feedback comes from the agency/client. Late feedback → the delivery date shifts accordingly. Rush (under 5 days) → negotiated separately.</p>
                     </div>
                 </details>
 
@@ -2117,19 +2169,19 @@
     <section id="pricing">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Ch. 07 — The Exchange</div>
-                <h2 class="section-title">The value <em>of the work.</em></h2>
-                <p class="section-desc">Each package is a commitment — creative direction, AI generation, post-production, feedback. No hidden fees. No "to be discussed." This is the 2026 rate card.</p>
+                <div data-t="t259" class="section-tag">Ch. 07 — The Exchange</div>
+                <h2 data-t="t260" class="section-title">The value <em>of the work.</em></h2>
+                <p data-t="t261" class="section-desc">Each package is a commitment — creative direction, AI generation, post-production, feedback. No hidden fees. No "to be discussed." This is the 2026 rate card.</p>
             </div>
             <div id="ratecard-gate" style="text-align: center; padding: 48px 0;">
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">The rate card is shared with partners interested in AI Studio services.</p>
-                <button onclick="document.getElementById('ratecard-gate').style.display='none'; document.getElementById('ratecard-content').style.display='block';" style="padding: 14px 32px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; box-shadow: 0 8px 32px rgba(108,92,231,0.3); transition: all 0.6s cubic-bezier(0.16,1,0.3,1);">
+                <p data-t="t262" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">The rate card is shared with partners interested in AI Studio services.</p>
+                <button data-t="t263" onclick="document.getElementById('ratecard-gate').style.display='none'; document.getElementById('ratecard-content').style.display='block';" style="padding: 14px 32px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; box-shadow: 0 8px 32px rgba(108,92,231,0.3); transition: all 0.6s cubic-bezier(0.16,1,0.3,1);">
                     View the rate card →
                 </button>
             </div>
             <div id="ratecard-content" style="display: none;">
                 <div style="background: rgba(108,92,231,0.06); border: 1px solid rgba(108,92,231,0.15); border-radius: 10px; padding: 12px 20px; margin-bottom: 24px; text-align: center;">
-                    <p style="color: var(--accent-light); font-size: 0.8rem;">📋 Confidential document · Please do not share externally</p>
+                    <p data-t="t264" style="color: var(--accent-light); font-size: 0.8rem;">📋 Confidential document · Please do not share externally</p>
                 </div>
                 <div class="rate-card">
                     <table class="rate-table">
@@ -2157,33 +2209,33 @@
                         </tbody>
                     </table>
                     <div class="rate-card-footer">
-                        <p style="font-size: 0.95rem; font-weight: 600; color: var(--accent-light); margin-bottom: 12px;">✅ Included in the price</p>
-                        <p>• Creative direction & guidance on the right approach</p>
-                        <p>• AI generation (model selection, prompting, iteration)</p>
-                        <p>• Complete post-production (edit, color, composite, SFX, music)</p>
-                        <p>• Review rounds and revision scope agreed in the proposal</p>
-                        <p>• Technical fixes within scope (morphing, artifacts, quality issues)</p>
-                        <p>• Fine-tuning (color, pace, timing, minor adjustments)</p>
-                        <p>• File delivery to the required specs (format, resolution, codec)</p>
+                        <p data-t="t265" style="font-size: 0.95rem; font-weight: 600; color: var(--accent-light); margin-bottom: 12px;">✅ Included in the price</p>
+                        <p data-t="t266">• Creative direction & guidance on the right approach</p>
+                        <p data-t="t267">• AI generation (model selection, prompting, iteration)</p>
+                        <p data-t="t268">• Complete post-production (edit, color, composite, SFX, music)</p>
+                        <p data-t="t269">• Review rounds and revision scope agreed in the proposal</p>
+                        <p data-t="t270">• Technical fixes within scope (morphing, artifacts, quality issues)</p>
+                        <p data-t="t271">• Fine-tuning (color, pace, timing, minor adjustments)</p>
+                        <p data-t="t272">• File delivery to the required specs (format, resolution, codec)</p>
 
-                        <p style="font-size: 0.95rem; font-weight: 600; color: var(--accent-light); margin-top: 24px; margin-bottom: 12px;">⏱ Timeline</p>
-                        <p>• <strong>Standard scope:</strong> typically 7–10 working days, once the brief/direction and input assets are locked</p>
-                        <p>• <strong>Rush (under 5 days):</strong> negotiated separately by scope</p>
-                        <p>• Late client feedback → the delivery date shifts accordingly</p>
+                        <p data-t="t273" style="font-size: 0.95rem; font-weight: 600; color: var(--accent-light); margin-top: 24px; margin-bottom: 12px;">⏱ Timeline</p>
+                        <p data-t="t274">• <strong>Standard scope:</strong> typically 7–10 working days, once the brief/direction and input assets are locked</p>
+                        <p data-t="t275">• <strong>Rush (under 5 days):</strong> negotiated separately by scope</p>
+                        <p data-t="t276">• Late client feedback → the delivery date shifts accordingly</p>
 
-                        <p style="font-size: 0.95rem; font-weight: 600; color: var(--accent-light); margin-top: 24px; margin-bottom: 12px;">📋 Additional quote conditions</p>
-                        <p>• <strong>Creative direction change</strong> after the concept is approved → charged at 50–70% of the base price</p>
-                        <p>• <strong>Additional scenes / content</strong> beyond the original brief → quoted per scene</p>
-                        <p>• <strong>Character / setting change</strong> after generation → $300–500/scene</p>
-                        <p>• <strong>Edits after release / sign-off</strong> → quoted separately</p>
-                        <p>• <strong>Additional version</strong> (different voiceover, different edit on the same footage) → $300/version</p>
+                        <p data-t="t277" style="font-size: 0.95rem; font-weight: 600; color: var(--accent-light); margin-top: 24px; margin-bottom: 12px;">📋 Additional quote conditions</p>
+                        <p data-t="t278">• <strong>Creative direction change</strong> after the concept is approved → charged at 50–70% of the base price</p>
+                        <p data-t="t279">• <strong>Additional scenes / content</strong> beyond the original brief → quoted per scene</p>
+                        <p data-t="t280">• <strong>Character / setting change</strong> after generation → $300–500/scene</p>
+                        <p data-t="t281">• <strong>Edits after release / sign-off</strong> → quoted separately</p>
+                        <p data-t="t282">• <strong>Additional version</strong> (different voiceover, different edit on the same footage) → $300/version</p>
 
-                        <p style="font-size: 0.95rem; font-weight: 600; color: var(--accent-light); margin-top: 24px; margin-bottom: 12px;">🤝 Commitments</p>
-                        <p>• Output meets release standards before handover</p>
-                        <p>• Project confidentiality — no sharing of footage or concepts externally</p>
-                        <p>• Free consultation on the right approach before locking scope</p>
+                        <p data-t="t283" style="font-size: 0.95rem; font-weight: 600; color: var(--accent-light); margin-top: 24px; margin-bottom: 12px;">🤝 Commitments</p>
+                        <p data-t="t284">• Output meets release standards before handover</p>
+                        <p data-t="t285">• Project confidentiality — no sharing of footage or concepts externally</p>
+                        <p data-t="t286">• Free consultation on the right approach before locking scope</p>
 
-                        <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.78rem;">Reference rate: $1 = 26,000 VND · Prices exclude VAT</p>
+                        <p data-t="t287" style="margin-top: 20px; color: var(--text-muted); font-size: 0.78rem;">Reference rate: $1 = 26,000 VND · Prices exclude VAT</p>
                     </div>
                 </div>
             </div>
@@ -2194,35 +2246,35 @@
     <section id="about">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">Ch. 08 — The Makers</div>
-                <h2 class="section-title">The people <em>behind it.</em></h2>
-                <p class="section-desc">AI Studio wasn’t born in a vacuum — it was built by two people with 10+ years in commercial production. We came to AI not for the trend, but for what it lets us do better.</p>
-                <p class="section-quote">"All those moments will be lost in time, like tears in rain."<br>— Roy Batty, Blade Runner</p>
+                <div data-t="t288" class="section-tag">Ch. 08 — The Makers</div>
+                <h2 data-t="t289" class="section-title">The people <em>behind it.</em></h2>
+                <p data-t="t290" class="section-desc">AI Studio wasn’t born in a vacuum — it was built by two people with 10+ years in commercial production. We came to AI not for the trend, but for what it lets us do better.</p>
+                <p data-t="t291" class="section-quote">"All those moments will be lost in time, like tears in rain."<br>— Roy Batty, Blade Runner</p>
             </div>
 
             <!-- Vision -->
             <div class="tools-section" style="margin-bottom: 40px; padding: 40px 48px;">
-                <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; margin-bottom: 16px;">🔭 Vision</h3>
-                <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 12px;">We believe AI doesn’t replace traditional production — it opens a new creative layer. Ideas can be seen and validated earlier, before a large budget is committed — and long-standing limits of logistics and production scale gain new solutions.</p>
-                <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;">AI Studio builds a bridge between traditional production craft and AI technology — pairing hands-on production experience with the latest tools to create output neither world could reach alone.</p>
+                <h3 data-t="t292" style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; margin-bottom: 16px;">🔭 Vision</h3>
+                <p data-t="t293" style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 12px;">We believe AI doesn’t replace traditional production — it opens a new creative layer. Ideas can be seen and validated earlier, before a large budget is committed — and long-standing limits of logistics and production scale gain new solutions.</p>
+                <p data-t="t294" style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;">AI Studio builds a bridge between traditional production craft and AI technology — pairing hands-on production experience with the latest tools to create output neither world could reach alone.</p>
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;">
                 <!-- Nam -->
                 <div class="service-card" style="padding: 32px;">
-                    <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px;">Nam Trịnh</h3>
-                    <p style="color: var(--accent-light); font-size: 0.85rem; margin-bottom: 16px;">Co-Founder · Executive Producer</p>
-                    <p style="font-size: 0.85rem; margin-bottom: 16px;">Founder of See Production — a commercial production house in Ho Chi Minh City. Leads the AI-first production pipeline, from model research and proprietary tool development to creative direction and delivery.</p>
-                    <div style="display: flex; gap: 12px; margin-top: 16px;">
+                    <h3 data-t="t295" style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px;">Nam Trịnh</h3>
+                    <p data-t="t296" style="color: var(--accent-light); font-size: 0.85rem; margin-bottom: 16px;">Co-Founder · Executive Producer</p>
+                    <p data-t="t297" style="font-size: 0.85rem; margin-bottom: 16px;">Founder of See Production — a commercial production house in Ho Chi Minh City. Leads the AI-first production pipeline, from model research and proprietary tool development to creative direction and delivery.</p>
+                    <div data-t="t298" style="display: flex; gap: 12px; margin-top: 16px;">
                         <a href="https://www.youtube.com/@seegroup" target="_blank" style="color: var(--accent-light); font-size: 0.8rem; text-decoration: none; padding: 6px 12px; border: 1px solid var(--border); border-radius: 8px;">📺 See Production</a>
                     </div>
                 </div>
                 <!-- Phước -->
                 <div class="service-card" style="padding: 32px;">
-                    <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px;">Phước Lê</h3>
-                    <p style="color: var(--accent-light); font-size: 0.85rem; margin-bottom: 16px;">Co-Founder · Post-Production Director</p>
-                    <p style="font-size: 0.85rem; margin-bottom: 16px;">Founder of 3DAU6TAY Post House — specializing in post-production, VFX and CGI. A portfolio of 300+ projects. The technical backbone for hybrid AI + live-action production.</p>
-                    <div style="display: flex; gap: 12px; margin-top: 16px;">
+                    <h3 data-t="t299" style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px;">Phước Lê</h3>
+                    <p data-t="t300" style="color: var(--accent-light); font-size: 0.85rem; margin-bottom: 16px;">Co-Founder · Post-Production Director</p>
+                    <p data-t="t301" style="font-size: 0.85rem; margin-bottom: 16px;">Founder of 3DAU6TAY Post House — specializing in post-production, VFX and CGI. A portfolio of 300+ projects. The technical backbone for hybrid AI + live-action production.</p>
+                    <div data-t="t302" style="display: flex; gap: 12px; margin-top: 16px;">
                         <a href="https://vimeo.com/3dau6tay" target="_blank" style="color: var(--accent-light); font-size: 0.8rem; text-decoration: none; padding: 6px 12px; border: 1px solid var(--border); border-radius: 8px;">🎬 3D6T Post House</a>
                     </div>
                 </div>
@@ -2233,14 +2285,14 @@
     <!-- Contact — ENDING -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="chapter-marker" style="justify-content:center;margin-bottom:32px;">
+            <div data-t="t303" class="chapter-marker" style="justify-content:center;margin-bottom:32px;">
                 <span class="chapter-line"></span>
                 <span class="chapter-num">CH. 09 / ENDING</span>
                 <span class="chapter-line"></span>
             </div>
-            <h2>The next story<br><span style="font-style:italic;color:var(--orange-haze);">is yours.</span></h2>
-            <p>Send a complete brief. For a clearly scoped concept, we can propose an approach — or a directional prototype — within about 48 hours. Scope, timeline and cost are confirmed before production.</p>
-            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
+            <h2 data-t="t304">The next story<br><span style="font-style:italic;color:var(--orange-haze);">is yours.</span></h2>
+            <p data-t="t305">Send a complete brief. For a clearly scoped concept, we can propose an approach — or a directional prototype — within about 48 hours. Scope, timeline and cost are confirmed before production.</p>
+            <div data-t="t306" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
                 <a href="tel:0985734566" class="contact-btn" style="background: var(--bg-card); border: 1px solid var(--border); box-shadow: none;">
                     📞 0985 734 566
                 </a>
@@ -2248,20 +2300,20 @@
                     ✉️ namth@seegroup.vn
                 </a>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">Nam Trịnh — Co-Founder, AI Studio</p>
+            <p data-t="t307" style="color: var(--text-muted); font-size: 0.85rem;">Nam Trịnh — Co-Founder, AI Studio</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2026 AI Studio. All rights reserved.</p>
+            <p data-t="t308">© 2026 AI Studio. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Video lightbox -->
     <div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-label="Video player" aria-hidden="true">
-        <button type="button" class="video-modal-close" aria-label="Close video">&times;</button>
+        <button data-t="t309" type="button" class="video-modal-close" aria-label="Close video">&times;</button>
         <div class="video-modal-inner"></div>
     </div>
 
@@ -2348,6 +2400,43 @@
                 });
             }, { once: true });
         });
+    </script>
+
+    <script>
+    /* i18n: đổi ngôn ngữ tại chỗ bằng data-t + i18n/<lang>.json */
+    (function(){
+        const KEY='aistudio-lang';
+        const cache={};
+        const btns=[...document.querySelectorAll('.lang-switch button')];
+        const originals=new Map();
+        document.querySelectorAll('[data-t]').forEach(el=>originals.set(el.dataset.t, el.innerHTML));
+
+        async function dict(lang){
+            if(lang==='en') return null;
+            if(cache[lang]) return cache[lang];
+            const r=await fetch('i18n/'+lang+'.json',{cache:'force-cache'});
+            if(!r.ok) throw new Error('i18n '+lang+' '+r.status);
+            return cache[lang]=await r.json();
+        }
+        async function apply(lang){
+            let d=null;
+            try { d=await dict(lang); }
+            catch(e){ console.warn(e); lang='en'; }
+            document.documentElement.setAttribute('lang', lang);
+            document.querySelectorAll('[data-t]').forEach(el=>{
+                const k=el.dataset.t;
+                const v = d ? d[k] : originals.get(k);
+                if(v!==undefined && v!==null) el.innerHTML=v;
+            });
+            btns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.lang===lang)));
+            try{ localStorage.setItem(KEY,lang); }catch(e){}
+        }
+        btns.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.lang)));
+        let saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
+        if(!saved){ const n=(navigator.language||'en').toLowerCase();
+            saved = n.startsWith('vi') ? 'vi' : (n.startsWith('zh') ? 'zh' : 'en'); }
+        if(saved && saved!=='en') apply(saved); else apply('en');
+    })();
     </script>
 </body>
 </html>
