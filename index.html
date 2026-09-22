@@ -1341,6 +1341,128 @@
         /* bịt khoảng đen chết giữa About và Contact */
         #about  { padding-bottom:72px; }
         #contact{ padding-top:88px; }
+    
+        /* =========================================================
+           LIGHT THEME — Apple UI language (2026-09-22)
+           Nền sáng, chữ đậm rõ, một màu nhấn, bo góc lớn, bóng mềm.
+           Ghi đè token cũ; không đụng cấu trúc DOM.
+           ========================================================= */
+        :root {
+            --bg-primary:#ffffff;
+            --bg-secondary:#f5f5f7;      /* xám Apple */
+            --bg-card:#ffffff;
+            --bg-card-elev:#ffffff;
+
+            --text-primary:#1d1d1f;      /* gần đen Apple */
+            --text-secondary:#424245;
+            --text-muted:#6e6e73;
+
+            --accent:#c2521a;            /* cam thương hiệu, đậm đủ để đạt tương phản trên nền trắng */
+            --accent-light:#b8541f;
+            --accent-glow:rgba(194,82,26,.10);
+
+            --border:rgba(0,0,0,.09);
+            --border-strong:rgba(0,0,0,.14);
+            --radius:18px;
+
+            --font-ui:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;
+            --font-mono:ui-monospace,'SF Mono','IBM Plex Mono',Menlo,monospace;
+        }
+
+        html, body { background:#ffffff; color:var(--text-primary); }
+        body { font-family:var(--font-ui); font-size:17px; line-height:1.55;
+               -webkit-font-smoothing:antialiased; letter-spacing:-.003em; }
+
+        h1,h2,h3,h4,h5, .section-title, .logo, .stat-number {
+            font-family:var(--font-ui); color:var(--text-primary);
+            letter-spacing:-.022em; font-weight:700;
+        }
+        h1 { font-weight:700; letter-spacing:-.035em; }
+        p, li, dd { color:var(--text-secondary); }
+
+        .section-tag, .case-kicker, .case-tag, .chapter-num, .chapter-no,
+        .compare-flow, .ct-no, .service-icon, .work-index span, .media-status-note, .stat-label {
+            font-family:var(--font-mono); color:var(--text-muted);
+        }
+        .chapter-no, .ct-no, .work-index span, .service-icon { color:var(--accent); }
+
+        /* nhịp nền xen kẽ kiểu Apple: trắng ↔ xám nhạt */
+        #services, #products, #faq, #about { background:var(--bg-secondary); }
+        #work, #capabilities, #workflow, #pricing, #contact, .hero { background:#ffffff; }
+        section + section { border-top:0; }
+
+        /* thẻ: trắng, bo lớn, bóng rất mềm — không viền nặng */
+        .service-card, .product-card, .case-card, details, .stat, .tool-card, .team-card {
+            background:#ffffff; border:1px solid var(--border);
+            border-radius:var(--radius); box-shadow:0 1px 2px rgba(0,0,0,.04);
+        }
+        .service-card::before, .product-card::before, .team-card::before { display:none; }
+        #capabilities .case-card, .comparison-theatre {
+            background:transparent; border:0; border-top:1px solid var(--border); box-shadow:none;
+        }
+
+        /* khung media giữ nền đen — video sáng trên nền trắng như tile sản phẩm */
+        .media-frame, .case-video { background:#000; border:0; border-radius:var(--radius);
+            box-shadow:0 4px 20px rgba(0,0,0,.08); overflow:hidden; }
+
+        /* nav kính mờ sáng */
+        nav { background:rgba(255,255,255,.72); backdrop-filter:saturate(180%) blur(20px);
+              border-bottom:1px solid var(--border); }
+        nav a { color:var(--text-secondary); }
+        nav a:hover { color:var(--text-primary); }
+        .logo { color:var(--text-primary) !important; }
+
+        /* nút kiểu Apple: bo tròn hoàn toàn */
+        .cta-primary { background:var(--accent) !important; color:#fff !important;
+                       border-radius:980px; padding:12px 24px; font-weight:500; }
+        .cta-primary:hover { filter:brightness(1.08); }
+        .cta-secondary { color:var(--accent); border:1px solid var(--border-strong);
+                         border-radius:980px; padding:12px 24px; }
+
+        .hero-badge { background:var(--bg-secondary); border:1px solid var(--border);
+                      color:var(--text-secondary); border-radius:980px; }
+
+        .work-index { border-color:var(--border-strong); }
+        .work-index a { color:var(--text-secondary); border-right-color:var(--border); }
+        .work-index a:hover { background:rgba(0,0,0,.03); color:var(--text-primary); }
+
+        details { background:#fff; }
+        details summary { color:var(--text-primary); }
+
+        .vf-play { background:rgba(255,255,255,.85); border-color:rgba(255,255,255,.9); }
+        .vf-play::before { border-left-color:#1d1d1f; }
+
+        /* bỏ mọi tàn dư nền tối */
+        .bg-grid,.bg-orb,.light-streams,.stream,.scanlines,#bokeh-canvas,.fog-layer { display:none !important; }
+    
+        /* sửa sau lượt render đầu */
+        .hero h1 em { color:var(--accent) !important; font-style:italic; opacity:1; }
+        .stat { background:transparent !important; border:0 !important; box-shadow:none !important;
+                border-left:2px solid var(--border-strong) !important; padding-left:14px; border-radius:0 !important; }
+        .cta-secondary { color:var(--accent) !important; background:transparent !important; }
+        .hero-badge span, .hero-badge { color:var(--text-secondary) !important; }
+        .work-index a { color:var(--text-secondary) !important; }
+        .media-status-note { color:var(--text-muted); }
+        ::selection { background:rgba(194,82,26,.16); }
+    
+        /* vòng 2: nâng tương phản các nhãn phụ */
+        .service-price, .product-status, .step-number, .case-tag,
+        .chapter-num, .chapter-no, .ct-no, .work-index span { color:var(--accent) !important; }
+        .service-price, .product-status { opacity:1 !important; }
+        a { color:var(--accent); }
+        a:hover { color:#8f3f13; }
+        .product-status { border:1px solid rgba(194,82,26,.28); border-radius:980px;
+                          padding:3px 10px; display:inline-block; background:rgba(194,82,26,.06); }
+        .step-number { font-weight:700; }
+        .media-status-note, .stat-label, .section-tag { color:#5a5a5f !important; }
+    
+        /* vòng 3: nốt 4 chỗ còn thấp */
+        #ratecard-gate button, button.cta-primary, .gate-btn, [id*="ratecard"] button {
+            background:var(--accent) !important; color:#fff !important;
+            border:0; border-radius:980px; padding:12px 26px; font-weight:500; cursor:pointer;
+        }
+        .contact-btn { color:#8f3f13 !important; }
+        #contact h2 span, .gradient-text, .holo { color:#8f3f13 !important; }
     </style>
 </head>
 <body>
@@ -1473,10 +1595,10 @@
             <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border);">
                 <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 20px;">Trusted by</p>
                 <div style="display: flex; align-items: center; gap: 32px; flex-wrap: wrap;">
-                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: rgba(255,255,255,0.4);">SAMSUNG</span>
-                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: rgba(255,255,255,0.4);">UNILEVER</span>
-                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: rgba(255,255,255,0.4);">ABBOTT</span>
-                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: rgba(255,255,255,0.4);">PUBLICIS</span>
+                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">SAMSUNG</span>
+                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">UNILEVER</span>
+                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">ABBOTT</span>
+                    <span style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 3px; color: var(--text-muted);">PUBLICIS</span>
                 </div>
             </div>
         </div>
