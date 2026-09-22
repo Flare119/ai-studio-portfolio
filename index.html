@@ -1139,7 +1139,7 @@
         .social-reel { width:100%; max-width:340px; justify-self:center; }
         .social-copy .lead-copy { color:var(--text-primary); font-size:1.02rem; margin:20px 0 12px; }
         .social-copy > p:not(.lead-copy) { color:var(--text-muted); margin-bottom:24px; }
-        .comparison-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; }
+        .comparison-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; }
         .comparison-theatre { padding-top:22px; border-top:1px solid var(--border-strong); }
         .comparison-theatre h4 { margin-bottom:20px; }
         .comparison-theatre .media-portrait { width:min(100%,360px); margin-inline:auto; }
@@ -1156,16 +1156,16 @@
         .prototype-tile p { color:var(--text-muted); margin-top:16px; }
         .growth-tile { grid-column:span 7; }
         .teacher-tile { grid-column:span 5; display:flex; flex-direction:column; gap:20px; }
-        .larue-tile { grid-column:2 / span 10; display:grid; grid-template-columns:.65fr 1.35fr; gap:36px; align-items:center; }
         .dual-landscape { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
         @media(max-width:1100px){
             .campaign-rail { grid-template-columns:1fr; }
             .campaign-copy { position:static; max-width:680px; }
             .portrait-rail { grid-template-columns:repeat(4,220px); }
-            .comparison-grid { grid-template-columns:1fr; gap:64px; }
-            .growth-tile,.teacher-tile,.larue-tile { grid-column:1 / -1; }
+            .comparison-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px; }
+            .growth-tile,.teacher-tile { grid-column:1 / -1; }
         }
         @media(max-width:760px){
+            .comparison-grid { grid-template-columns:1fr; gap:56px; }
             .work-index { grid-template-columns:repeat(2,1fr); margin-bottom:72px; }
             .work-index a:nth-child(2) { border-right:0; }
             .work-index a:nth-child(-n+2) { border-bottom:1px solid var(--border); }
@@ -1193,8 +1193,7 @@
             .landscape-strip { grid-template-columns:1fr; }
             .prototype-mosaic { display:block; }
             .prototype-tile { margin-top:18px; padding:20px 0; }
-            .larue-tile { display:flex; flex-direction:column; align-items:stretch; }
-            .dual-landscape { grid-template-columns:1fr; }
+                        .dual-landscape { grid-template-columns:1fr; }
         }
         /* Video facade — centered play button, lazy Drive load */
         .video-facade { position:absolute; inset:0; width:100%; height:100%; margin:0; padding:0; border:0; cursor:pointer; display:grid; place-items:center; background:#000; overflow:hidden; }
@@ -1516,6 +1515,13 @@
                         <div class="compare-flow"><span>AI DEVELOPMENT</span><i>→</i><span>PRODUCTION</span></div>
                         <p>AI tests performance, action, identity consistency and visual direction before production.</p>
                     </article>
+                    <article class="comparison-theatre">
+                        <div class="case-kicker">Led to Production · AI Animatic</div>
+                        <h4>Larue Biab Launch</h4>
+                        <div class="media-frame media-portrait"><button type="button" class="video-facade" data-video="media/larue-animatic-to-film.mp4" aria-label="Play: Larue Biab Launch"><span class="vf-poster" style="background-image:url('posters/larue-animatic-to-film.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
+                        <div class="compare-flow"><span>AI ANIMATIC</span><i>→</i><span>PRODUCTION</span></div>
+                        <p>The animatic locks the extreme slow-motion feel, set pieces and the golden cheers payoff before the shoot.</p>
+                    </article>
                 </div>
             </div>
 
@@ -1551,11 +1557,6 @@
                     <article class="prototype-tile teacher-tile">
                         <div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/14Ud_g3tco8z_QJgs9KmD1kUT7QG8rxsR/preview" aria-label="Play: PediaSure Growth"><span class="vf-poster" style="background-image:url('posters/14Ud_g3tco8z_QJgs9KmD1kUT7QG8rxsR.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div>
                         <div><div class="case-kicker">Decision Prototype · Character / Camera Control</div><h4>Nescafé Art Teacher</h4><p>Documentary-handheld language, character continuity and product sequence locked before production planning.</p></div>
-                    </article>
-                    <article class="prototype-tile larue-tile">
-                        <div><div class="case-kicker">Decision Prototype · Animatic → Production</div><h4>Larue Biab Launch</h4><p>The AI animatic locked the extreme slow-motion feel, set pieces and golden cheers payoff — then the campaign was shot for real off that board. Same beats, same endcard, top and bottom.</p></div>
-                        <div class="media-frame media-portrait"><video controls preload="none" playsinline poster="posters/larue-animatic-to-film.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" aria-label="Larue Biab Launch — AI animatic versus final film"><source src="media/larue-animatic-to-film.mp4" type="video/mp4"></video></div>
-                        <div class="media-status-note">Top: final film · Client Larue · Agency Publicis · Production May Production — Bottom: our AI animatic</div>
                     </article>
                 </div>
             </div>
@@ -2039,12 +2040,20 @@
                 inner.style.setProperty('--vm-ratio', ratio);
                 modal.setAttribute('aria-label', label || 'Video player');
                 modal.classList.toggle('is-drive', /drive\.google\.com/.test(src));
-                const iframe = document.createElement('iframe');
-                iframe.src = src;
-                iframe.allow = 'autoplay; fullscreen';
-                iframe.allowFullscreen = true;
-                iframe.title = label || 'Video';
-                inner.replaceChildren(iframe);
+                if (/\.(mp4|webm)(\?|$)/i.test(src)) {          // self-hosted file
+                    const vid = document.createElement('video');
+                    vid.src = src; vid.controls = true; vid.autoplay = true;
+                    vid.playsInline = true; vid.setAttribute('title', label || 'Video');
+                    vid.style.cssText = 'width:100%;height:100%;display:block;background:#000';
+                    inner.replaceChildren(vid);
+                } else {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = src;
+                    iframe.allow = 'autoplay; fullscreen';
+                    iframe.allowFullscreen = true;
+                    iframe.title = label || 'Video';
+                    inner.replaceChildren(iframe);
+                }
                 setInert(true);                       // isolate + trap focus inside the dialog
                 modal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
@@ -2061,7 +2070,7 @@
             }
             document.querySelectorAll('.video-facade').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const src = btn.dataset.embed;
+                    const src = btn.dataset.embed || btn.dataset.video;
                     const frame = btn.closest('.media-frame, .case-video');
                     if (!src || !frame) return;
                     const r = frame.getBoundingClientRect();
