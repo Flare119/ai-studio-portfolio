@@ -2442,7 +2442,7 @@
     <script>
     /* i18n: đổi ngôn ngữ tại chỗ bằng data-t + i18n/<lang>.json */
     (function(){
-        const KEY='aistudio-lang';
+        const KEY='aistudio-lang-choice'; /* chỉ lưu khi người xem tự bấm; mặc định EN */
         const cache={};
         const btns=[...document.querySelectorAll('.lang-switch button')];
         const originals=new Map();
@@ -2466,12 +2466,9 @@
                 if(v!==undefined && v!==null) el.innerHTML=v;
             });
             btns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.lang===lang)));
-            try{ localStorage.setItem(KEY,lang); }catch(e){}
         }
-        btns.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.lang)));
+        btns.forEach(b=>b.addEventListener('click',()=>{ try{ localStorage.setItem(KEY,b.dataset.lang); }catch(e){} apply(b.dataset.lang); }));
         let saved=null; try{ saved=localStorage.getItem(KEY); }catch(e){}
-        if(!saved){ const n=(navigator.language||'en').toLowerCase();
-            saved = n.startsWith('vi') ? 'vi' : (n.startsWith('zh') ? 'zh' : 'en'); }
         if(saved && saved!=='en') apply(saved); else apply('en');
     })();
     </script>
