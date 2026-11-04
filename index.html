@@ -1139,6 +1139,10 @@
         .social-reel { width:100%; max-width:340px; justify-self:center; }
         .social-copy .lead-copy { color:var(--text-primary); font-size:1.02rem; margin:20px 0 12px; }
         .social-copy > p:not(.lead-copy) { color:var(--text-muted); margin-bottom:24px; }
+        .wh-stage { border-top:0; }
+        .wh-stage .social-reel { order:2; }
+        .wh-stage .wh-pair { max-width:560px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+        .wh-pair figcaption { margin-top:8px; font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.08em; color:var(--text-muted); }
         .comparison-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px; }
         .comparison-theatre { padding-top:26px; border-top:1px solid var(--border); }
         .ct-head { display:flex; align-items:baseline; gap:13px; margin-bottom:24px; }
@@ -1191,6 +1195,8 @@
             .compact-campaign .portrait-rail figure { min-width:150px; }
             .social-stage { grid-template-columns:1fr; padding:52px 0; }
             .social-reel { max-width:300px; }
+            .wh-stage .social-reel { order:0; }
+            .wh-stage .wh-pair { max-width:100%; gap:10px; }
             .prototype-copy { grid-template-columns:1fr; gap:14px; }
             .landscape-strip { grid-template-columns:1fr; }
             .prototype-mosaic { display:block; }
@@ -1552,6 +1558,16 @@
         h3 { line-height:1.18 !important; }
         h4 { line-height:1.25 !important; }
         h2 + p, h3 + p, h4 + p, .ct-head + p { margin-top:12px; }
+        /* Work tabs (04/11/2026): mỗi lần hiện 1 chương */
+        .work-index { grid-template-columns:repeat(6,1fr); margin-bottom:64px; scroll-margin-top:90px; }
+        .work-index a { cursor:pointer; }
+        .work-index a[aria-selected="true"] { color:var(--text-primary); background:rgba(232,122,62,.08); box-shadow:inset 0 -2px 0 var(--accent); }
+        .work-v3.is-tabbed .work-chapter { padding-top:0; margin-bottom:0; }
+        .work-chapter[hidden] { display:none !important; }
+        @media (max-width:900px){
+            .work-index { display:flex; overflow-x:auto; scroll-snap-type:x proximity; margin-bottom:48px; }
+            .work-index a { flex:0 0 auto; border-bottom:0 !important; border-right:1px solid var(--border) !important; scroll-snap-align:start; }
+        }
     </style>
 </head>
 <body>
@@ -1649,9 +1665,7 @@
             <li data-t="t002"><a href="#work">Work</a></li>
             <li data-t="t003"><a href="#services">Solutions</a></li>
             <li data-t="t004"><a href="#products">Studio Products</a></li>
-            <li data-t="t005"><a href="#capabilities">Capabilities</a></li>
             <li data-t="t006"><a href="#workflow">Process</a></li>
-            <li data-t="t007"><a href="#about">About</a></li>
             <li data-t="t008"><a href="#contact">Contact</a></li>
         </ul>
     <div class="lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="vi" aria-pressed="false">VI</button><button type="button" data-lang="zh" aria-pressed="false">中文</button></div></nav>
@@ -1719,12 +1733,13 @@
                 <p data-t="t041" class="section-desc">A portfolio isn’t a file count. It shows where AI was used, through which workflow, and where the output ended up.</p>
             </div>
 
-            <nav class="work-index" aria-label="Portfolio proof index">
-                <a data-t="t042" href="#published-work"><span>01</span>Published / On-Air</a>
-                <a href="#production-work"><span>02</span>AI → Production</a>
-                <a href="#prototype-work"><span>03</span>Decision Prototypes</a>
-                <a href="#corporate-work"><span>04</span>Corporate Video</a>
-                <a href="#capabilities"><span>05</span>Capability Library</a>
+            <nav class="work-index" aria-label="Portfolio proof index" role="tablist">
+                <a data-t="t042" href="#published-work" role="tab"><span>01</span>Published / On-Air</a>
+                <a data-t="t324" href="#originals-work" role="tab"><span>02</span>Short Film</a>
+                <a data-t="t325" href="#production-work" role="tab"><span>03</span>AI → Production</a>
+                <a data-t="t326" href="#prototype-work" role="tab"><span>04</span>Decision Prototypes</a>
+                <a data-t="t327" href="#corporate-work" role="tab"><span>05</span>Corporate Video</a>
+                <a data-t="t328" href="#capabilities" role="tab"><span>06</span>Capability Library</a>
             </nav>
 
             <div class="work-chapter" id="published-work">
@@ -1821,11 +1836,34 @@
                         <dl class="case-facts"><div><dt data-t="t090">Canvas</dt><dd>9:16</dd></div><div><dt data-t="t091">Viewing</dt><dd data-t="t092">Mobile</dd></div><div><dt data-t="t093">Delivery</dt><dd data-t="t094">Social</dd></div></dl>
                     </div>
                 </article>
+
+            </div>
+
+            <div class="work-chapter" id="originals-work">
+                <header class="chapter-ledger">
+                    <span class="chapter-no">02</span>
+                    <div><h3 data-t="t321">Short Film</h3><p data-t="t322">Short films we write, design and finish in-house — proof that AI can carry characters and story across minutes, not seconds.</p></div>
+                </header>
+                <!-- Studio original short film — World Hoppers (YouTube, 9:16) -->
+                <article class="social-stage wh-stage" id="world-hoppers-case">
+                    <div class="social-reel wh-pair">
+                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/8lV0-w2VMGU?autoplay=1&rel=0" aria-label="Play: World Hoppers — Then Let's Change the Ending"><span class="vf-poster" style="background-image:url('posters/yt-8lV0-w2VMGU.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t319">01 · Full film · 8 min</figcaption></figure>
+                        <figure><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://www.youtube.com/embed/X8gMGvVFylY?autoplay=1&rel=0" aria-label="Play: Still Waiting — A Hachiko Story"><span class="vf-poster" style="background-image:url('posters/yt-X8gMGvVFylY.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t320">02 · Hachiko cutdown · 5 min</figcaption></figure>
+                    </div>
+                    <div class="social-copy">
+                        <div data-t="t310" class="case-kicker">Published · AI Short Film · 9:16</div>
+                        <h4 data-t="t311">World Hoppers — Then Let’s Change the Ending</h4>
+                        <p data-t="t312" class="lead-copy">An eight-minute short film. Two recurring characters cross four worlds and carry one story to a different ending.</p>
+                        <p data-t="t313">Ethan and Chloe keep the same identity from the first frame to the last, while costume, era and visual language change with every world: a modern metro, a mountain village, a pirate-age island and Shibuya in 1930. AI carried the character references, keyframes and video generation; story, edit rhythm and final timing were directed by hand.</p>
+                        <dl class="case-facts"><div><dt data-t="t314">Length</dt><dd data-t="t315">8 min + 5 min cutdown</dd></div><div><dt data-t="t316">Worlds</dt><dd>4</dd></div><div><dt data-t="t317">Channel</dt><dd>YouTube</dd></div></dl>
+                        <a data-t="t318" class="ooh-viewer-action" style="margin-top:20px;display:inline-flex;" href="https://youtu.be/8lV0-w2VMGU" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+                    </div>
+                </article>
             </div>
 
             <div class="work-chapter" id="production-work">
                 <header class="chapter-ledger">
-                    <span class="chapter-no">02</span>
+                    <span class="chapter-no">03</span>
                     <div><h3 data-t="t095">AI → Real Production</h3><p data-t="t096">The animatic locked direction clearly enough for the campaign to be shot for real.</p></div>
                 </header>
                 <div class="comparison-grid">
@@ -1852,7 +1890,7 @@
 
             <div class="work-chapter" id="prototype-work">
                 <header class="chapter-ledger">
-                    <span class="chapter-no">03</span>
+                    <span class="chapter-no">04</span>
                     <div><h3 data-t="t106">Decision Prototypes</h3><p data-t="t107">Only the animatics that prove a strong idea, or a level of AI control worth showing.</p></div>
                 </header>
 
@@ -1888,7 +1926,7 @@
 
             <div class="work-chapter" id="corporate-work">
                 <header class="chapter-ledger">
-                    <span class="chapter-no">04</span>
+                    <span class="chapter-no">05</span>
                     <div><h3 data-t="t121">Corporate Video</h3><p data-t="t122">Brand and company films where AI carries the craft — product detail, process and story, without a build or a location unit.</p></div>
                 </header>
                 <div class="comparison-grid">
@@ -1906,34 +1944,12 @@
                     </article>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Studio Products -->
-    <section id="products">
-        <div class="container">
-            <div class="section-header">
-                <div data-t="t129" class="section-tag">Ch. 03 — Studio Products</div>
-                <h2 data-t="t130" class="section-title">The systems behind <em>every delivery.</em></h2>
-                <p data-t="t131" class="section-desc">We don't just use tools. We build our own operating layer to standardize assets, route scenes, hold production knowledge and help the team decide faster.</p>
-            </div>
-            <div class="product-grid">
-                <article class="product-card"><div data-t="t132" class="product-status live">Operating</div><div class="tool-icon">⚡</div><h3 data-t="t133">AI Asset Prompt Studio</h3><p data-t="t134">Prepares Character, Props, Location, Keyframe, FLF and V2V to match each model's grammar and the production intent.</p><ul><li data-t="t135">For producers & AI artists</li><li data-t="t136">119-model knowledge layer</li><li data-t="t137">Reduces prompt trial-and-error</li></ul><a data-t="t138" href="#contact">Request Demo / Access →</a></article>
-                <article class="product-card"><div data-t="t139" class="product-status build">In Development</div><div class="tool-icon">📸</div><h3 data-t="t140">AI Photo Director</h3><p data-t="t141">A visual previs system connecting camera, lens, lighting, blocking and 3D scene planning before keyframes are generated.</p><ul><li data-t="t142">For directors & DPs</li><li data-t="t143">Camera-aware visual planning</li><li data-t="t144">Built around photography fundamentals</li></ul><a data-t="t145" href="#contact">Request Preview →</a></article>
-                <article class="product-card"><div data-t="t146" class="product-status live">Operating Workflow</div><div class="tool-icon">🎯</div><h3 data-t="t147">Scene Router & Production Copilot</h3><p data-t="t148">Analyzes each scene and selects the right production route, model, keyframe strategy and QC gate.</p><ul><li data-t="t149">For producers & supervisors</li><li data-t="t150">Per-shot routing</li><li data-t="t151">Evidence-backed model selection</li></ul><a data-t="t152" href="#contact">Request Demo / Access →</a></article>
-                <article class="product-card"><div data-t="t153" class="product-status public">Live Platform</div><div class="tool-icon">🧠</div><h3 data-t="t154">AI Literacy for Producers</h3><p data-t="t155">A learning platform that helps producers understand AI fundamentals, operations, agentic workflows and model updates.</p><ul><li data-t="t156">For production teams</li><li data-t="t157">Structured learning paths</li><li data-t="t158">Live web product</li></ul><a data-t="t159" href="https://flare119.github.io/ai-literacy/" target="_blank" rel="noopener">Open Platform ↗</a></article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Capabilities -->
-    <section id="capabilities">
-        <div class="container">
-            <div class="section-header">
-                <div data-t="t160" class="section-tag">Ch. 04 — Capability Library</div>
-                <h2 data-t="t161" class="section-title">Behind what <em>you see.</em></h2>
-                <p data-t="t162" class="section-desc">Capability isn’t the model. It’s knowing which one, when, and what for.</p>
-            </div>
+            <div class="work-chapter" id="capabilities">
+                <header class="chapter-ledger">
+                    <span class="chapter-no">06</span>
+                    <div><h3 data-t="t323">Capability Library</h3><p data-t="t162">Capability isn’t the model. It’s knowing which one, when, and what for.</p></div>
+                </header>
             <div class="capab-grid">
                 <style>
                     #capabilities .case-video {
@@ -2046,6 +2062,24 @@
                         <p data-t="t189">Hand-drawn boards with camera notes become photoreal keyframes, true to composition.</p>
                     </div>
                 </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio Products -->
+    <section id="products">
+        <div class="container">
+            <div class="section-header">
+                <div data-t="t129" class="section-tag">Ch. 03 — Studio Products</div>
+                <h2 data-t="t130" class="section-title">The systems behind <em>every delivery.</em></h2>
+                <p data-t="t131" class="section-desc">We don't just use tools. We build our own operating layer to standardize assets, route scenes, hold production knowledge and help the team decide faster.</p>
+            </div>
+            <div class="product-grid">
+                <article class="product-card"><div data-t="t132" class="product-status live">Operating</div><div class="tool-icon">⚡</div><h3 data-t="t133">AI Asset Prompt Studio</h3><p data-t="t134">Prepares Character, Props, Location, Keyframe, FLF and V2V to match each model's grammar and the production intent.</p><ul><li data-t="t135">For producers & AI artists</li><li data-t="t136">119-model knowledge layer</li><li data-t="t137">Reduces prompt trial-and-error</li></ul><a data-t="t138" href="#contact">Request Demo / Access →</a></article>
+                <article class="product-card"><div data-t="t139" class="product-status build">In Development</div><div class="tool-icon">📸</div><h3 data-t="t140">AI Photo Director</h3><p data-t="t141">A visual previs system connecting camera, lens, lighting, blocking and 3D scene planning before keyframes are generated.</p><ul><li data-t="t142">For directors & DPs</li><li data-t="t143">Camera-aware visual planning</li><li data-t="t144">Built around photography fundamentals</li></ul><a data-t="t145" href="#contact">Request Preview →</a></article>
+                <article class="product-card"><div data-t="t146" class="product-status live">Operating Workflow</div><div class="tool-icon">🎯</div><h3 data-t="t147">Scene Router & Production Copilot</h3><p data-t="t148">Analyzes each scene and selects the right production route, model, keyframe strategy and QC gate.</p><ul><li data-t="t149">For producers & supervisors</li><li data-t="t150">Per-shot routing</li><li data-t="t151">Evidence-backed model selection</li></ul><a data-t="t152" href="#contact">Request Demo / Access →</a></article>
+                <article class="product-card"><div data-t="t153" class="product-status public">Live Platform</div><div class="tool-icon">🧠</div><h3 data-t="t154">AI Literacy for Producers</h3><p data-t="t155">A learning platform that helps producers understand AI fundamentals, operations, agentic workflows and model updates.</p><ul><li data-t="t156">For production teams</li><li data-t="t157">Structured learning paths</li><li data-t="t158">Live web product</li></ul><a data-t="t159" href="https://flare119.github.io/ai-literacy/" target="_blank" rel="noopener">Open Platform ↗</a></article>
             </div>
         </div>
     </section>
@@ -2440,6 +2474,41 @@
     </script>
 
     <script>
+    /* Work tabs: mỗi lần hiện 1 chương; link neo tự mở đúng tab (04/11/2026) */
+    (function(){
+        const work=document.getElementById('work'); if(!work) return;
+        const chapters=[...work.querySelectorAll('.work-chapter')];
+        const index=work.querySelector('.work-index');
+        const tabs=index?[...index.querySelectorAll('a')]:[];
+        if(!chapters.length||!tabs.length) return;
+        work.classList.add('is-tabbed');
+        function show(ch){
+            chapters.forEach(c=>{ c.hidden=(c!==ch); });
+            tabs.forEach(t=>t.setAttribute('aria-selected', String(t.getAttribute('href')==='#'+ch.id)));
+        }
+        function target(hash){
+            if(!hash||hash.length<2) return null;
+            let el=null; try{ el=document.querySelector(hash); }catch(e){ return null; }
+            const ch=el&&el.closest('.work-chapter');
+            return ch?{el,ch}:null;
+        }
+        function fromHash(){
+            const r=target(location.hash); if(!r) return false;
+            show(r.ch);
+            requestAnimationFrame(()=>(r.el===r.ch?index:r.el).scrollIntoView({block:r.el===r.ch?'start':'center'}));
+            return true;
+        }
+        tabs.forEach(t=>t.addEventListener('click',e=>{
+            e.preventDefault();
+            const ch=document.querySelector(t.getAttribute('href')); if(!ch) return;
+            show(ch);
+            try{ history.replaceState(null,'',t.getAttribute('href')); }catch(err){}
+            if(index.getBoundingClientRect().top<0) index.scrollIntoView({block:'start'});
+        }));
+        if(!fromHash()) show(chapters[0]);
+        window.addEventListener('hashchange',fromHash);
+    })();
+
     /* i18n: đổi ngôn ngữ tại chỗ bằng data-t + i18n/<lang>.json */
     (function(){
         const KEY='aistudio-lang-choice'; /* chỉ lưu khi người xem tự bấm; mặc định EN */
@@ -2451,7 +2520,7 @@
         async function dict(lang){
             if(lang==='en') return null;
             if(cache[lang]) return cache[lang];
-            const r=await fetch('i18n/'+lang+'.json',{cache:'force-cache'});
+            const r=await fetch('i18n/'+lang+'.json?v=20261104e',{cache:'force-cache'});
             if(!r.ok) throw new Error('i18n '+lang+' '+r.status);
             return cache[lang]=await r.json();
         }
