@@ -2088,7 +2088,7 @@
     <section id="workflow">
         <div class="container">
             <div class="section-header">
-                <div data-t="t190" class="section-tag">Ch. 05 — Process</div>
+                <div data-t="t190" class="section-tag">Ch. 04 — Process</div>
                 <h2 data-t="t191" class="section-title">Production discipline, <em>built for control.</em></h2>
                 <p data-t="t192" class="section-desc">AI doesn’t replace process — it demands a more disciplined one. This is how we go from a loose brief to delivery on locked specs, through each gate: direction, generation, post, review and QC.</p>
             </div>
@@ -2125,7 +2125,7 @@
     <section id="faq">
         <div class="container">
             <div class="section-header">
-                <div data-t="t209" class="section-tag">Ch. 06 — Questions</div>
+                <div data-t="t209" class="section-tag">Ch. 05 — Questions</div>
                 <h2 data-t="t210" class="section-title">The questions <em>worth asking.</em></h2>
                 <p data-t="t211" class="section-desc">Every shift starts with skepticism. These are the questions agencies and clients always ask — and what we've learned to answer.</p>
             </div>
@@ -2240,7 +2240,7 @@
     <section id="pricing">
         <div class="container">
             <div class="section-header">
-                <div data-t="t259" class="section-tag">Ch. 07 — The Exchange</div>
+                <div data-t="t259" class="section-tag">Ch. 06 — The Exchange</div>
                 <h2 data-t="t260" class="section-title">The value <em>of the work.</em></h2>
                 <p data-t="t261" class="section-desc">Each package is a commitment — creative direction, AI generation, post-production, feedback. No hidden fees. No "to be discussed." This is the 2026 rate card.</p>
             </div>
@@ -2317,7 +2317,7 @@
     <section id="about">
         <div class="container">
             <div class="section-header">
-                <div data-t="t288" class="section-tag">Ch. 08 — The Makers</div>
+                <div data-t="t288" class="section-tag">Ch. 07 — The Makers</div>
                 <h2 data-t="t289" class="section-title">The people <em>behind it.</em></h2>
                 <p data-t="t290" class="section-desc">AI Studio wasn’t born in a vacuum — it was built by two people with 10+ years in commercial production. We came to AI not for the trend, but for what it lets us do better.</p>
                 <p data-t="t291" class="section-quote">"All those moments will be lost in time, like tears in rain."<br>— Roy Batty, Blade Runner</p>
@@ -2520,7 +2520,7 @@
         async function dict(lang){
             if(lang==='en') return null;
             if(cache[lang]) return cache[lang];
-            const r=await fetch('i18n/'+lang+'.json?v=20261104e',{cache:'force-cache'});
+            const r=await fetch('i18n/'+lang+'.json?v=20261104f',{cache:'force-cache'});
             if(!r.ok) throw new Error('i18n '+lang+' '+r.status);
             return cache[lang]=await r.json();
         }
