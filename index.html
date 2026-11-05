@@ -1790,11 +1790,10 @@
                     <div class="published-landscape-copy">
                         <div data-t="t331" class="case-kicker">Published / On-Air · Hybrid Film · 15s</div>
                         <h4 data-t="t332">YoMost Roller Skating</h4>
-                        <p data-t="t333">A 15-second hybrid film: the talent is shot for real, while AI Studio creates the AI water flow and the talent spin sequence.</p>
                         <dl class="credit-stack">
                             <div><dt data-t="t049">Client / Project</dt><dd data-t="t334">YoMost</dd></div>
                             <div><dt data-t="t051">Production</dt><dd data-t="t052">See Group</dd></div>
-                            <div><dt data-t="t335">AI Studio</dt><dd data-t="t336">Water flow · Spin shot</dd></div>
+                            <div><dt data-t="t335">AI Elements</dt><dd data-t="t336">AI Studio</dd></div>
                             <div><dt data-t="t055">Status</dt><dd data-t="t056">Published / On-Air</dd></div>
                         </dl>
                         <div class="yomost-links">
@@ -2551,7 +2550,7 @@
         async function dict(lang){
             if(lang==='en') return null;
             if(cache[lang]) return cache[lang];
-            const r=await fetch('i18n/'+lang+'.json?v=20261105a',{cache:'force-cache'});
+            const r=await fetch('i18n/'+lang+'.json?v=20261105b',{cache:'force-cache'});
             if(!r.ok) throw new Error('i18n '+lang+' '+r.status);
             return cache[lang]=await r.json();
         }
