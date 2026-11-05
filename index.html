@@ -1143,6 +1143,10 @@
         .wh-stage .social-reel { order:2; }
         .wh-stage .wh-pair { max-width:560px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
         .wh-pair figcaption { margin-top:8px; font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.08em; color:var(--text-muted); }
+        .yomost-dual { display:grid; grid-template-columns:minmax(0,3.16fr) minmax(0,1fr); gap:clamp(10px,1.6vw,18px); align-items:start; }
+        .yomost-dual figure { margin:0; }
+        .yomost-dual figcaption { margin-top:8px; font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.08em; color:var(--text-muted); }
+        .yomost-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
         .comparison-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px; }
         .comparison-theatre { padding-top:26px; border-top:1px solid var(--border); }
         .ct-head { display:flex; align-items:baseline; gap:13px; margin-bottom:24px; }
@@ -1197,6 +1201,8 @@
             .social-reel { max-width:300px; }
             .wh-stage .social-reel { order:0; }
             .wh-stage .wh-pair { max-width:100%; gap:10px; }
+            .yomost-dual { grid-template-columns:1fr; gap:22px; }
+            .yomost-dual .yomost-vertical { width:min(100%,240px); }
             .prototype-copy { grid-template-columns:1fr; gap:14px; }
             .landscape-strip { grid-template-columns:1fr; }
             .prototype-mosaic { display:block; }
@@ -1752,8 +1758,8 @@
                 <article class="published-landscape iki-hero" id="iki-village-case">
                     <div class="published-landscape-media">
                         <div class="media-frame media-landscape">
-                            <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1DRW09xlU1N0bj3RXfGOlI5DBTqMRuabw/preview" aria-label="Play: IKI Village">
-                                <span class="vf-poster" style="background-image:url('posters/1DRW09xlU1N0bj3RXfGOlI5DBTqMRuabw.jpg')"></span>
+                            <button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1fV7wDucsf2HzVWQD4XejTe2eMm9Y67E8/preview" aria-label="Play: IKI Village">
+                                <span class="vf-poster" style="background-image:url('posters/1fV7wDucsf2HzVWQD4XejTe2eMm9Y67E8.jpg')"></span>
                                 <span class="vf-play" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -1769,7 +1775,32 @@
                             <div><dt data-t="t053">Post Production</dt><dd data-t="t054">AI Studio</dd></div>
                             <div><dt data-t="t055">Status</dt><dd data-t="t056">Published / On-Air</dd></div>
                         </dl>
-                        <a data-t="t057" class="ooh-viewer-action" style="margin-top:20px;display:inline-flex;" href="https://drive.google.com/file/d/1DRW09xlU1N0bj3RXfGOlI5DBTqMRuabw/view" target="_blank" rel="noopener">Open final master ↗</a>
+                        <a data-t="t057" class="ooh-viewer-action" style="margin-top:20px;display:inline-flex;" href="https://drive.google.com/drive/folders/18SY8WftgYK5dbkfraRUItGn80Bcwflb3" target="_blank" rel="noopener">Open final master ↗</a>
+                    </div>
+                </article>
+
+                <!-- Published hybrid film — YoMost Roller Skating (16:9 main + 9:16 adaptation) -->
+                <article class="published-landscape yomost-case" id="yomost-case">
+                    <div class="published-landscape-media">
+                        <div class="yomost-dual">
+                            <figure class="yomost-main"><div class="media-frame media-landscape"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1Qy48bAwZVJsWl_DnK9GgpCYgx-Y2CK4L/preview" aria-label="Play: YoMost Roller Skating — 16:9"><span class="vf-poster" style="background-image:url('posters/1Qy48bAwZVJsWl_DnK9GgpCYgx-Y2CK4L.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t329">16:9 · Main film</figcaption></figure>
+                            <figure class="yomost-vertical"><div class="media-frame media-portrait"><button type="button" class="video-facade" data-embed="https://drive.google.com/file/d/1eYVrGLuo1_ajnNg4ZgDiddervnvrhYZ5/preview" aria-label="Play: YoMost Roller Skating — 9:16"><span class="vf-poster" style="background-image:url('posters/1eYVrGLuo1_ajnNg4ZgDiddervnvrhYZ5.jpg')"></span><span class="vf-play" aria-hidden="true"></span></button></div><figcaption data-t="t330">9:16</figcaption></figure>
+                        </div>
+                    </div>
+                    <div class="published-landscape-copy">
+                        <div data-t="t331" class="case-kicker">Published / On-Air · Hybrid Film · 15s</div>
+                        <h4 data-t="t332">YoMost Roller Skating</h4>
+                        <p data-t="t333">A 15-second hybrid film: the talent is shot for real, while AI Studio creates the AI water flow and the talent spin sequence.</p>
+                        <dl class="credit-stack">
+                            <div><dt data-t="t049">Client / Project</dt><dd data-t="t334">YoMost</dd></div>
+                            <div><dt data-t="t051">Production</dt><dd data-t="t052">See Group</dd></div>
+                            <div><dt data-t="t335">AI Studio</dt><dd data-t="t336">Water flow · Spin shot</dd></div>
+                            <div><dt data-t="t055">Status</dt><dd data-t="t056">Published / On-Air</dd></div>
+                        </dl>
+                        <div class="yomost-links">
+                            <a data-t="t337" class="ooh-viewer-action" href="https://drive.google.com/file/d/1Qy48bAwZVJsWl_DnK9GgpCYgx-Y2CK4L/view" target="_blank" rel="noopener">Open 16:9 master ↗</a>
+                            <a data-t="t338" class="ooh-viewer-action" href="https://drive.google.com/file/d/1eYVrGLuo1_ajnNg4ZgDiddervnvrhYZ5/view" target="_blank" rel="noopener">Open 9:16 ↗</a>
+                        </div>
                     </div>
                 </article>
 
@@ -2520,7 +2551,7 @@
         async function dict(lang){
             if(lang==='en') return null;
             if(cache[lang]) return cache[lang];
-            const r=await fetch('i18n/'+lang+'.json?v=20261104f',{cache:'force-cache'});
+            const r=await fetch('i18n/'+lang+'.json?v=20261105a',{cache:'force-cache'});
             if(!r.ok) throw new Error('i18n '+lang+' '+r.status);
             return cache[lang]=await r.json();
         }
